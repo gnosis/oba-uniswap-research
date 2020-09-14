@@ -5,9 +5,9 @@ import pickle
 # Donwloading data from TheGraph takes a bit. When developing/debugging, enabling this
 # caches the results on disk.
 use_cache=True
-#focus_pair={'DAI', 'WETH'}
+focus_pair={'DAI', 'WETH'}
 #focus_pair={'WETH', 'WBTC'}
-focus_pair={'SUSHI', 'USDT'}
+#focus_pair={'SUSHI', 'USDT'}
 
 def get_uniswap_swaps():
     uniswap = UniswapClient()
@@ -56,13 +56,15 @@ else:
 
 #print(swaps_by_block)
 #print({frozenset([o['sellToken'], o['buyToken']]) for b in swaps_by_block.values() for o in b})
+prob_opposite_offer = dict()
 prob_match = dict()
 expected_volume = dict()
 expected_nr_trades = dict()
 
-for k in range(5):
+for k in range(10):
     sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
     nr_blocks_with_at_least_one_direct_trade = 0
+    nr_blocks_with_at_least_one_opposite_offer =0
     avg_volume = 0
     nr_direct_trades = 0
     for i in range(len(sorted_blocks) - k):
@@ -84,6 +86,10 @@ for k in range(5):
             t_1 = tuple(focus_pair)
             t_2 = tuple(reversed(t_1))
             found = False
+            singleTradeFound = False
+            if t_1[0] in buy_tokens_j and \
+                  t_1[1] in sell_tokens_j:
+                    nr_blocks_with_at_least_one_opposite_offer += 1
             for t in [t_1, t_2]:
                 if t[0] in sell_tokens_i and t[0] in buy_tokens_j and \
                   t[1] in buy_tokens_i and t[1] in sell_tokens_j:
@@ -112,9 +118,14 @@ for k in range(5):
                 nr_direct_trades += len(vols_selling_t_i) + len(vols_selling_t_j)
     avg_volume /= nr_direct_trades
 
+    prob_opposite_offer[k] = nr_blocks_with_at_least_one_opposite_offer / (len(sorted_blocks) - k)
     prob_match[k] = nr_blocks_with_at_least_one_direct_trade / (len(sorted_blocks) - k)
     expected_volume[k] = avg_volume
     expected_nr_trades[k] = nr_direct_trades / nr_blocks_with_at_least_one_direct_trade
+
+print("Probability of opposite offer")
+for k, v in prob_opposite_offer.items():
+    print(k, v)
 
 print("Probability of trade")
 for k, v in prob_match.items():
