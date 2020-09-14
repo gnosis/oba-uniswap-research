@@ -5,6 +5,9 @@ import pickle
 # Donwloading data from TheGraph takes a bit. When developing/debugging, enabling this
 # caches the results on disk.
 use_cache=True
+#focus_pair={'DAI', 'WETH'}
+#focus_pair={'WETH', 'WBTC'}
+focus_pair={'SUSHI', 'USDT'}
 
 def get_uniswap_swaps():
     uniswap = UniswapClient()
@@ -50,7 +53,12 @@ if not use_cache:
 else:
     with open("uniswap_swaps.pickled", "br") as f:
         swaps_by_block = pickle.load(f)
-print(swaps_by_block)
+
+#print(swaps_by_block)
+#print({frozenset([o['sellToken'], o['buyToken']]) for b in swaps_by_block.values() for o in b})
+prob_match = dict()
+expected_volume = dict()
+expected_nr_trades = dict()
 
 for k in range(5):
     sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
@@ -71,6 +79,21 @@ for k in range(5):
             for j in range(block_i, block_i + k + 1)
             for o in swaps_by_block.get(j, [])
         }        
+
+        if focus_pair is not None:
+            t_1 = tuple(focus_pair)
+            t_2 = tuple(reversed(t_1))
+            found = False
+            for t in [t_1, t_2]:
+                if t[0] in sell_tokens_i and t[0] in buy_tokens_j and \
+                  t[1] in buy_tokens_i and t[1] in sell_tokens_j:
+                    sell_tokens_i = buy_tokens_j = {t[0]}
+                    buy_tokens_i = sell_tokens_j = {t[1]}
+                    found = True
+                    break
+            if not found:
+                sell_tokens_i = sell_tokens_j = buy_tokens_i = buy_tokens_j = set()
+
         common_tokens = (sell_tokens_i & buy_tokens_j) | (sell_tokens_j & buy_tokens_i)
         if len(common_tokens)>0:
             nr_blocks_with_at_least_one_direct_trade += 1
@@ -88,7 +111,19 @@ for k in range(5):
                 avg_volume += sum(vols_selling_t_i) + sum(vols_selling_t_j)
                 nr_direct_trades += len(vols_selling_t_i) + len(vols_selling_t_j)
     avg_volume /= nr_direct_trades
-    print(k, nr_blocks_with_at_least_one_direct_trade / (len(sorted_blocks) - k))
-    print(k, avg_volume)
-    print(k, nr_direct_trades / nr_blocks_with_at_least_one_direct_trade)
 
+    prob_match[k] = nr_blocks_with_at_least_one_direct_trade / (len(sorted_blocks) - k)
+    expected_volume[k] = avg_volume
+    expected_nr_trades[k] = nr_direct_trades / nr_blocks_with_at_least_one_direct_trade
+
+print("Probability of trade")
+for k, v in prob_match.items():
+    print(k, v)
+
+print("Expected volume | trade exists")
+for k, v in expected_volume.items():
+    print(k, v)
+
+print("Expected nr trades | trade exists")
+for k, v in expected_nr_trades.items():
+    print(k, v)
