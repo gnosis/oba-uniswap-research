@@ -1,21 +1,22 @@
 from .subgraph import UniswapClient
 import pickle
+import os
 
 
 def get_swaps(use_cache):
-    if not use_cache:
+    if os.path.exists("./uniswap_swaps.pickled") and use_cache:
+        with open("uniswap_swaps.pickled", "br") as f:
+            swaps_by_block = pickle.load(f)
+    else:
         swaps_by_block = get_uniswap_swaps()
         with open("uniswap_swaps.pickled", "bw+") as f:
             pickle.dump(swaps_by_block, f)
-    else:
-        with open("uniswap_swaps.pickled", "br") as f:
-            swaps_by_block = pickle.load(f)
 
     return swaps_by_block
 
 
-def get_uniswap_swaps(end_block=10867163,
-                      investigation_period=(24*60*60 // 17)):
+def get_uniswap_swaps(end_block=11098514,
+                      investigation_period=(60*60 // 17)):
     uniswap = UniswapClient()
 
     # Download data from start_block to end_block.
