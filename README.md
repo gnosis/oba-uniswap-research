@@ -24,6 +24,15 @@ or
 python -m src.probability_of_match
 ```
 
+## Dataset:
+
+In order to adjust the dataset for the calculation, modify the following parameters in download_swaps:
+
+```bash
+end_block // this is the last ethereum block to be considered
+investigation_period // this is the investigation period in secs
+```
+
 ## If uniswap theGraph API changes, then run:
 ```bash
 make
