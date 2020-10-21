@@ -6,7 +6,7 @@ from functools import partial
 
 
 class GraphQLClient:
-    page_size = 1000
+    page_size = 500
 
     def __init__(self, url):
         self.endpoint = HTTPEndpoint(self.url)
@@ -88,4 +88,3 @@ class UniswapClient(GraphQLClient):
     def get_swaps(self, transactions_filter=dict()):
         """Get swap transactions."""
         return self.paginated(partial(self.get_swaps_page, transactions_filter))
-

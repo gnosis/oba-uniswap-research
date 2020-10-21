@@ -44,5 +44,5 @@ for focus_pair in focus_pairs:
     if last_probability > 0.98:
         print(expected_waiting_time_for_user)
     else:
-        print("Increase number_of_blocks_looking_forward go get \
-              a reasonable calculation")
+        print("Increase number_of_blocks_looking_forward to get"
+              "a reasonable calculation")

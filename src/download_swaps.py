@@ -9,6 +9,7 @@ def get_swaps(use_cache):
             swaps_by_block = pickle.load(f)
     else:
         swaps_by_block = get_uniswap_swaps()
+        print("uniswap swap data downloaded")
         with open("uniswap_swaps.pickled", "bw+") as f:
             pickle.dump(swaps_by_block, f)
 

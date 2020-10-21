@@ -3,7 +3,7 @@ from .utils import is_there_a_opposite_match_in_next_k_blocks
 
 # Parameters
 use_cache = True
-waiting_time = 10
+waiting_time = 4
 threshold_for_showing_probability = 0.5
 
 print("Probability of match after waiting", waiting_time, "blocks")
@@ -22,7 +22,6 @@ focus_pairs = [
     for o in swaps_by_block.get(sorted_blocks[j], [])
 ]
 focus_pairs = list({(tuple(t)) for t in focus_pairs})
-focus_pairs.append(['WETH', 'USDT', 'DAI', 'USDC'])
 results = dict()
 for focus_pair in focus_pairs:
     nr_of_times_a_match_can_be_found = 0
@@ -48,3 +47,14 @@ for (key, value) in results.items():
 print(pairs_meeting_threshold / len(focus_pairs),
       " pairs of all pairs meet the threshold of a",
       threshold_for_showing_probability, " chance to find a match")
+
+
+print("An overview of the number of pairs matchable with different thresholds")
+thresholds = [0.2, 0.3, 0.4, 0.5, 0.6]
+
+for threshold in thresholds:
+    pairs_meeting_threshold = 0
+    for (key, value) in results.items():
+        if value > threshold:
+            pairs_meeting_threshold += 1
+    print(threshold, ":", pairs_meeting_threshold)
