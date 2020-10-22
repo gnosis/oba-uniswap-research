@@ -1,9 +1,9 @@
-from .download_swaps import get_swaps
+# from .download_swaps import get_swaps
 from .utils import is_there_a_opposite_match_in_next_k_blocks
+from .read_csv import read_swaps_from_csv
 
 # Parameters
-use_cache = True
-waiting_time = 4
+waiting_time = 10
 threshold_for_showing_probability = 0.5
 
 print("Probability of match after waiting", waiting_time, "blocks")
@@ -14,7 +14,7 @@ print("Probability of match after waiting", waiting_time, "blocks")
 # is independent of placing the random order.
 
 
-swaps_by_block = get_swaps(use_cache)
+swaps_by_block = read_swaps_from_csv()
 sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
 focus_pairs = [
     [o['sellToken'], o['buyToken']]
