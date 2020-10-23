@@ -17,7 +17,7 @@ print("Expected waiting time for opposite offer in block:")
 # The calculation makes the assumption that the appearance of a counter order
 # is independent of placing the random order.
 
-swaps_by_block = get_swaps(use_cache)
+swaps_by_block = get_swaps(use_cache, "data/uniswap_swaps.pickled")
 
 sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
 for focus_pair in focus_pairs:

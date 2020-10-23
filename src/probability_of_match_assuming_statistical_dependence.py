@@ -9,8 +9,8 @@ focus_pair = {'WETH', 'DAI', 'USDC', 'USDT'}
 #focus_pair={'WETH', 'WBTC'}
 #focus_pair={'SUSHI', 'WETH'}
 
+swaps_by_block = get_swaps(use_cache, "data/uniswap_swaps.pickled")
 
-swaps_by_block = get_swaps(use_cache)
 
 # print(swaps_by_block)
 #print({frozenset([o['sellToken'], o['buyToken']]) for b in swaps_by_block.values() for o in b})
