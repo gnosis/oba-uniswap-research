@@ -1,0 +1,238 @@
+{
+  "orders": [
+    {
+      "sellToken": "SNX",
+      "buyToken": "WBTC",
+      "maxSellAmount": 2409.44311122508,
+      "limitXRate": [
+        [
+          0.71347502,
+          "WBTC"
+        ],
+        [
+          2409.44311122508,
+          "SNX"
+        ]
+      ],
+      "limitXRateCanonical": 3377.053216558416,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "SNX",
+          "WETH",
+          "WBTC"
+        ],
+        "amounts": [
+          2409.44311122508,
+          23.061495979481723,
+          0.71665511
+        ],
+        "balancesSellToken": [
+          "4100.550601854401398612",
+          "30826.22028944"
+        ],
+        "balancesBuyToken": [
+          "424734.137449223186783888",
+          "988904.580372958601254113"
+        ],
+        "block": 11093074,
+        "index": 59
+      }
+    },
+    {
+      "sellToken": "SNX",
+      "buyToken": "WBTC",
+      "maxSellAmount": 2354.218136636956,
+      "limitXRate": [
+        [
+          0.67435755,
+          "WBTC"
+        ],
+        [
+          2354.218136636956,
+          "SNX"
+        ]
+      ],
+      "limitXRateCanonical": 3491.053279728174,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "SNX",
+          "WETH",
+          "WBTC"
+        ],
+        "amounts": [
+          2354.218136636956,
+          22.151415431320864,
+          0.68133807
+        ],
+        "balancesSellToken": [
+          "3979.299475625323484711",
+          "30716.00644131"
+        ],
+        "balancesBuyToken": [
+          "419297.890568911355063166",
+          "995609.654235928643684031"
+        ],
+        "block": 11093787,
+        "index": 239
+      }
+    },
+    {
+      "sellToken": "SNX",
+      "buyToken": "WBTC",
+      "maxSellAmount": 745.3878526979884,
+      "limitXRate": [
+        [
+          0.20869837,
+          "WBTC"
+        ],
+        [
+          745.3878526979884,
+          "SNX"
+        ]
+      ],
+      "limitXRateCanonical": 3571.6036148149524,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "SNX",
+          "WETH",
+          "WBTC"
+        ],
+        "amounts": [
+          745.3878526979884,
+          6.982500155794977,
+          0.21545923
+        ],
+        "balancesSellToken": [
+          "3962.953017843845622834",
+          "30765.14453006"
+        ],
+        "balancesBuyToken": [
+          "421036.320345457055753506",
+          "994024.118902450792275672"
+        ],
+        "block": 11093821,
+        "index": 164
+      }
+    },
+    {
+      "sellToken": "SNX",
+      "buyToken": "WBTC",
+      "maxSellAmount": 23.26580411378956,
+      "limitXRate": [
+        [
+          0.00662303,
+          "WBTC"
+        ],
+        [
+          23.26580411378956,
+          "SNX"
+        ]
+      ],
+      "limitXRateCanonical": 3512.864068830967,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "SNX",
+          "WETH",
+          "WBTC"
+        ],
+        "amounts": [
+          23.26580411378956,
+          0.21915467353025023,
+          0.0067553100000000005
+        ],
+        "balancesSellToken": [
+          "3970.646991162148695108",
+          "30750.75044849"
+        ],
+        "balancesBuyToken": [
+          "420242.330310578640794388",
+          "994610.3778234887522667"
+        ],
+        "block": 11093927,
+        "index": 49
+      }
+    },
+    {
+      "sellToken": "SNX",
+      "buyToken": "WBTC",
+      "maxSellAmount": 624.0189183365017,
+      "limitXRate": [
+        [
+          0.17614868,
+          "WBTC"
+        ],
+        [
+          624.0189183365017,
+          "SNX"
+        ]
+      ],
+      "limitXRateCanonical": 3542.5693700145903,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "SNX",
+          "WETH",
+          "WBTC"
+        ],
+        "amounts": [
+          624.0189183365017,
+          5.76051945342331,
+          0.17703298
+        ],
+        "balancesSellToken": [
+          "3932.474173303321158349",
+          "30749.715716"
+        ],
+        "balancesBuyToken": [
+          "424092.40969060665901542",
+          "997565.048821927616567728"
+        ],
+        "block": 11094350,
+        "index": 82
+      }
+    },
+    {
+      "sellToken": "SNX",
+      "buyToken": "WBTC",
+      "maxSellAmount": 4000.0000000000005,
+      "limitXRate": [
+        [
+          1.10445854,
+          "WBTC"
+        ],
+        [
+          4000.0000000000005,
+          "SNX"
+        ]
+      ],
+      "limitXRateCanonical": 3621.6841602764016,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "SNX",
+          "WETH",
+          "WBTC"
+        ],
+        "amounts": [
+          4000.0000000000005,
+          38.06951225894189,
+          1.1630539
+        ],
+        "balancesSellToken": [
+          "4010.23984801779269937",
+          "30127.76373815"
+        ],
+        "balancesBuyToken": [
+          "416107.650427948675668104",
+          "983156.733418107325534883"
+        ],
+        "block": 11094853,
+        "index": 15
+      }
+    }
+  ]
+}

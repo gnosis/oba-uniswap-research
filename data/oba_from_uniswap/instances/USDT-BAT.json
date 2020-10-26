@@ -1,0 +1,82 @@
+{
+  "orders": [
+    {
+      "sellToken": "USDT",
+      "buyToken": "BAT",
+      "maxSellAmount": 2000.0,
+      "limitXRate": [
+        [
+          9538.703436336735,
+          "BAT"
+        ],
+        [
+          2000.0,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 4.769351718168368,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "WETH",
+          "BAT"
+        ],
+        "amounts": [
+          2000.0,
+          5.399264893955952,
+          9635.412541113634
+        ],
+        "balancesSellToken": [
+          "261945739.502389",
+          "3021372.831939138083071184"
+        ],
+        "balancesBuyToken": [
+          "709263.9927462468240189",
+          "1682.583339824529889327"
+        ],
+        "block": 11093148,
+        "index": 201
+      }
+    },
+    {
+      "sellToken": "BAT",
+      "buyToken": "USDT",
+      "maxSellAmount": 11801.988488318635,
+      "limitXRate": [
+        [
+          2357.616438,
+          "USDT"
+        ],
+        [
+          11801.988488318635,
+          "BAT"
+        ]
+      ],
+      "limitXRateCanonical": 5.0058984566337825,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "BAT",
+          "WETH",
+          "USDT"
+        ],
+        "amounts": [
+          11801.988488318635,
+          6.436300190639045,
+          2369.5296169999997
+        ],
+        "balancesSellToken": [
+          "1670.985796001151229547",
+          "719981.241860971779133767"
+        ],
+        "balancesBuyToken": [
+          "3043061.763078552451365385",
+          "265871782.206813"
+        ],
+        "block": 11094886,
+        "index": 68
+      }
+    }
+  ]
+}

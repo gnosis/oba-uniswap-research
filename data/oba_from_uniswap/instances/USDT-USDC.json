@@ -1,0 +1,1521 @@
+{
+  "orders": [
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 1003.775597,
+      "limitXRate": [
+        [
+          972.723525,
+          "USDT"
+        ],
+        [
+          1003.775597,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.031922813833458,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          1003.775597,
+          1001.195265
+        ],
+        "balancesSellToken": [
+          "7527591.206404"
+        ],
+        "balancesBuyToken": [
+          "7531834.280377"
+        ],
+        "block": 11093035,
+        "index": 86
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 500.0,
+      "limitXRate": [
+        [
+          494.381674,
+          "USDT"
+        ],
+        [
+          500.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.0113643492375892,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          500.0,
+          499.309828
+        ],
+        "balancesSellToken": [
+          "7523372.164531"
+        ],
+        "balancesBuyToken": [
+          "7536093.416861"
+        ],
+        "block": 11093078,
+        "index": 189
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 3350.0,
+      "limitXRate": [
+        [
+          3331.6164879999997,
+          "USDC"
+        ],
+        [
+          3350.0,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9945123844776119,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          3350.0,
+          3348.274571
+        ],
+        "balancesSellToken": [
+          "7518469.692573"
+        ],
+        "balancesBuyToken": [
+          "7540557.182169"
+        ],
+        "block": 11093159,
+        "index": 140
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 2611.80485,
+      "limitXRate": [
+        [
+          2162.871427,
+          "USDT"
+        ],
+        [
+          2611.80485,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.207563620008005,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          2611.80485,
+          2597.7552619999997
+        ],
+        "balancesSellToken": [
+          "7537208.907598"
+        ],
+        "balancesBuyToken": [
+          "7521819.692573"
+        ],
+        "block": 11093163,
+        "index": 209
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 173.0,
+      "limitXRate": [
+        [
+          164.67694899999998,
+          "USDC"
+        ],
+        [
+          173.0,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9518898786127166,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          173.0,
+          172.910797
+        ],
+        "balancesSellToken": [
+          "7520093.520865"
+        ],
+        "balancesBuyToken": [
+          "7539005.404838"
+        ],
+        "block": 11093262,
+        "index": 159
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 993.674592,
+      "limitXRate": [
+        [
+          983.221966,
+          "USDC"
+        ],
+        [
+          993.674592,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9894808359958549,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          993.674592,
+          993.008569
+        ],
+        "balancesSellToken": [
+          "7520093.520865"
+        ],
+        "balancesBuyToken": [
+          "7539005.404838"
+        ],
+        "block": 11093262,
+        "index": 199
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 367.78999999999996,
+      "limitXRate": [
+        [
+          365.78432799999996,
+          "USDC"
+        ],
+        [
+          367.78999999999996,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9945466924059926,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          367.78999999999996,
+          367.61325
+        ],
+        "balancesSellToken": [
+          "7519868.409991"
+        ],
+        "balancesBuyToken": [
+          "7539238.79515"
+        ],
+        "block": 11093268,
+        "index": 46
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 1700.0,
+      "limitXRate": [
+        [
+          1673.07983,
+          "USDT"
+        ],
+        [
+          1700.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.0160901885954838,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          1700.0,
+          1689.8106289999998
+        ],
+        "balancesSellToken": [
+          "7540045.44483"
+        ],
+        "balancesBuyToken": [
+          "7519094.341763"
+        ],
+        "block": 11093320,
+        "index": 72
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 2814.4894289999997,
+      "limitXRate": [
+        [
+          2800.080946,
+          "USDC"
+        ],
+        [
+          2814.4894289999997,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.994880605039217,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          2814.4894289999997,
+          2813.499113
+        ],
+        "balancesSellToken": [
+          "7518183.646964"
+        ],
+        "balancesBuyToken": [
+          "7540966.231702"
+        ],
+        "block": 11093352,
+        "index": 81
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 800.3347809999999,
+      "limitXRate": [
+        [
+          776.769149,
+          "USDC"
+        ],
+        [
+          800.3347809999999,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9705552819152066,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          800.3347809999999,
+          799.08301
+        ],
+        "balancesSellToken": [
+          "7522695.236424"
+        ],
+        "balancesBuyToken": [
+          "7536457.246325"
+        ],
+        "block": 11093362,
+        "index": 130
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 349.474,
+      "limitXRate": [
+        [
+          345.795039,
+          "USDT"
+        ],
+        [
+          349.474,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.0106391375961874,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          349.474,
+          347.52401499999996
+        ],
+        "balancesSellToken": [
+          "7539169.626559"
+        ],
+        "balancesBuyToken": [
+          "7520009.297606"
+        ],
+        "block": 11093386,
+        "index": 158
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxBuyAmount": 1000.0,
+      "limitXRate": [
+        [
+          1020.510038,
+          "USDT"
+        ],
+        [
+          1000.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 0.9799021692719498,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          1000.5000379999999,
+          1000.0
+        ],
+        "balancesSellToken": [
+          "7519661.773591"
+        ],
+        "balancesBuyToken": [
+          "7539519.100559"
+        ],
+        "block": 11093397,
+        "index": 41
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 97.29940099999999,
+      "limitXRate": [
+        [
+          96.752815,
+          "USDC"
+        ],
+        [
+          97.29940099999999,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9943824320151776,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          97.29940099999999,
+          97.23657999999999
+        ],
+        "balancesSellToken": [
+          "7520662.273629"
+        ],
+        "balancesBuyToken": [
+          "7538519.100559"
+        ],
+        "block": 11093405,
+        "index": 56
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 3759.920173,
+      "limitXRate": [
+        [
+          3721.282003,
+          "USDC"
+        ],
+        [
+          3759.920173,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9897236727850073,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          3759.920173,
+          3758.494824
+        ],
+        "balancesSellToken": [
+          "7525351.156996"
+        ],
+        "balancesBuyToken": [
+          "7548892.266064"
+        ],
+        "block": 11093438,
+        "index": 41
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 4510.847901,
+      "limitXRate": [
+        [
+          4481.786693,
+          "USDC"
+        ],
+        [
+          4510.847901,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9935574843936641,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          4510.847901,
+          4504.195627
+        ],
+        "balancesSellToken": [
+          "7529111.077169"
+        ],
+        "balancesBuyToken": [
+          "7545133.77124"
+        ],
+        "block": 11093450,
+        "index": 93
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 1204.912084,
+      "limitXRate": [
+        [
+          1198.515213,
+          "USDC"
+        ],
+        [
+          1204.912084,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9946910060203197,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          1204.912084,
+          1204.5077899999999
+        ],
+        "balancesSellToken": [
+          "7526483.775214"
+        ],
+        "balancesBuyToken": [
+          "7547802.660929"
+        ],
+        "block": 11093487,
+        "index": 9
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 1900.0,
+      "limitXRate": [
+        [
+          1889.263592,
+          "USDC"
+        ],
+        [
+          1900.0,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9943492589473686,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          1900.0,
+          1898.7099099999998
+        ],
+        "balancesSellToken": [
+          "7527432.884903"
+        ],
+        "balancesBuyToken": [
+          "7546855.378498"
+        ],
+        "block": 11093508,
+        "index": 189
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 5320.0,
+      "limitXRate": [
+        [
+          5260.3721749999995,
+          "USDT"
+        ],
+        [
+          5320.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.0113352863668816,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          5320.0,
+          5289.338253999999
+        ],
+        "balancesSellToken": [
+          "7544956.668588"
+        ],
+        "balancesBuyToken": [
+          "7529332.884903"
+        ],
+        "block": 11093511,
+        "index": 15
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 800.0,
+      "limitXRate": [
+        [
+          790.790861,
+          "USDT"
+        ],
+        [
+          800.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.0116454798027819,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          800.0,
+          794.744816
+        ],
+        "balancesSellToken": [
+          "7550276.668588"
+        ],
+        "balancesBuyToken": [
+          "7524043.546649"
+        ],
+        "block": 11093547,
+        "index": 29
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 15880.356333,
+      "limitXRate": [
+        [
+          15003.55159,
+          "USDT"
+        ],
+        [
+          15880.356333,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.0584398125830685,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "WETH",
+          "USDT"
+        ],
+        "amounts": [
+          15880.356333,
+          42.764123648902334,
+          15748.109252
+        ],
+        "balancesSellToken": [
+          "291654731.473766",
+          "719917.213100470626411802"
+        ],
+        "balancesBuyToken": [
+          "787880.795566269643977367",
+          "265923724.515171"
+        ],
+        "block": 11093599,
+        "index": 185
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 1000.0,
+      "limitXRate": [
+        [
+          962.4589209999999,
+          "USDC"
+        ],
+        [
+          1000.0,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.962458921,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          1000.0,
+          1000.957278
+        ],
+        "balancesSellToken": [
+          "7521412.153497"
+        ],
+        "balancesBuyToken": [
+          "7552266.993673"
+        ],
+        "block": 11093718,
+        "index": 67
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 1000.941643,
+      "limitXRate": [
+        [
+          993.631168,
+          "USDT"
+        ],
+        [
+          1000.941643,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.0073573326153955,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          1000.941643,
+          998.4840969999999
+        ],
+        "balancesSellToken": [
+          "7533293.832581"
+        ],
+        "balancesBuyToken": [
+          "7538408.55238"
+        ],
+        "block": 11093854,
+        "index": 173
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxBuyAmount": 100.0,
+      "limitXRate": [
+        [
+          100.916968,
+          "USDT"
+        ],
+        [
+          100.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 0.9909136390225278,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          100.41489399999999,
+          100.0
+        ],
+        "balancesSellToken": [
+          "7540096.203768"
+        ],
+        "balancesBuyToken": [
+          "7531636.706004"
+        ],
+        "block": 11093935,
+        "index": 170
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxBuyAmount": 2.002,
+      "limitXRate": [
+        [
+          2.02,
+          "USDC"
+        ],
+        [
+          2.002,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 1.008991008991009,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          2.006607,
+          2.002
+        ],
+        "balancesSellToken": [
+          "7533021.210429"
+        ],
+        "balancesBuyToken": [
+          "7538715.157086"
+        ],
+        "block": 11093956,
+        "index": 123
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 1100.0,
+      "limitXRate": [
+        [
+          997.558774,
+          "USDT"
+        ],
+        [
+          1100.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.102691920185547,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          1100.0,
+          1097.226313
+        ],
+        "balancesSellToken": [
+          "7533512.448483"
+        ],
+        "balancesBuyToken": [
+          "7538225.054439"
+        ],
+        "block": 11093978,
+        "index": 181
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 575.5596919999999,
+      "limitXRate": [
+        [
+          570.401201,
+          "USDT"
+        ],
+        [
+          575.5596919999999,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.0090436187563356,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          575.5596919999999,
+          573.140545
+        ],
+        "balancesSellToken": [
+          "7539352.587985"
+        ],
+        "balancesBuyToken": [
+          "7532407.882268"
+        ],
+        "block": 11094188,
+        "index": 92
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 5000.0,
+      "limitXRate": [
+        [
+          3349.2762979999998,
+          "USDC"
+        ],
+        [
+          5000.0,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.6698552596,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          5000.0,
+          4989.760163999999
+        ],
+        "balancesSellToken": [
+          "7529798.856229"
+        ],
+        "balancesBuyToken": [
+          "7541978.803832"
+        ],
+        "block": 11094219,
+        "index": 27
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxBuyAmount": 200.0,
+      "limitXRate": [
+        [
+          210.462996,
+          "USDT"
+        ],
+        [
+          200.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 0.9502858165147473,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          200.440949,
+          200.0
+        ],
+        "balancesSellToken": [
+          "7532774.97606"
+        ],
+        "balancesBuyToken": [
+          "7539020.149906"
+        ],
+        "block": 11094251,
+        "index": 152
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 1112.061849,
+      "limitXRate": [
+        [
+          1103.887152,
+          "USDC"
+        ],
+        [
+          1112.061849,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9926490626332061,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          1112.061849,
+          1109.4428599999999
+        ],
+        "balancesSellToken": [
+          "7532906.966007"
+        ],
+        "balancesBuyToken": [
+          "7538889.188601"
+        ],
+        "block": 11094265,
+        "index": 98
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxBuyAmount": 1.0,
+      "limitXRate": [
+        [
+          1.031316,
+          "USDC"
+        ],
+        [
+          1.0,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 1.031316,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          1.00351,
+          1.0
+        ],
+        "balancesSellToken": [
+          "7537779.745741"
+        ],
+        "balancesBuyToken": [
+          "7534019.027856"
+        ],
+        "block": 11094314,
+        "index": 139
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 5774.4816,
+      "limitXRate": [
+        [
+          5481.7378229999995,
+          "USDC"
+        ],
+        [
+          5774.4816,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9493038860839039,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "WETH",
+          "USDC"
+        ],
+        "amounts": [
+          5774.4816,
+          15.547453965305591,
+          5755.099596
+        ],
+        "balancesSellToken": [
+          "266055530.506446",
+          "785939.219596252364592697"
+        ],
+        "balancesBuyToken": [
+          "718509.985378647787017175",
+          "291807152.417761"
+        ],
+        "block": 11094321,
+        "index": 40
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 4000.0,
+      "limitXRate": [
+        [
+          3792.60792,
+          "USDT"
+        ],
+        [
+          4000.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.0546832375965718,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          4000.0,
+          3981.258101
+        ],
+        "balancesSellToken": [
+          "7540287.189022"
+        ],
+        "balancesBuyToken": [
+          "7531521.243377"
+        ],
+        "block": 11094400,
+        "index": 187
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 5134.181848,
+      "limitXRate": [
+        [
+          5110.747633,
+          "USDC"
+        ],
+        [
+          5134.181848,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9954356476467368,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          5134.181848,
+          5134.8918459999995
+        ],
+        "balancesSellToken": [
+          "7495606.17687"
+        ],
+        "balancesBuyToken": [
+          "7526400.653453"
+        ],
+        "block": 11094592,
+        "index": 32
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 409.262837,
+      "limitXRate": [
+        [
+          389.592318,
+          "USDC"
+        ],
+        [
+          409.262837,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.951936708585148,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "DAI",
+          "USDC"
+        ],
+        "amounts": [
+          409.262837,
+          406.23842648296386,
+          409.071934
+        ],
+        "balancesSellToken": [
+          "1336934.19940818655561209",
+          "2978952.857447"
+        ],
+        "balancesBuyToken": [
+          "1342438.863028",
+          "2949038.643463782799563634"
+        ],
+        "block": 11094629,
+        "index": 146
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 854.959946,
+      "limitXRate": [
+        [
+          849.752201,
+          "USDC"
+        ],
+        [
+          854.959946,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9939087848215993,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          854.959946,
+          853.923956
+        ],
+        "balancesSellToken": [
+          "7503849.774836"
+        ],
+        "balancesBuyToken": [
+          "7518162.906995"
+        ],
+        "block": 11094659,
+        "index": 90
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 17.227455,
+      "limitXRate": [
+        [
+          17.028132,
+          "USDC"
+        ],
+        [
+          17.227455,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.988429921889217,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          17.227455,
+          17.198428
+        ],
+        "balancesSellToken": [
+          "7506050.043338"
+        ],
+        "balancesBuyToken": [
+          "7515968.052212"
+        ],
+        "block": 11094768,
+        "index": 87
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 503.61306299999995,
+      "limitXRate": [
+        [
+          497.83453699999995,
+          "USDC"
+        ],
+        [
+          503.61306299999995,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9885258615700363,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          503.61306299999995,
+          502.871916
+        ],
+        "balancesSellToken": [
+          "7505008.300022"
+        ],
+        "balancesBuyToken": [
+          "7517015.897995"
+        ],
+        "block": 11094801,
+        "index": 121
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 162.624751,
+      "limitXRate": [
+        [
+          162.330235,
+          "USDC"
+        ],
+        [
+          162.624751,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9981889841602278,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          162.624751,
+          162.49256599999998
+        ],
+        "balancesSellToken": [
+          "6903585.888728"
+        ],
+        "balancesBuyToken": [
+          "6918893.188293"
+        ],
+        "block": 11094848,
+        "index": 14
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 860.798951,
+      "limitXRate": [
+        [
+          843.10991,
+          "USDC"
+        ],
+        [
+          860.798951,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9794504384799141,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          860.798951,
+          859.9721089999999
+        ],
+        "balancesSellToken": [
+          "6903748.513479"
+        ],
+        "balancesBuyToken": [
+          "6918730.695727"
+        ],
+        "block": 11094881,
+        "index": 51
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxSellAmount": 300.0,
+      "limitXRate": [
+        [
+          297.028582,
+          "USDT"
+        ],
+        [
+          300.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 1.0100038116870518,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          300.0,
+          298.51372499999997
+        ],
+        "balancesSellToken": [
+          "6917870.723618"
+        ],
+        "balancesBuyToken": [
+          "6904609.31243"
+        ],
+        "block": 11094902,
+        "index": 26
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "USDT",
+      "maxBuyAmount": 5000.0,
+      "limitXRate": [
+        [
+          5051.928046999999,
+          "USDC"
+        ],
+        [
+          5000.0,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 1.0103856093999999,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "USDT"
+        ],
+        "amounts": [
+          5026.794077,
+          5000.0
+        ],
+        "balancesSellToken": [
+          "6916828.453796"
+        ],
+        "balancesBuyToken": [
+          "6905662.004248"
+        ],
+        "block": 11094985,
+        "index": 117
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 500.0,
+      "limitXRate": [
+        [
+          454.528529,
+          "USDC"
+        ],
+        [
+          500.0,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.909057058,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          500.0,
+          498.840486
+        ],
+        "balancesSellToken": [
+          "6900755.214341"
+        ],
+        "balancesBuyToken": [
+          "6921762.033259"
+        ],
+        "block": 11094993,
+        "index": 78
+      }
+    },
+    {
+      "sellToken": "USDT",
+      "buyToken": "USDC",
+      "maxSellAmount": 13.900632,
+      "limitXRate": [
+        [
+          13.763826,
+          "USDC"
+        ],
+        [
+          13.900632,
+          "USDT"
+        ]
+      ],
+      "limitXRateCanonical": 0.9901582892058433,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDT",
+          "USDC"
+        ],
+        "amounts": [
+          13.900632,
+          13.867364
+        ],
+        "balancesSellToken": [
+          "6909154.187727"
+        ],
+        "balancesBuyToken": [
+          "6913372.947418"
+        ],
+        "block": 11094995,
+        "index": 94
+      }
+    }
+  ]
+}

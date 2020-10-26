@@ -1,0 +1,78 @@
+{
+  "orders": [
+    {
+      "sellToken": "BAT",
+      "buyToken": "WBTC",
+      "maxSellAmount": 7587.344778017098,
+      "limitXRate": [
+        [
+          0.13011053,
+          "WBTC"
+        ],
+        [
+          7587.344778017098,
+          "BAT"
+        ]
+      ],
+      "limitXRateCanonical": 58314.60972464795,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "BAT",
+          "WETH",
+          "WBTC"
+        ],
+        "amounts": [
+          7587.344778017098,
+          4.223273670759689,
+          0.13141164
+        ],
+        "balancesSellToken": [
+          "1686.806613495289578714",
+          "30841.66625004"
+        ],
+        "balancesBuyToken": [
+          "3013785.487161120985249988",
+          "988203.814753408048354022"
+        ],
+        "block": 11093041,
+        "index": 149
+      }
+    },
+    {
+      "sellToken": "BAT",
+      "buyToken": "WBTC",
+      "maxSellAmount": 0.9950000000000001,
+      "limitXRate": [
+        [
+          1.762e-05,
+          "WBTC"
+        ],
+        [
+          0.9950000000000001,
+          "BAT"
+        ]
+      ],
+      "limitXRateCanonical": 56469.92054483542,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "BAT",
+          "WBTC"
+        ],
+        "amounts": [
+          0.9950000000000001,
+          1.789e-05
+        ],
+        "balancesSellToken": [
+          "32533.861947688820743974"
+        ],
+        "balancesBuyToken": [
+          "0.58688658"
+        ],
+        "block": 11093611,
+        "index": 98
+      }
+    }
+  ]
+}

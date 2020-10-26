@@ -1,0 +1,199 @@
+{
+  "orders": [
+    {
+      "sellToken": "USDC",
+      "buyToken": "SNX",
+      "maxSellAmount": 659.517438,
+      "limitXRate": [
+        [
+          183.10552000239403,
+          "SNX"
+        ],
+        [
+          659.517438,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 0.27763560059558884,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "WETH",
+          "SNX"
+        ],
+        "amounts": [
+          659.517438,
+          1.7808821995424156,
+          184.0080682336239
+        ],
+        "balancesSellToken": [
+          "291497112.698128",
+          "427827.338243524717318087"
+        ],
+        "balancesBuyToken": [
+          "789494.281664892688878058",
+          "4126.436707736069800869"
+        ],
+        "block": 11093050,
+        "index": 134
+      }
+    },
+    {
+      "sellToken": "SNX",
+      "buyToken": "USDC",
+      "maxSellAmount": 114.70357407228487,
+      "limitXRate": [
+        [
+          1e-06,
+          "USDC"
+        ],
+        [
+          114.70357407228487,
+          "SNX"
+        ]
+      ],
+      "limitXRateCanonical": 114703574.07228488,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "SNX",
+          "WETH",
+          "USDC"
+        ],
+        "amounts": [
+          114.70357407228487,
+          1.0872564274641765,
+          401.618975
+        ],
+        "balancesSellToken": [
+          "3983.291318608823172334",
+          "787576.429707642391693022"
+        ],
+        "balancesBuyToken": [
+          "418854.934308057625941323",
+          "291796626.358857"
+        ],
+        "block": 11093634,
+        "index": 79
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "SNX",
+      "maxBuyAmount": 500.00000000000006,
+      "limitXRate": [
+        [
+          1724.686137,
+          "USDC"
+        ],
+        [
+          500.00000000000006,
+          "SNX"
+        ]
+      ],
+      "limitXRateCanonical": 0.2899078210657642,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "WETH",
+          "SNX"
+        ],
+        "amounts": [
+          1716.107697,
+          4.600282044444902,
+          500.00000000000006
+        ],
+        "balancesSellToken": [
+          "292065663.624854",
+          "426658.574279092614293932"
+        ],
+        "balancesBuyToken": [
+          "785285.916272332452079715",
+          "3909.136576860642814334"
+        ],
+        "block": 11094493,
+        "index": 62
+      }
+    },
+    {
+      "sellToken": "SNX",
+      "buyToken": "USDC",
+      "maxSellAmount": 1501.2444384723349,
+      "limitXRate": [
+        [
+          4997.540155,
+          "USDC"
+        ],
+        [
+          1501.2444384723349,
+          "SNX"
+        ]
+      ],
+      "limitXRateCanonical": 0.30039667354555455,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "SNX",
+          "WETH",
+          "USDC"
+        ],
+        "amounts": [
+          1501.2444384723349,
+          13.62255477096077,
+          5021.653453
+        ],
+        "balancesSellToken": [
+          "3903.069333736892151768",
+          "787608.031586192503574516"
+        ],
+        "balancesBuyToken": [
+          "427342.25793163710014491",
+          "291212922.446012"
+        ],
+        "block": 11094622,
+        "index": 25
+      }
+    },
+    {
+      "sellToken": "USDC",
+      "buyToken": "SNX",
+      "maxSellAmount": 320.0,
+      "limitXRate": [
+        [
+          89.82091544940003,
+          "SNX"
+        ],
+        [
+          320.0,
+          "USDC"
+        ]
+      ],
+      "limitXRateCanonical": 0.2806903607793751,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "USDC",
+          "WETH",
+          "SNX"
+        ],
+        "amounts": [
+          320.0,
+          0.8637859418479533,
+          90.26577125671112
+        ],
+        "balancesSellToken": [
+          "293032361.335173",
+          "418274.588103782571372643"
+        ],
+        "balancesBuyToken": [
+          "793372.335162045695738211",
+          "3989.752355758850813325"
+        ],
+        "block": 11094974,
+        "index": 55
+      }
+    }
+  ]
+}

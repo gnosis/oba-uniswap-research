@@ -1,0 +1,494 @@
+{
+  "orders": [
+    {
+      "sellToken": "WETH",
+      "buyToken": "BAT",
+      "maxSellAmount": 0.02,
+      "limitXRate": [
+        [
+          35.44959547348651,
+          "BAT"
+        ],
+        [
+          0.02,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 1772.4797736743255,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "BAT"
+        ],
+        "amounts": [
+          0.02,
+          35.62684345085395
+        ],
+        "balancesSellToken": [
+          "3013821.114004571839189248"
+        ],
+        "balancesBuyToken": [
+          "1686.786613495289578714"
+        ],
+        "block": 11093017,
+        "index": 48
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "BAT",
+      "maxSellAmount": 3.2,
+      "limitXRate": [
+        [
+          5685.535816821149,
+          "BAT"
+        ],
+        [
+          3.2,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 1776.729942756609,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "BAT"
+        ],
+        "amounts": [
+          3.2,
+          5713.963495905255
+        ],
+        "balancesSellToken": [
+          "3020363.24524429543461007"
+        ],
+        "balancesBuyToken": [
+          "1683.233901543557167962"
+        ],
+        "block": 11093291,
+        "index": 128
+      }
+    },
+    {
+      "sellToken": "BAT",
+      "buyToken": "WETH",
+      "maxSellAmount": 1565.7931642861597,
+      "limitXRate": [
+        [
+          0.8728452347496111,
+          "WETH"
+        ],
+        [
+          1565.7931642861597,
+          "BAT"
+        ]
+      ],
+      "limitXRateCanonical": 1793.8955291831676,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "BAT",
+          "WETH"
+        ],
+        "amounts": [
+          1565.7931642861597,
+          0.8728452347496122
+        ],
+        "balancesSellToken": [
+          "1686.433901543557167962"
+        ],
+        "balancesBuyToken": [
+          "3014649.281748390180610231"
+        ],
+        "block": 11093344,
+        "index": 89
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "BAT",
+      "maxSellAmount": 0.000995,
+      "limitXRate": [
+        [
+          1.7483919356804973,
+          "BAT"
+        ],
+        [
+          0.000995,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 1757.17782480452,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "BAT"
+        ],
+        "amounts": [
+          0.000995,
+          1.775153041986794
+        ],
+        "balancesSellToken": [
+          "3016215.074912676340052641"
+        ],
+        "balancesBuyToken": [
+          "1685.561056308807555812"
+        ],
+        "block": 11093379,
+        "index": 126
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "BAT",
+      "maxSellAmount": 0.9548736909000001,
+      "limitXRate": [
+        [
+          1e-18,
+          "BAT"
+        ],
+        [
+          0.9548736909000001,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 1.0472589301915596e-18,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "BAT"
+        ],
+        "amounts": [
+          0.9548736909000001,
+          1702.6021219533957
+        ],
+        "balancesSellToken": [
+          "3016213.299759634353258542"
+        ],
+        "balancesBuyToken": [
+          "1685.562051308807555812"
+        ],
+        "block": 11093414,
+        "index": 60
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "BAT",
+      "maxSellAmount": 0.001344303934284479,
+      "limitXRate": [
+        [
+          2.359507714040532,
+          "BAT"
+        ],
+        [
+          0.001344303934284479,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 1755.1891755017489,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "BAT"
+        ],
+        "amounts": [
+          0.001344303934284479,
+          2.395622637597753
+        ],
+        "balancesSellToken": [
+          "3014510.697637680957756838"
+        ],
+        "balancesBuyToken": [
+          "1686.516924999707555812"
+        ],
+        "block": 11093454,
+        "index": 106
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "BAT",
+      "maxSellAmount": 1.5,
+      "limitXRate": [
+        [
+          2649.4471345036086,
+          "BAT"
+        ],
+        [
+          1.5,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 1766.2980896690724,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "BAT"
+        ],
+        "amounts": [
+          1.5,
+          2662.6943701761265
+        ],
+        "balancesSellToken": [
+          "3009995.399796047988713279"
+        ],
+        "balancesBuyToken": [
+          "1689.065824203812999628"
+        ],
+        "block": 11093942,
+        "index": 126
+      }
+    },
+    {
+      "sellToken": "BAT",
+      "buyToken": "WETH",
+      "maxSellAmount": 6724.411217938006,
+      "limitXRate": [
+        [
+          3.7343697487899434,
+          "WETH"
+        ],
+        [
+          6724.411217938006,
+          "BAT"
+        ]
+      ],
+      "limitXRateCanonical": 1800.6816866800436,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "BAT",
+          "WETH"
+        ],
+        "amounts": [
+          6724.411217938006,
+          3.7530415975338927
+        ],
+        "balancesSellToken": [
+          "1688.913748900495879794"
+        ],
+        "balancesBuyToken": [
+          "3010283.294207933856243948"
+        ],
+        "block": 11094124,
+        "index": 93
+      }
+    },
+    {
+      "sellToken": "BAT",
+      "buyToken": "WETH",
+      "maxSellAmount": 176.663525550614,
+      "limitXRate": [
+        [
+          0.09740028529736955,
+          "WETH"
+        ],
+        [
+          176.663525550614,
+          "BAT"
+        ]
+      ],
+      "limitXRateCanonical": 1813.7885839989945,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "BAT",
+          "WETH"
+        ],
+        "amounts": [
+          176.663525550614,
+          0.09837428815034324
+        ],
+        "balancesSellToken": [
+          "1685.160707302961986982"
+        ],
+        "balancesBuyToken": [
+          "3017007.705425871862502289"
+        ],
+        "block": 11094208,
+        "index": 33
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "BAT",
+      "maxSellAmount": 0.5601676412749638,
+      "limitXRate": [
+        [
+          999.6664991005243,
+          "BAT"
+        ],
+        [
+          0.5601676412749638,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 1784.584516208833,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "BAT"
+        ],
+        "amounts": [
+          0.5601676412749638,
+          999.6664991005243
+        ],
+        "balancesSellToken": [
+          "3017184.368951422476481639"
+        ],
+        "balancesBuyToken": [
+          "1685.062333014811643754"
+        ],
+        "block": 11094247,
+        "index": 49
+      }
+    },
+    {
+      "sellToken": "BAT",
+      "buyToken": "WETH",
+      "maxSellAmount": 8035.421316595391,
+      "limitXRate": [
+        [
+          4.406253724392537,
+          "WETH"
+        ],
+        [
+          8035.421316595391,
+          "BAT"
+        ]
+      ],
+      "limitXRateCanonical": 1823.640175805624,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "BAT",
+          "WETH"
+        ],
+        "amounts": [
+          8035.421316595391,
+          4.428284993014499
+        ],
+        "balancesSellToken": [
+          "1678.615860431291593527"
+        ],
+        "balancesBuyToken": [
+          "3028812.315652377532838748"
+        ],
+        "block": 11094428,
+        "index": 95
+      }
+    },
+    {
+      "sellToken": "BAT",
+      "buyToken": "WETH",
+      "maxSellAmount": 70000.00000000001,
+      "limitXRate": [
+        [
+          37.47203599856861,
+          "WETH"
+        ],
+        [
+          70000.00000000001,
+          "BAT"
+        ]
+      ],
+      "limitXRateCanonical": 1868.059691303508,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "BAT",
+          "WETH"
+        ],
+        "amounts": [
+          70000.00000000001,
+          37.65939617856145
+        ],
+        "balancesSellToken": [
+          "1675.294204433686903368"
+        ],
+        "balancesBuyToken": [
+          "3034847.736968972922543938"
+        ],
+        "block": 11094668,
+        "index": 110
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "BAT",
+      "maxSellAmount": 1.0,
+      "limitXRate": [
+        [
+          1807.703031420236,
+          "BAT"
+        ],
+        [
+          1.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 1807.703031420236,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "BAT"
+        ],
+        "amounts": [
+          1.0,
+          1816.7415465773372
+        ],
+        "balancesSellToken": [
+          "3044878.504625129788426438"
+        ],
+        "balancesBuyToken": [
+          "1669.985796001151229547"
+        ],
+        "block": 11094872,
+        "index": 139
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "BAT",
+      "maxSellAmount": 4.368473764837006,
+      "limitXRate": [
+        [
+          7953.605437478485,
+          "BAT"
+        ],
+        [
+          4.368473764837006,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 1820.6828896396603,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "BAT"
+        ],
+        "amounts": [
+          4.368473764837006,
+          7972.327939827755
+        ],
+        "balancesSellToken": [
+          "3043061.763078552451365385"
+        ],
+        "balancesBuyToken": [
+          "1670.985796001151229547"
+        ],
+        "block": 11094886,
+        "index": 72
+      }
+    }
+  ]
+}

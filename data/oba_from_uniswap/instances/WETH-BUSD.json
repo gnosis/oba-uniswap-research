@@ -1,0 +1,43 @@
+{
+  "orders": [
+    {
+      "sellToken": "WETH",
+      "buyToken": "BUSD",
+      "maxSellAmount": 1.0,
+      "limitXRate": [
+        [
+          334.62615734602883,
+          "BUSD"
+        ],
+        [
+          1.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 334.62615734602883,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "USDT",
+          "BUSD"
+        ],
+        "amounts": [
+          1.0,
+          368.171703,
+          368.0759730809858
+        ],
+        "balancesSellToken": [
+          "719976.553505659128405848",
+          "543857.384790349368005388"
+        ],
+        "balancesBuyToken": [
+          "265872980.349026",
+          "541999.768598"
+        ],
+        "block": 11094847,
+        "index": 1
+      }
+    }
+  ]
+}

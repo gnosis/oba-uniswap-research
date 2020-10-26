@@ -1,0 +1,5566 @@
+{
+  "orders": [
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.01,
+      "limitXRate": [
+        [
+          0.35148060233968653,
+          "LINK"
+        ],
+        [
+          0.01,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.14806023396866,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.01,
+          0.35323800534848593
+        ],
+        "balancesSellToken": [
+          "24776.268592989482750597"
+        ],
+        "balancesBuyToken": [
+          "877825.79935294434751301"
+        ],
+        "block": 11093049,
+        "index": 78
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 3.7,
+      "limitXRate": [
+        [
+          130.0284106562621,
+          "LINK"
+        ],
+        [
+          3.7,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.14281369088165,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          3.7,
+          130.67855270954342
+        ],
+        "balancesSellToken": [
+          "24776.278592989482750597"
+        ],
+        "balancesBuyToken": [
+          "877825.446114938999027123"
+        ],
+        "block": 11093058,
+        "index": 147
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1538.1900000000003,
+      "limitXRate": [
+        [
+          43.19749440021441,
+          "WETH"
+        ],
+        [
+          1538.1900000000003,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.608315282109636,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1538.1900000000003,
+          43.21910395219051
+        ],
+        "balancesSellToken": [
+          "877723.767562229455613824"
+        ],
+        "balancesBuyToken": [
+          "24779.16231841819606581"
+        ],
+        "block": 11093065,
+        "index": 20
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 200.00000000000003,
+      "limitXRate": [
+        [
+          5.550322748113958,
+          "WETH"
+        ],
+        [
+          200.00000000000003,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.033940561017204,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          200.00000000000003,
+          5.605825975595097
+        ],
+        "balancesSellToken": [
+          "879461.982543003340120771"
+        ],
+        "balancesBuyToken": [
+          "24730.334142364413206528"
+        ],
+        "block": 11093122,
+        "index": 92
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 1.0,
+      "limitXRate": [
+        [
+          35.269561107491334,
+          "LINK"
+        ],
+        [
+          1.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.269561107491334,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.0,
+          35.47006145919052
+        ],
+        "balancesSellToken": [
+          "24724.728316388818109"
+        ],
+        "balancesBuyToken": [
+          "879661.982543003340120771"
+        ],
+        "block": 11093123,
+        "index": 64
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 1.0,
+      "limitXRate": [
+        [
+          35.269561107491334,
+          "LINK"
+        ],
+        [
+          1.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.269561107491334,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.0,
+          35.46719679709606
+        ],
+        "balancesSellToken": [
+          "24724.728316388818109"
+        ],
+        "balancesBuyToken": [
+          "879661.982543003340120771"
+        ],
+        "block": 11093123,
+        "index": 65
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.0125,
+      "limitXRate": [
+        [
+          0.44088706326863203,
+          "LINK"
+        ],
+        [
+          0.0125,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.270965061490564,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.0125,
+          0.443308683092223
+        ],
+        "balancesSellToken": [
+          "24726.728316388818109"
+        ],
+        "balancesBuyToken": [
+          "879591.04528474705354266"
+        ],
+        "block": 11093125,
+        "index": 145
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 19.818240072989898,
+      "limitXRate": [
+        [
+          1e-18,
+          "LINK"
+        ],
+        [
+          19.818240072989898,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 5.0458567275249184e-20,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          19.818240072989898,
+          708.5796915766447
+        ],
+        "balancesSellToken": [
+          "24728.800668352799693456"
+        ],
+        "balancesBuyToken": [
+          "879517.553885952306417807"
+        ],
+        "block": 11093132,
+        "index": 201
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 8.43817925569035,
+      "limitXRate": [
+        [
+          1e-18,
+          "LINK"
+        ],
+        [
+          8.43817925569035,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 1.1850897802694135e-19,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          8.43817925569035,
+          301.00833111083955
+        ],
+        "balancesSellToken": [
+          "24728.800668352799693456"
+        ],
+        "balancesBuyToken": [
+          "879517.553885952306417807"
+        ],
+        "block": 11093132,
+        "index": 209
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1081.3600000000001,
+      "limitXRate": [
+        [
+          30.431113177041166,
+          "WETH"
+        ],
+        [
+          1081.3600000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.5346843117075,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          30.36141095101902,
+          1081.3600000000001
+        ],
+        "balancesSellToken": [
+          "24659.533932946544916041"
+        ],
+        "balancesBuyToken": [
+          "882004.577711035099470247"
+        ],
+        "block": 11093133,
+        "index": 4
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 32.43750000000324,
+      "limitXRate": [
+        [
+          1149.9443498286068,
+          "LINK"
+        ],
+        [
+          32.43750000000324,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.45107822207297,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          32.43750000000324,
+          1152.3724057114234
+        ],
+        "balancesSellToken": [
+          "24659.533932946544916041"
+        ],
+        "balancesBuyToken": [
+          "882004.577711035099470247"
+        ],
+        "block": 11093133,
+        "index": 9
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 100.00000000000001,
+      "limitXRate": [
+        [
+          2.7191973713172586,
+          "WETH"
+        ],
+        [
+          100.00000000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.775557763781265,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          100.00000000000001,
+          2.8007732924567765
+        ],
+        "balancesSellToken": [
+          "879860.034995483298334094"
+        ],
+        "balancesBuyToken": [
+          "24719.836752384072417287"
+        ],
+        "block": 11093153,
+        "index": 196
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 291.35,
+      "limitXRate": [
+        [
+          8.1744191757275,
+          "WETH"
+        ],
+        [
+          291.35,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.64167603064846,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          8.174256019001525,
+          291.35
+        ],
+        "balancesSellToken": [
+          "24661.731779173281911724"
+        ],
+        "balancesBuyToken": [
+          "881939.292652528102300341"
+        ],
+        "block": 11093164,
+        "index": 146
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1531.8000000000002,
+      "limitXRate": [
+        [
+          43.07824729164349,
+          "WETH"
+        ],
+        [
+          1531.8000000000002,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.558549762472474,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          43.065988045974734,
+          1531.8000000000002
+        ],
+        "balancesSellToken": [
+          "24669.90603519228343641"
+        ],
+        "balancesBuyToken": [
+          "881647.942652528102300341"
+        ],
+        "block": 11093165,
+        "index": 15
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 1.0,
+      "limitXRate": [
+        [
+          35.328612825748365,
+          "LINK"
+        ],
+        [
+          1.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.328612825748365,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.0,
+          35.50525588987711
+        ],
+        "balancesSellToken": [
+          "24712.972023238258170757"
+        ],
+        "balancesBuyToken": [
+          "880116.142652528102300341"
+        ],
+        "block": 11093173,
+        "index": 126
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 143.19554290646624,
+      "limitXRate": [
+        [
+          3.990434079698637,
+          "WETH"
+        ],
+        [
+          143.19554290646624,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.884703279519044,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          143.19554290646624,
+          4.008635931018275
+        ],
+        "balancesSellToken": [
+          "880058.09723575525003214"
+        ],
+        "balancesBuyToken": [
+          "24714.609131608935390361"
+        ],
+        "block": 11093177,
+        "index": 120
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 11.343118681480654,
+      "limitXRate": [
+        [
+          0.31590557481332027,
+          "WETH"
+        ],
+        [
+          11.343118681480654,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.90667460738451,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          11.343118681480654,
+          0.3174851026873869
+        ],
+        "balancesSellToken": [
+          "880201.29277866171627243"
+        ],
+        "balancesBuyToken": [
+          "24710.600495677917115803"
+        ],
+        "block": 11093183,
+        "index": 28
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1540.91,
+      "limitXRate": [
+        [
+          43.28923982657565,
+          "WETH"
+        ],
+        [
+          1540.91,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.595681656068756,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          43.26760602356387,
+          1540.91
+        ],
+        "balancesSellToken": [
+          "24654.426330196357166192"
+        ],
+        "balancesBuyToken": [
+          "882212.832385356511866307"
+        ],
+        "block": 11093184,
+        "index": 26
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.05,
+      "limitXRate": [
+        [
+          1.725777519186383,
+          "LINK"
+        ],
+        [
+          0.05,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 34.51555038372766,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.05,
+          1.7775508447619743
+        ],
+        "balancesSellToken": [
+          "24697.693936219921034594"
+        ],
+        "balancesBuyToken": [
+          "880671.922385356511800771"
+        ],
+        "block": 11093189,
+        "index": 0
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 50.00000000000001,
+      "limitXRate": [
+        [
+          1.4135390786384794,
+          "WETH"
+        ],
+        [
+          50.00000000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.37220919860242,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.4065122324237118,
+          50.00000000000001
+        ],
+        "balancesSellToken": [
+          "24697.743936219921034594"
+        ],
+        "balancesBuyToken": [
+          "880670.144834511749826477"
+        ],
+        "block": 11093191,
+        "index": 61
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 50.00000000000001,
+      "limitXRate": [
+        [
+          1.3825413037049095,
+          "WETH"
+        ],
+        [
+          50.00000000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.165284802711426,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          50.00000000000001,
+          1.3963667167419584
+        ],
+        "balancesSellToken": [
+          "881163.130615989070020738"
+        ],
+        "balancesBuyToken": [
+          "24683.981474285733198774"
+        ],
+        "block": 11093216,
+        "index": 39
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1201.955375567379,
+      "limitXRate": [
+        [
+          33.23128040476698,
+          "WETH"
+        ],
+        [
+          1201.955375567379,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.169397053836065,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1201.955375567379,
+          33.28759462108072
+        ],
+        "balancesSellToken": [
+          "882162.969932199842107692"
+        ],
+        "balancesBuyToken": [
+          "24657.209395768527792562"
+        ],
+        "block": 11093229,
+        "index": 24
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 411.03474578000737,
+      "limitXRate": [
+        [
+          11.42528288719458,
+          "WETH"
+        ],
+        [
+          411.03474578000737,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.975892224138605,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          411.03474578000737,
+          11.44875980942548
+        ],
+        "balancesSellToken": [
+          "885513.113401046184256647"
+        ],
+        "balancesBuyToken": [
+          "24564.278714471174987994"
+        ],
+        "block": 11093230,
+        "index": 13
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 291.35,
+      "limitXRate": [
+        [
+          8.108671714868253,
+          "WETH"
+        ],
+        [
+          291.35,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.93066907194846,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          291.35,
+          8.108671714868253
+        ],
+        "balancesSellToken": [
+          "882594.148146826191594631"
+        ],
+        "balancesBuyToken": [
+          "24645.832396472150992579"
+        ],
+        "block": 11093231,
+        "index": 70
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 12.371582548296498,
+      "limitXRate": [
+        [
+          402.52396143929667,
+          "LINK"
+        ],
+        [
+          12.371582548296498,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 32.53617391856809,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          12.371582548296498,
+          445.45398333293355
+        ],
+        "balancesSellToken": [
+          "24486.839153620703269191"
+        ],
+        "balancesBuyToken": [
+          "888342.108333623951081317"
+        ],
+        "block": 11093242,
+        "index": 43
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 35.187500000003524,
+      "limitXRate": [
+        [
+          1261.1861147867617,
+          "LINK"
+        ],
+        [
+          35.187500000003524,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.84187892821699,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          35.187500000003524,
+          1264.5234241856715
+        ],
+        "balancesSellToken": [
+          "24486.839153620703269191"
+        ],
+        "balancesBuyToken": [
+          "888342.108333623951081317"
+        ],
+        "block": 11093242,
+        "index": 52
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 57.972848991329336,
+      "limitXRate": [
+        [
+          1.5073142026795934,
+          "WETH"
+        ],
+        [
+          57.972848991329336,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 38.46102484025522,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          57.972848991329336,
+          1.605721382473927
+        ],
+        "balancesSellToken": [
+          "884850.055761549596385571"
+        ],
+        "balancesBuyToken": [
+          "24583.767430887336251112"
+        ],
+        "block": 11093243,
+        "index": 40
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 5.0,
+      "limitXRate": [
+        [
+          0.12795749524978642,
+          "WETH"
+        ],
+        [
+          5.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 39.075475729182386,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "DAI",
+          "WETH"
+        ],
+        "amounts": [
+          5.0,
+          51.74132283714832,
+          0.14076278819080165
+        ],
+        "balancesSellToken": [
+          "636.84040076432028391",
+          "205495131.225598197375669559"
+        ],
+        "balancesBuyToken": [
+          "6661.764346244491948498",
+          "560733.909459072347668069"
+        ],
+        "block": 11093252,
+        "index": 28
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 20.0,
+      "limitXRate": [
+        [
+          0.560229394912888,
+          "WETH"
+        ],
+        [
+          20.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.69966192707519,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.5574421839929234,
+          20.0
+        ],
+        "balancesSellToken": [
+          "24585.93852616589443626"
+        ],
+        "balancesBuyToken": [
+          "884772.499510226306418298"
+        ],
+        "block": 11093269,
+        "index": 111
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 113.00000000000001,
+      "limitXRate": [
+        [
+          3.1136276636786984,
+          "WETH"
+        ],
+        [
+          113.00000000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.29207220830394,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          113.00000000000001,
+          3.1291958019970916
+        ],
+        "balancesSellToken": [
+          "885101.987208593818474731"
+        ],
+        "balancesBuyToken": [
+          "24587.123858661505452745"
+        ],
+        "block": 11093278,
+        "index": 67
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 25.000000000000004,
+      "limitXRate": [
+        [
+          0.7176358352302954,
+          "WETH"
+        ],
+        [
+          25.000000000000004,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 34.83661039861156,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.6964309269474951,
+          25.000000000000004
+        ],
+        "balancesSellToken": [
+          "24584.483297988673259197"
+        ],
+        "balancesBuyToken": [
+          "885197.445675640630724178"
+        ],
+        "block": 11093282,
+        "index": 78
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 2.0,
+      "limitXRate": [
+        [
+          71.42962477396303,
+          "LINK"
+        ],
+        [
+          2.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.714812386981514,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          2.0,
+          71.80255304654627
+        ],
+        "balancesSellToken": [
+          "24582.481969570318864518"
+        ],
+        "balancesBuyToken": [
+          "885269.879602113649781101"
+        ],
+        "block": 11093286,
+        "index": 160
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 12.2306,
+      "limitXRate": [
+        [
+          426.0755768716485,
+          "LINK"
+        ],
+        [
+          12.2306,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 34.8368499396308,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          12.2306,
+          438.84076628859196
+        ],
+        "balancesSellToken": [
+          "24584.481969570318864518"
+        ],
+        "balancesBuyToken": [
+          "885198.077049067103521113"
+        ],
+        "block": 11093287,
+        "index": 37
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.5,
+      "limitXRate": [
+        [
+          17.09688598534642,
+          "LINK"
+        ],
+        [
+          0.5,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 34.19377197069284,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.5,
+          17.930995430315253
+        ],
+        "balancesSellToken": [
+          "24596.712569570318864518"
+        ],
+        "balancesBuyToken": [
+          "884759.236282778511595575"
+        ],
+        "block": 11093291,
+        "index": 79
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 860.460928760712,
+      "limitXRate": [
+        [
+          23.708765313729398,
+          "WETH"
+        ],
+        [
+          860.460928760712,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.29294555724636,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          860.460928760712,
+          23.827309140298045
+        ],
+        "balancesSellToken": [
+          "884741.305287348196344859"
+        ],
+        "balancesBuyToken": [
+          "24597.212569570318864518"
+        ],
+        "block": 11093316,
+        "index": 231
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 10.457799696441546,
+      "limitXRate": [
+        [
+          374.8033974732872,
+          "LINK"
+        ],
+        [
+          10.457799696441546,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.83960377447474,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          10.457799696441546,
+          375.599262714919
+        ],
+        "balancesSellToken": [
+          "24597.212569570318864518"
+        ],
+        "balancesBuyToken": [
+          "884741.305287348196344859"
+        ],
+        "block": 11093316,
+        "index": 232
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 195.94682162,
+      "limitXRate": [
+        [
+          5.370780588651655,
+          "WETH"
+        ],
+        [
+          195.94682162,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.483862705922384,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          195.94682162,
+          5.424488394538172
+        ],
+        "balancesSellToken": [
+          "885200.007396756843004585"
+        ],
+        "balancesBuyToken": [
+          "24584.57175143028380813"
+        ],
+        "block": 11093336,
+        "index": 104
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1305.62,
+      "limitXRate": [
+        [
+          36.440086447092874,
+          "WETH"
+        ],
+        [
+          1305.62,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.829223454110654,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          36.411700957216205,
+          1305.62
+        ],
+        "balancesSellToken": [
+          "24580.539549659145241236"
+        ],
+        "balancesBuyToken": [
+          "885345.954218376843004585"
+        ],
+        "block": 11093340,
+        "index": 77
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 2000.208988582773,
+      "limitXRate": [
+        [
+          54.98553018643984,
+          "WETH"
+        ],
+        [
+          2000.208988582773,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.37700649244719,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          2000.208988582773,
+          55.40566158803646
+        ],
+        "balancesSellToken": [
+          "884040.334218376843004585"
+        ],
+        "balancesBuyToken": [
+          "24616.951250616361444359"
+        ],
+        "block": 11093341,
+        "index": 80
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1307.77,
+      "limitXRate": [
+        [
+          36.47017045502684,
+          "WETH"
+        ],
+        [
+          1307.77,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.85862044743321,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          36.414955979478506,
+          1307.77
+        ],
+        "balancesSellToken": [
+          "24561.545589028324995273"
+        ],
+        "balancesBuyToken": [
+          "886040.543206959615633509"
+        ],
+        "block": 11093342,
+        "index": 7
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 290.68,
+      "limitXRate": [
+        [
+          8.10883487159423,
+          "WETH"
+        ],
+        [
+          290.68,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.847320188782085,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          8.108671191330854,
+          290.68
+        ],
+        "balancesSellToken": [
+          "24597.960545007803498671"
+        ],
+        "balancesBuyToken": [
+          "884732.773206959615633509"
+        ],
+        "block": 11093347,
+        "index": 41
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 48.80017699260857,
+      "limitXRate": [
+        [
+          1742.3141146823089,
+          "LINK"
+        ],
+        [
+          48.80017699260857,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.70302859651934,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          48.80017699260857,
+          1742.3141146823089
+        ],
+        "balancesSellToken": [
+          "24627.644498424088904524"
+        ],
+        "balancesBuyToken": [
+          "883669.591739704762123176"
+        ],
+        "block": 11093356,
+        "index": 95
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 100.00000000000001,
+      "limitXRate": [
+        [
+          2.7103429579576845,
+          "WETH"
+        ],
+        [
+          100.00000000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.89569975135275,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          100.00000000000001,
+          2.7949492534615126
+        ],
+        "balancesSellToken": [
+          "881037.524959672746140992"
+        ],
+        "balancesBuyToken": [
+          "24701.442618838373413669"
+        ],
+        "block": 11093425,
+        "index": 64
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1118.7900000000002,
+      "limitXRate": [
+        [
+          31.45847362294192,
+          "WETH"
+        ],
+        [
+          1118.7900000000002,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.564026831362,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          31.431207319204322,
+          1118.7900000000002
+        ],
+        "balancesSellToken": [
+          "24672.681776632687971461"
+        ],
+        "balancesBuyToken": [
+          "881982.486775096312724844"
+        ],
+        "block": 11093451,
+        "index": 101
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 5.0,
+      "limitXRate": [
+        [
+          0.13911008099673694,
+          "WETH"
+        ],
+        [
+          5.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.94275816802438,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "USDT",
+          "WETH"
+        ],
+        "amounts": [
+          5.0,
+          51.792752,
+          0.1397816461337019
+        ],
+        "balancesSellToken": [
+          "882.910788666867142872",
+          "265937885.921025"
+        ],
+        "balancesBuyToken": [
+          "9224.988354",
+          "719888.680953640516935097"
+        ],
+        "block": 11093463,
+        "index": 160
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.1,
+      "limitXRate": [
+        [
+          3.4236489288444925,
+          "LINK"
+        ],
+        [
+          0.1,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 34.23648928844492,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "USDC",
+          "LINK"
+        ],
+        "amounts": [
+          0.1,
+          36.939645999999996,
+          3.560369279216985
+        ],
+        "balancesSellToken": [
+          "787685.426295161370533576",
+          "2546.061199640726920248"
+        ],
+        "balancesBuyToken": [
+          "291843781.411821",
+          "26299.890838"
+        ],
+        "block": 11093493,
+        "index": 193
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1247.3799999999999,
+      "limitXRate": [
+        [
+          35.160462540128854,
+          "WETH"
+        ],
+        [
+          1247.3799999999999,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.476780163979846,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          35.13322418549461,
+          1247.3799999999999
+        ],
+        "balancesSellToken": [
+          "24702.364934319554157572"
+        ],
+        "balancesBuyToken": [
+          "880926.218187342414945475"
+        ],
+        "block": 11093496,
+        "index": 13
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 100.00000000000001,
+      "limitXRate": [
+        [
+          2.7899341966585265,
+          "WETH"
+        ],
+        [
+          100.00000000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.84313928255688,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          100.00000000000001,
+          2.8040116772099926
+        ],
+        "balancesSellToken": [
+          "879575.640943302321387977"
+        ],
+        "balancesBuyToken": [
+          "24740.420543216657649276"
+        ],
+        "block": 11093560,
+        "index": 111
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 30.179808458443482,
+      "limitXRate": [
+        [
+          0.8297913439737463,
+          "WETH"
+        ],
+        [
+          30.179808458443482,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.37035825647072,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          30.179808458443482,
+          0.8463871708532213
+        ],
+        "balancesSellToken": [
+          "879537.106916296619813751"
+        ],
+        "balancesBuyToken": [
+          "24741.524625820749328119"
+        ],
+        "block": 11093573,
+        "index": 117
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 5.671829875703645,
+      "limitXRate": [
+        [
+          197.43211785058344,
+          "LINK"
+        ],
+        [
+          5.671829875703645,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 34.80924537181928,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          5.671829875703645,
+          201.4613447454933
+        ],
+        "balancesSellToken": [
+          "24711.819291331439370312"
+        ],
+        "balancesBuyToken": [
+          "880597.574669256542009377"
+        ],
+        "block": 11093591,
+        "index": 100
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1.200391736689355,
+      "limitXRate": [
+        [
+          0.03342854288933028,
+          "WETH"
+        ],
+        [
+          1.200391736689355,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.90918517338355,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1.200391736689355,
+          0.0335334512165874
+        ],
+        "balancesSellToken": [
+          "880255.272714101430002525"
+        ],
+        "balancesBuyToken": [
+          "24710.104300635505356611"
+        ],
+        "block": 11093642,
+        "index": 163
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 548.0,
+      "limitXRate": [
+        [
+          15.222989133999725,
+          "WETH"
+        ],
+        [
+          548.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.998186373008146,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          548.0,
+          15.299104079669725
+        ],
+        "balancesSellToken": [
+          "881075.021194170816809755"
+        ],
+        "balancesBuyToken": [
+          "24687.231783956575536889"
+        ],
+        "block": 11093662,
+        "index": 151
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 9.0,
+      "limitXRate": [
+        [
+          0.24973944818318017,
+          "WETH"
+        ],
+        [
+          9.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.03755860547363,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          9.0,
+          0.2509881454240961
+        ],
+        "balancesSellToken": [
+          "881826.671750144598412471"
+        ],
+        "balancesBuyToken": [
+          "24666.253543374657670188"
+        ],
+        "block": 11093740,
+        "index": 145
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 7.808281640000001,
+      "limitXRate": [
+        [
+          0.21348021553154828,
+          "WETH"
+        ],
+        [
+          7.808281640000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.576137140193616,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          7.808281640000001,
+          0.21774981984217925
+        ],
+        "balancesSellToken": [
+          "881678.802081547701799902"
+        ],
+        "balancesBuyToken": [
+          "24661.609136397364264256"
+        ],
+        "block": 11093758,
+        "index": 118
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 10.48,
+      "limitXRate": [
+        [
+          0.2893616228713441,
+          "WETH"
+        ],
+        [
+          10.48,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.21765697885796,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          10.48,
+          0.2922500704503165
+        ],
+        "balancesSellToken": [
+          "881686.610363187701799902"
+        ],
+        "balancesBuyToken": [
+          "24661.391386577522085031"
+        ],
+        "block": 11093759,
+        "index": 52
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxBuyAmount": 25.040000000000003,
+      "limitXRate": [
+        [
+          896.1560127406627,
+          "LINK"
+        ],
+        [
+          25.040000000000003,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.788978144595156,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          895.6394437962435,
+          25.040000000000003
+        ],
+        "balancesSellToken": [
+          "880124.685845428271719866"
+        ],
+        "balancesBuyToken": [
+          "24705.324231344523682378"
+        ],
+        "block": 11093836,
+        "index": 197
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1500.0,
+      "limitXRate": [
+        [
+          41.633206050348704,
+          "WETH"
+        ],
+        [
+          1500.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.0289332074496,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1500.0,
+          41.808061813983
+        ],
+        "balancesSellToken": [
+          "881177.534993644843181005"
+        ],
+        "balancesBuyToken": [
+          "24675.926986660170798577"
+        ],
+        "block": 11093868,
+        "index": 48
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 35.0,
+      "limitXRate": [
+        [
+          0.9285441247277758,
+          "WETH"
+        ],
+        [
+          35.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.69341603476416,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          35.0,
+          0.9749713309641646
+        ],
+        "balancesSellToken": [
+          "882162.075539814662431038"
+        ],
+        "balancesBuyToken": [
+          "24648.71054706281425203"
+        ],
+        "block": 11093894,
+        "index": 154
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.0125,
+      "limitXRate": [
+        [
+          0.44448141780627615,
+          "LINK"
+        ],
+        [
+          0.0125,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.55851342450209,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "USDT",
+          "LINK"
+        ],
+        "amounts": [
+          0.0125,
+          4.631326,
+          0.4467151044667751
+        ],
+        "balancesSellToken": [
+          "717220.864859649970230818",
+          "9173.195602"
+        ],
+        "balancesBuyToken": [
+          "266535120.863215",
+          "887.910788666867142872"
+        ],
+        "block": 11093895,
+        "index": 82
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 138.7033896921911,
+      "limitXRate": [
+        [
+          3.824586957300442,
+          "WETH"
+        ],
+        [
+          138.7033896921911,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.266240313200754,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          138.7033896921911,
+          3.8628328268734466
+        ],
+        "balancesSellToken": [
+          "882217.075539814662431038"
+        ],
+        "balancesBuyToken": [
+          "24647.178483952023820224"
+        ],
+        "block": 11093911,
+        "index": 223
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 100.00000000000001,
+      "limitXRate": [
+        [
+          2.6771576224445415,
+          "WETH"
+        ],
+        [
+          100.00000000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.35304905532194,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          100.00000000000001,
+          2.7842439273423234
+        ],
+        "balancesSellToken": [
+          "882366.917073571197750604"
+        ],
+        "balancesBuyToken": [
+          "24643.955061879779292878"
+        ],
+        "block": 11093944,
+        "index": 92
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxBuyAmount": 40.370000000000005,
+      "limitXRate": [
+        [
+          1452.7215136943519,
+          "LINK"
+        ],
+        [
+          40.370000000000005,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.985174973850675,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1452.1240116098184,
+          40.370000000000005
+        ],
+        "balancesSellToken": [
+          "882356.365923938228599184"
+        ],
+        "balancesBuyToken": [
+          "24644.267420173255952459"
+        ],
+        "block": 11093952,
+        "index": 100
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxBuyAmount": 32.21,
+      "limitXRate": [
+        [
+          1162.2596777209037,
+          "LINK"
+        ],
+        [
+          32.21,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.08381489353939,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1161.5782611919938,
+          32.21
+        ],
+        "balancesSellToken": [
+          "883635.618956067954839674"
+        ],
+        "balancesBuyToken": [
+          "24608.725313787762779582"
+        ],
+        "block": 11093991,
+        "index": 72
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1560.1800000000003,
+      "limitXRate": [
+        [
+          43.108846020741474,
+          "WETH"
+        ],
+        [
+          1560.1800000000003,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.19164380436749,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1560.1800000000003,
+          43.13041122635464
+        ],
+        "balancesSellToken": [
+          "884797.197217259948453536"
+        ],
+        "balancesBuyToken": [
+          "24576.515313787762779582"
+        ],
+        "block": 11093993,
+        "index": 101
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1497.953252205608,
+      "limitXRate": [
+        [
+          41.3055132918317,
+          "WETH"
+        ],
+        [
+          1497.953252205608,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.26521335353634,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1497.953252205608,
+          41.331693686827045
+        ],
+        "balancesSellToken": [
+          "884867.355345879461328526"
+        ],
+        "balancesBuyToken": [
+          "24574.820803309735733844"
+        ],
+        "block": 11093994,
+        "index": 72
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 7.350076098922644,
+      "limitXRate": [
+        [
+          0.0,
+          "LINK"
+        ],
+        [
+          7.350076098922644,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 0.0,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          7.350076098922644,
+          265.15590161329686
+        ],
+        "balancesSellToken": [
+          "24574.820803309735733844"
+        ],
+        "balancesBuyToken": [
+          "884867.355345879461328526"
+        ],
+        "block": 11093994,
+        "index": 87
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 1.0,
+      "limitXRate": [
+        [
+          35.86144121810282,
+          "LINK"
+        ],
+        [
+          1.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.86144121810282,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.0,
+          36.04074842419333
+        ],
+        "balancesSellToken": [
+          "24526.087969948036127267"
+        ],
+        "balancesBuyToken": [
+          "886634.402187272307907489"
+        ],
+        "block": 11094021,
+        "index": 95
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 208.24908398010697,
+      "limitXRate": [
+        [
+          5.713394498656415,
+          "WETH"
+        ],
+        [
+          208.24908398010697,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.44927442505146,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          208.24908398010697,
+          5.742428956633806
+        ],
+        "balancesSellToken": [
+          "886598.361438848114581598"
+        ],
+        "balancesBuyToken": [
+          "24527.087969948036127267"
+        ],
+        "block": 11094024,
+        "index": 133
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.1,
+      "limitXRate": [
+        [
+          3.593242133017684,
+          "LINK"
+        ],
+        [
+          0.1,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.93242133017684,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.1,
+          3.6113951080923354
+        ],
+        "balancesSellToken": [
+          "24502.357454743916859324"
+        ],
+        "balancesBuyToken": [
+          "887497.26898636789195655"
+        ],
+        "block": 11094088,
+        "index": 52
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1087.14,
+      "limitXRate": [
+        [
+          1e-18,
+          "WETH"
+        ],
+        [
+          1087.14,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 1.08714e+21,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1087.14,
+          29.87960457301286
+        ],
+        "balancesSellToken": [
+          "887616.641601244528386578"
+        ],
+        "balancesBuyToken": [
+          "24499.072697650708930405"
+        ],
+        "block": 11094103,
+        "index": 97
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.2761645632922432,
+      "limitXRate": [
+        [
+          8.999908856942675,
+          "LINK"
+        ],
+        [
+          0.2761645632922432,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 32.58893447317055,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.2761645632922432,
+          9.999898729936305
+        ],
+        "balancesSellToken": [
+          "24469.193093077696072382"
+        ],
+        "balancesBuyToken": [
+          "888703.781601244528386578"
+        ],
+        "block": 11094105,
+        "index": 55
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.2761707876852833,
+      "limitXRate": [
+        [
+          8.999908855917113,
+          "LINK"
+        ],
+        [
+          0.2761707876852833,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 32.588199973464114,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.2761707876852833,
+          9.999898728796792
+        ],
+        "balancesSellToken": [
+          "24469.469257640988315582"
+        ],
+        "balancesBuyToken": [
+          "888693.781702514592082712"
+        ],
+        "block": 11094106,
+        "index": 35
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.2761707876852833,
+      "limitXRate": [
+        [
+          8.999908855917113,
+          "LINK"
+        ],
+        [
+          0.2761707876852833,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 32.588199973464114,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.2761707876852833,
+          9.999673347918312
+        ],
+        "balancesSellToken": [
+          "24469.469257640988315582"
+        ],
+        "balancesBuyToken": [
+          "888693.781702514592082712"
+        ],
+        "block": 11094106,
+        "index": 38
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1555.5600000000002,
+      "limitXRate": [
+        [
+          43.053921656300815,
+          "WETH"
+        ],
+        [
+          1555.5600000000002,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.130506587019546,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          43.032405453574036,
+          1555.5600000000002
+        ],
+        "balancesSellToken": [
+          "24468.649034638778367063"
+        ],
+        "balancesBuyToken": [
+          "888723.782130437876981231"
+        ],
+        "block": 11094110,
+        "index": 66
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 4.5,
+      "limitXRate": [
+        [
+          162.11335618288905,
+          "LINK"
+        ],
+        [
+          4.5,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.025190262864236,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          4.5,
+          162.35327798024605
+        ],
+        "balancesSellToken": [
+          "24511.681440092352393696"
+        ],
+        "balancesBuyToken": [
+          "887168.222130437876981231"
+        ],
+        "block": 11094113,
+        "index": 135
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 2.0,
+      "limitXRate": [
+        [
+          72.05771934282477,
+          "LINK"
+        ],
+        [
+          2.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.028859671412384,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          2.0,
+          72.15234323869618
+        ],
+        "balancesSellToken": [
+          "24513.737448342921896141"
+        ],
+        "balancesBuyToken": [
+          "887095.020164762467035132"
+        ],
+        "block": 11094119,
+        "index": 66
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 23.64965976473746,
+      "limitXRate": [
+        [
+          1e-18,
+          "WETH"
+        ],
+        [
+          23.64965976473746,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 2.364965976473746e+19,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          23.64965976473746,
+          0.6533144333138491
+        ],
+        "balancesSellToken": [
+          "885898.241086427374884235"
+        ],
+        "balancesBuyToken": [
+          "24546.953263386819504273"
+        ],
+        "block": 11094159,
+        "index": 169
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 32.300000000000004,
+      "limitXRate": [
+        [
+          1154.9715597222203,
+          "LINK"
+        ],
+        [
+          32.300000000000004,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.75763342793251,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          32.300000000000004,
+          1160.7464175208315
+        ],
+        "balancesSellToken": [
+          "24531.941736905886261913"
+        ],
+        "balancesBuyToken": [
+          "885403.676009493922674553"
+        ],
+        "block": 11094169,
+        "index": 63
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.9730000000000001,
+      "limitXRate": [
+        [
+          34.834615225627466,
+          "LINK"
+        ],
+        [
+          0.9730000000000001,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.80124894720192,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.9730000000000001,
+          34.91878155743233
+        ],
+        "balancesSellToken": [
+          "24564.241736905886261913"
+        ],
+        "balancesBuyToken": [
+          "884242.929591973091317244"
+        ],
+        "block": 11094173,
+        "index": 47
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 10.0,
+      "limitXRate": [
+        [
+          0.2756070519727512,
+          "WETH"
+        ],
+        [
+          10.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.28354183400461,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          10.0,
+          0.27694760590355616
+        ],
+        "balancesSellToken": [
+          "885428.757227936490341834"
+        ],
+        "balancesBuyToken": [
+          "24595.800970919650777059"
+        ],
+        "block": 11094186,
+        "index": 166
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 40.0,
+      "limitXRate": [
+        [
+          1.0070254732210497,
+          "WETH"
+        ],
+        [
+          40.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 39.72094158855473,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          40.0,
+          1.1077280205431548
+        ],
+        "balancesSellToken": [
+          "885438.757227936490341834"
+        ],
+        "balancesBuyToken": [
+          "24595.524023313747220897"
+        ],
+        "block": 11094193,
+        "index": 127
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 1.0,
+      "limitXRate": [
+        [
+          29.947256437157407,
+          "LINK"
+        ],
+        [
+          1.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 29.947256437157407,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.0,
+          35.936707724588885
+        ],
+        "balancesSellToken": [
+          "24580.017302235013691202"
+        ],
+        "balancesBuyToken": [
+          "886018.782902065043208144"
+        ],
+        "block": 11094243,
+        "index": 71
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxBuyAmount": 31.860000000000003,
+      "limitXRate": [
+        [
+          1154.0820000400624,
+          "LINK"
+        ],
+        [
+          31.860000000000003,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.22354049089964,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1153.2921551147542,
+          31.860000000000003
+        ],
+        "balancesSellToken": [
+          "885982.846194340454324345"
+        ],
+        "balancesBuyToken": [
+          "24581.017302235013691202"
+        ],
+        "block": 11094261,
+        "index": 10
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxBuyAmount": 31.840000000000003,
+      "limitXRate": [
+        [
+          1156.253862930874,
+          "LINK"
+        ],
+        [
+          31.840000000000003,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.31450574531639,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1155.5672475258511,
+          31.840000000000003
+        ],
+        "balancesSellToken": [
+          "887136.138349455208519606"
+        ],
+        "balancesBuyToken": [
+          "24549.157302235013691202"
+        ],
+        "block": 11094269,
+        "index": 18
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1778.0800000000002,
+      "limitXRate": [
+        [
+          48.74046659672109,
+          "WETH"
+        ],
+        [
+          1778.0800000000002,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.48056992789677,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1778.0800000000002,
+          48.77189759186307
+        ],
+        "balancesSellToken": [
+          "888833.499673914511778914"
+        ],
+        "balancesBuyToken": [
+          "24502.417423340241993259"
+        ],
+        "block": 11094275,
+        "index": 3
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 490.37235607571347,
+      "limitXRate": [
+        [
+          12.1230905711891,
+          "WETH"
+        ],
+        [
+          490.37235607571347,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 40.449450838971586,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          490.37235607571347,
+          13.416464082187535
+        ],
+        "balancesSellToken": [
+          "888833.499673914511778914"
+        ],
+        "balancesBuyToken": [
+          "24502.417423340241993259"
+        ],
+        "block": 11094275,
+        "index": 20
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1775.06,
+      "limitXRate": [
+        [
+          48.46531188298934,
+          "WETH"
+        ],
+        [
+          1775.06,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.62537041514473,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1775.06,
+          48.48955666132
+        ],
+        "balancesSellToken": [
+          "890667.499258241907501962"
+        ],
+        "balancesBuyToken": [
+          "24452.186474190870396973"
+        ],
+        "block": 11094282,
+        "index": 2
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 1.0,
+      "limitXRate": [
+        [
+          35.985115906717084,
+          "LINK"
+        ],
+        [
+          1.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 35.985115906717084,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.0,
+          36.458774471306164
+        ],
+        "balancesSellToken": [
+          "24403.696917529550396433"
+        ],
+        "balancesBuyToken": [
+          "892442.55925824190737089"
+        ],
+        "block": 11094284,
+        "index": 7
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1585.0300000000002,
+      "limitXRate": [
+        [
+          43.12378303226284,
+          "WETH"
+        ],
+        [
+          1585.0300000000002,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.755356059883894,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1585.0300000000002,
+          43.1453557101179
+        ],
+        "balancesSellToken": [
+          "892345.934899050195730319"
+        ],
+        "balancesBuyToken": [
+          "24406.363764143384184855"
+        ],
+        "block": 11094288,
+        "index": 4
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 2.18,
+      "limitXRate": [
+        [
+          0.06008540534839254,
+          "WETH"
+        ],
+        [
+          2.18,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.281689161614715,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "USDT",
+          "WETH"
+        ],
+        "amounts": [
+          2.18,
+          22.42221,
+          0.06037967256075868
+        ],
+        "balancesSellToken": [
+          "887.464073562400367863",
+          "266038174.689574"
+        ],
+        "balancesBuyToken": [
+          "9177.826928",
+          "718557.640071003000531208"
+        ],
+        "block": 11094292,
+        "index": 151
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 42.75000000000427,
+      "limitXRate": [
+        [
+          1568.5634853953031,
+          "LINK"
+        ],
+        [
+          42.75000000000427,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.69154351801512,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          42.75000000000427,
+          1570.4859624859973
+        ],
+        "balancesSellToken": [
+          "24286.543595803093567545"
+        ],
+        "balancesBuyToken": [
+          "896767.010615573756849756"
+        ],
+        "block": 11094308,
+        "index": 18
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 10.348629478823472,
+      "limitXRate": [
+        [
+          378.8821800948307,
+          "LINK"
+        ],
+        [
+          10.348629478823472,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.611821968323625,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          10.348629478823472,
+          379.6419290836391
+        ],
+        "balancesSellToken": [
+          "24323.953228080856284951"
+        ],
+        "balancesBuyToken": [
+          "895394.685475966568309717"
+        ],
+        "block": 11094327,
+        "index": 52
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1975.21,
+      "limitXRate": [
+        [
+          53.88392657551328,
+          "WETH"
+        ],
+        [
+          1975.21,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.656756950181205,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          53.8315643139944,
+          1975.21
+        ],
+        "balancesSellToken": [
+          "24292.576734887707718254"
+        ],
+        "balancesBuyToken": [
+          "896557.075350260928438509"
+        ],
+        "block": 11094328,
+        "index": 47
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 11.0,
+      "limitXRate": [
+        [
+          383.33642188140897,
+          "LINK"
+        ],
+        [
+          11.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 34.84876562558264,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          11.0,
+          402.68299025936943
+        ],
+        "balancesSellToken": [
+          "24349.613860572441253362"
+        ],
+        "balancesBuyToken": [
+          "894464.442909681112164989"
+        ],
+        "block": 11094344,
+        "index": 51
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 50.1942948,
+      "limitXRate": [
+        [
+          1.2973731821581735,
+          "WETH"
+        ],
+        [
+          50.1942948,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 38.68917246809592,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          50.1942948,
+          1.3635790655715905
+        ],
+        "balancesSellToken": [
+          "894026.393547659654803814"
+        ],
+        "balancesBuyToken": [
+          "24361.580430406633218345"
+        ],
+        "block": 11094348,
+        "index": 83
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 17.62365282329226,
+      "limitXRate": [
+        [
+          642.8783312402792,
+          "LINK"
+        ],
+        [
+          17.62365282329226,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.47815453959809,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          17.62365282329226,
+          644.4237242441931
+        ],
+        "balancesSellToken": [
+          "24360.216851341061628045"
+        ],
+        "balancesBuyToken": [
+          "894076.587842459654803814"
+        ],
+        "block": 11094355,
+        "index": 8
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 37.992000000000004,
+      "limitXRate": [
+        [
+          1.0285344398597012,
+          "WETH"
+        ],
+        [
+          37.992000000000004,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.937995003047604,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          37.992000000000004,
+          1.0336771120589998
+        ],
+        "balancesSellToken": [
+          "893347.588995744523258453"
+        ],
+        "balancesBuyToken": [
+          "24380.155350882353837239"
+        ],
+        "block": 11094379,
+        "index": 126
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 35.5737,
+      "limitXRate": [
+        [
+          0.8798191014439128,
+          "WETH"
+        ],
+        [
+          35.5737,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 40.43297075685026,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          35.5737,
+          0.9678010115883042
+        ],
+        "balancesSellToken": [
+          "893385.580995744523258453"
+        ],
+        "balancesBuyToken": [
+          "24379.121673770294837562"
+        ],
+        "block": 11094385,
+        "index": 1
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.21900000000000003,
+      "limitXRate": [
+        [
+          7.962474176769492,
+          "LINK"
+        ],
+        [
+          0.21900000000000003,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.35832957428991,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.21900000000000003,
+          8.00228654765334
+        ],
+        "balancesSellToken": [
+          "24377.500982557706465624"
+        ],
+        "balancesBuyToken": [
+          "893445.154739924086181544"
+        ],
+        "block": 11094392,
+        "index": 117
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 17.144632513859705,
+      "limitXRate": [
+        [
+          1e-18,
+          "LINK"
+        ],
+        [
+          17.144632513859705,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 5.832729276591966e-20,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          17.144632513859705,
+          625.8479469144098
+        ],
+        "balancesSellToken": [
+          "24381.160343350298514224"
+        ],
+        "balancesBuyToken": [
+          "893314.190648894630613535"
+        ],
+        "block": 11094408,
+        "index": 47
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxBuyAmount": 40.52,
+      "limitXRate": [
+        [
+          1492.8702839038278,
+          "LINK"
+        ],
+        [
+          40.52,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.84280068864333,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1491.654205327847,
+          40.52
+        ],
+        "balancesSellToken": [
+          "893338.351701980220897551"
+        ],
+        "balancesBuyToken": [
+          "24380.605560202718573277"
+        ],
+        "block": 11094426,
+        "index": 27
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 130.67855270954342,
+      "limitXRate": [
+        [
+          3.5257518790705373,
+          "WETH"
+        ],
+        [
+          130.67855270954342,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.06402412639231,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          130.67855270954342,
+          3.54338063846589
+        ],
+        "balancesSellToken": [
+          "894830.005907308067760633"
+        ],
+        "balancesBuyToken": [
+          "24340.085560202718573277"
+        ],
+        "block": 11094429,
+        "index": 41
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 296.144192668928,
+      "limitXRate": [
+        [
+          8.003270942844164,
+          "WETH"
+        ],
+        [
+          296.144192668928,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.00289478937542,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          296.144192668928,
+          8.027940547590164
+        ],
+        "balancesSellToken": [
+          "894863.854390467852022176"
+        ],
+        "balancesBuyToken": [
+          "24339.18347506397112401"
+        ],
+        "block": 11094438,
+        "index": 95
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1395.1700000000003,
+      "limitXRate": [
+        [
+          37.73052339572787,
+          "WETH"
+        ],
+        [
+          1395.1700000000003,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.97722359605464,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1395.1700000000003,
+          37.74939809477526
+        ],
+        "balancesSellToken": [
+          "895159.998583136780000864"
+        ],
+        "balancesBuyToken": [
+          "24331.15553451638095917"
+        ],
+        "block": 11094440,
+        "index": 11
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 502.7727919475911,
+      "limitXRate": [
+        [
+          12.209992307568253,
+          "WETH"
+        ],
+        [
+          502.7727919475911,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 41.177158779694885,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          502.7727919475911,
+          13.55436321383219
+        ],
+        "balancesSellToken": [
+          "896826.841462400411517809"
+        ],
+        "balancesBuyToken": [
+          "24286.069083504533124843"
+        ],
+        "block": 11094452,
+        "index": 4
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 4.002510721824296,
+      "limitXRate": [
+        [
+          0.10974856278164541,
+          "WETH"
+        ],
+        [
+          4.002510721824296,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.46982357106261,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "DAI",
+          "WETH"
+        ],
+        "amounts": [
+          4.002510721824296,
+          40.84245240841692,
+          0.11037180329142414
+        ],
+        "balancesSellToken": [
+          "641.84040076432028391",
+          "205801246.294484324578254229"
+        ],
+        "balancesBuyToken": [
+          "6610.023023407343637131",
+          "558022.814153016186686832"
+        ],
+        "block": 11094459,
+        "index": 97
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 13.371150729335493,
+      "limitXRate": [
+        [
+          445.7707182299462,
+          "LINK"
+        ],
+        [
+          13.371150729335493,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 33.33824644216689,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          13.371150729335493,
+          495.0292291614852
+        ],
+        "balancesSellToken": [
+          "24205.105089557484434061"
+        ],
+        "balancesBuyToken": [
+          "899810.756759490275184769"
+        ],
+        "block": 11094487,
+        "index": 18
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 33.757175,
+      "limitXRate": [
+        [
+          1246.7608383525842,
+          "LINK"
+        ],
+        [
+          33.757175,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.93321015021501,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          33.757175,
+          1247.3416705756233
+        ],
+        "balancesSellToken": [
+          "24205.105089557484434061"
+        ],
+        "balancesBuyToken": [
+          "899810.756759490275184769"
+        ],
+        "block": 11094487,
+        "index": 34
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 13.37458288863971,
+      "limitXRate": [
+        [
+          443.8791815732505,
+          "LINK"
+        ],
+        [
+          13.37458288863971,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 33.18826353457937,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          13.37458288863971,
+          492.69531381365533
+        ],
+        "balancesSellToken": [
+          "24259.832241411150167673"
+        ],
+        "balancesBuyToken": [
+          "897786.97567888895421817"
+        ],
+        "block": 11094489,
+        "index": 97
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 33.7469,
+      "limitXRate": [
+        [
+          1239.7207910124503,
+          "LINK"
+        ],
+        [
+          33.7469,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.735842136980004,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          33.7469,
+          1240.7708091453496
+        ],
+        "balancesSellToken": [
+          "24259.832241411150167673"
+        ],
+        "balancesBuyToken": [
+          "897786.97567888895421817"
+        ],
+        "block": 11094489,
+        "index": 118
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 100.00000000000001,
+      "limitXRate": [
+        [
+          2.6818657206870475,
+          "WETH"
+        ],
+        [
+          100.00000000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.287474622100675,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          100.00000000000001,
+          2.7069943669566454
+        ],
+        "balancesSellToken": [
+          "895467.433543918267431705"
+        ],
+        "balancesBuyToken": [
+          "24315.899556017015539687"
+        ],
+        "block": 11094492,
+        "index": 17
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 10000.0,
+      "limitXRate": [
+        [
+          276.1245639191985,
+          "WETH"
+        ],
+        [
+          10000.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.215539313359564,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          274.75080986984926,
+          10000.0
+        ],
+        "balancesSellToken": [
+          "24267.39031300469062514"
+        ],
+        "balancesBuyToken": [
+          "895908.636963719943772347"
+        ],
+        "block": 11094516,
+        "index": 2
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 3831.999014614724,
+      "limitXRate": [
+        [
+          1e-18,
+          "WETH"
+        ],
+        [
+          3831.999014614724,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 3.8319990146147235e+21,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          3831.999014614724,
+          105.38412198072349
+        ],
+        "balancesSellToken": [
+          "895908.636963719943772347"
+        ],
+        "balancesBuyToken": [
+          "24267.39031300469062514"
+        ],
+        "block": 11094516,
+        "index": 3
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 605.3597531920117,
+      "limitXRate": [
+        [
+          16.45514610921458,
+          "WETH"
+        ],
+        [
+          605.3597531920117,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.788476332824615,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          605.3597531920117,
+          16.500573807074073
+        ],
+        "balancesSellToken": [
+          "895908.636963719943772347"
+        ],
+        "balancesBuyToken": [
+          "24267.39031300469062514"
+        ],
+        "block": 11094516,
+        "index": 41
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 501.89045404356415,
+      "limitXRate": [
+        [
+          12.296983981305004,
+          "WETH"
+        ],
+        [
+          501.89045404356415,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 40.81410976923966,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          501.89045404356415,
+          13.565200454248297
+        ],
+        "balancesSellToken": [
+          "892087.479012419543545779"
+        ],
+        "balancesBuyToken": [
+          "24372.662893937348267545"
+        ],
+        "block": 11094517,
+        "index": 12
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1210.304064251402,
+      "limitXRate": [
+        [
+          32.64411011891105,
+          "WETH"
+        ],
+        [
+          1210.304064251402,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.075725447643954,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1210.304064251402,
+          32.64411011891105
+        ],
+        "balancesSellToken": [
+          "891338.677130441262657499"
+        ],
+        "balancesBuyToken": [
+          "24146.015556106328497526"
+        ],
+        "block": 11094553,
+        "index": 63
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxBuyAmount": 33.87555,
+      "limitXRate": [
+        [
+          1251.7400177538013,
+          "LINK"
+        ],
+        [
+          33.87555,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.951134896815,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1248.5415298575183,
+          33.87555
+        ],
+        "balancesSellToken": [
+          "888689.53782861327971857"
+        ],
+        "balancesBuyToken": [
+          "24218.440060364392824142"
+        ],
+        "block": 11094567,
+        "index": 6
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 80.4,
+      "limitXRate": [
+        [
+          2.120914891548025,
+          "WETH"
+        ],
+        [
+          80.4,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.908168932378615,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          80.4,
+          2.1633331893789856
+        ],
+        "balancesSellToken": [
+          "892988.079358470797999478"
+        ],
+        "balancesBuyToken": [
+          "24102.209114762645589754"
+        ],
+        "block": 11094582,
+        "index": 75
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 8.59643149743732,
+      "limitXRate": [
+        [
+          317.6802608824165,
+          "LINK"
+        ],
+        [
+          8.59643149743732,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.95489936459333,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          8.59643149743732,
+          318.33358654344653
+        ],
+        "balancesSellToken": [
+          "24100.04578157326660434"
+        ],
+        "balancesBuyToken": [
+          "893068.479358470797999478"
+        ],
+        "block": 11094589,
+        "index": 152
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1602.8500000000001,
+      "limitXRate": [
+        [
+          43.40056296514062,
+          "WETH"
+        ],
+        [
+          1602.8500000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.93154859045057,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          43.37887352837644,
+          1602.8500000000001
+        ],
+        "balancesSellToken": [
+          "24077.034553587448239984"
+        ],
+        "balancesBuyToken": [
+          "893926.593847077991730356"
+        ],
+        "block": 11094592,
+        "index": 2
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 38.75000000000388,
+      "limitXRate": [
+        [
+          1424.2651346382418,
+          "LINK"
+        ],
+        [
+          38.75000000000388,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.75522928098321,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          38.75000000000388,
+          1426.9524864171847
+        ],
+        "balancesSellToken": [
+          "24120.413427115824678205"
+        ],
+        "balancesBuyToken": [
+          "892323.743847077991795892"
+        ],
+        "block": 11094598,
+        "index": 4
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 1.1600000000000001,
+      "limitXRate": [
+        [
+          42.42710984508115,
+          "LINK"
+        ],
+        [
+          1.1600000000000001,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.57509469403547,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.1600000000000001,
+          42.638764210070114
+        ],
+        "balancesSellToken": [
+          "24161.20407294268328878"
+        ],
+        "balancesBuyToken": [
+          "890821.772283378504574666"
+        ],
+        "block": 11094616,
+        "index": 8
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.9,
+      "limitXRate": [
+        [
+          32.91441112344067,
+          "LINK"
+        ],
+        [
+          0.9,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.57156791493408,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.9,
+          33.04099570335587
+        ],
+        "balancesSellToken": [
+          "24176.312318142201983854"
+        ],
+        "balancesBuyToken": [
+          "890269.786149749987461628"
+        ],
+        "block": 11094632,
+        "index": 114
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 1587.8900000000003,
+      "limitXRate": [
+        [
+          43.374938398279745,
+          "WETH"
+        ],
+        [
+          1587.8900000000003,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.60846697739578,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          43.35326176739604,
+          1587.8900000000003
+        ],
+        "balancesSellToken": [
+          "24183.354020062788934044"
+        ],
+        "balancesBuyToken": [
+          "890011.335140083467744667"
+        ],
+        "block": 11094635,
+        "index": 4
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 30.000000000000004,
+      "limitXRate": [
+        [
+          0.7810326527636146,
+          "WETH"
+        ],
+        [
+          30.000000000000004,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 38.41068602426246,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          30.000000000000004,
+          0.8155980396801913
+        ],
+        "balancesSellToken": [
+          "888423.445140083467548059"
+        ],
+        "balancesBuyToken": [
+          "24226.707281830184976824"
+        ],
+        "block": 11094643,
+        "index": 10
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1363.2800394009564,
+      "limitXRate": [
+        [
+          37.00023167307617,
+          "WETH"
+        ],
+        [
+          1363.2800394009564,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.845175766641745,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1363.2800394009564,
+          37.08859251254176
+        ],
+        "balancesSellToken": [
+          "887453.445140083467548059"
+        ],
+        "balancesBuyToken": [
+          "24253.272036169551297718"
+        ],
+        "block": 11094652,
+        "index": 33
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 101.24369786007145,
+      "limitXRate": [
+        [
+          2.695920906540312,
+          "WETH"
+        ],
+        [
+          101.24369786007145,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.55440213934094,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          101.24369786007145,
+          2.749839324671118
+        ],
+        "balancesSellToken": [
+          "888816.725179484423779739"
+        ],
+        "balancesBuyToken": [
+          "24216.183443657009544329"
+        ],
+        "block": 11094657,
+        "index": 187
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 34.1,
+      "limitXRate": [
+        [
+          0.919890819614972,
+          "WETH"
+        ],
+        [
+          34.1,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.06961660327564,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          34.1,
+          0.9264918395255274
+        ],
+        "balancesSellToken": [
+          "888699.335569933111823836"
+        ],
+        "balancesBuyToken": [
+          "24219.408394947711212726"
+        ],
+        "block": 11094661,
+        "index": 39
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.55,
+      "limitXRate": [
+        [
+          19.881631298057275,
+          "LINK"
+        ],
+        [
+          0.55,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.14842054192232,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.55,
+          20.080447611037847
+        ],
+        "balancesSellToken": [
+          "24243.605633976485105057"
+        ],
+        "balancesBuyToken": [
+          "887815.198229551022405773"
+        ],
+        "block": 11094672,
+        "index": 154
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 10.0,
+      "limitXRate": [
+        [
+          363.7686194762787,
+          "LINK"
+        ],
+        [
+          10.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.376861947627866,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          10.0,
+          364.94068917852644
+        ],
+        "balancesSellToken": [
+          "24244.155633976485105057"
+        ],
+        "balancesBuyToken": [
+          "887795.117781939984559102"
+        ],
+        "block": 11094681,
+        "index": 60
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 7.208352036000001,
+      "limitXRate": [
+        [
+          261.5337556448719,
+          "LINK"
+        ],
+        [
+          7.208352036000001,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.28204537440989,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          7.208352036000001,
+          262.84142442309627
+        ],
+        "balancesSellToken": [
+          "24255.741594349917585834"
+        ],
+        "balancesBuyToken": [
+          "887372.326581640510999788"
+        ],
+        "block": 11094691,
+        "index": 26
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 847.9584268190118,
+      "limitXRate": [
+        [
+          23.041636687077627,
+          "WETH"
+        ],
+        [
+          847.9584268190118,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.80113693028455,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          847.9584268190118,
+          23.090655871070997
+        ],
+        "balancesSellToken": [
+          "887299.995232807272303482"
+        ],
+        "balancesBuyToken": [
+          "24257.756130977130960969"
+        ],
+        "block": 11094699,
+        "index": 10
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 30.000000000000004,
+      "limitXRate": [
+        [
+          0.8248552280317679,
+          "WETH"
+        ],
+        [
+          30.000000000000004,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.370018617187704,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.8207125865189266,
+          30.000000000000004
+        ],
+        "balancesSellToken": [
+          "24229.057068329824980271"
+        ],
+        "balancesBuyToken": [
+          "888354.244920337804952916"
+        ],
+        "block": 11094716,
+        "index": 89
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxBuyAmount": 1.3,
+      "limitXRate": [
+        [
+          47.87108456238797,
+          "LINK"
+        ],
+        [
+          1.3,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.8239112018369,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          47.82326130108688,
+          1.3
+        ],
+        "balancesSellToken": [
+          "888475.41353356914175153"
+        ],
+        "balancesBuyToken": [
+          "24225.777516378730746534"
+        ],
+        "block": 11094737,
+        "index": 29
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 4.0,
+      "limitXRate": [
+        [
+          0.10993056970366204,
+          "WETH"
+        ],
+        [
+          4.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.38660302391529,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.10940348323807983,
+          4.0
+        ],
+        "balancesSellToken": [
+          "24226.676718918658677736"
+        ],
+        "balancesBuyToken": [
+          "888442.822093976063581436"
+        ],
+        "block": 11094746,
+        "index": 137
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 1.0,
+      "limitXRate": [
+        [
+          36.38580591381405,
+          "LINK"
+        ],
+        [
+          1.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.38580591381405,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.0,
+          36.57595392508459
+        ],
+        "balancesSellToken": [
+          "24221.670060446650225614"
+        ],
+        "balancesBuyToken": [
+          "888633.053506078957928846"
+        ],
+        "block": 11094756,
+        "index": 99
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 3.0,
+      "limitXRate": [
+        [
+          0.08249516501955535,
+          "WETH"
+        ],
+        [
+          3.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.36576760939692,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "COMP",
+          "WETH"
+        ],
+        "amounts": [
+          3.0,
+          0.32637730069239457,
+          0.08290764084465313
+        ],
+        "balancesSellToken": [
+          "663.058523324796544227",
+          "2023.568518536141236101"
+        ],
+        "balancesBuyToken": [
+          "72.67918607495926693",
+          "7941.83148441800305725"
+        ],
+        "block": 11094759,
+        "index": 84
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 25.000000000000004,
+      "limitXRate": [
+        [
+          0.6843375514307445,
+          "WETH"
+        ],
+        [
+          25.000000000000004,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.53167935579818,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.6835133120914705,
+          25.000000000000004
+        ],
+        "balancesSellToken": [
+          "24221.903828662654489334"
+        ],
+        "balancesBuyToken": [
+          "888624.671852153873344747"
+        ],
+        "block": 11094765,
+        "index": 174
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 500.00000000000006,
+      "limitXRate": [
+        [
+          14.1014897885284,
+          "WETH"
+        ],
+        [
+          500.00000000000006,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.45724653906791,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          13.69076678497903,
+          500.00000000000006
+        ],
+        "balancesSellToken": [
+          "24233.598832161790383488"
+        ],
+        "balancesBuyToken": [
+          "888197.481414697607204387"
+        ],
+        "block": 11094800,
+        "index": 139
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1591.6100000000001,
+      "limitXRate": [
+        [
+          43.24512753640223,
+          "WETH"
+        ],
+        [
+          1591.6100000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.80437752577418,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1591.6100000000001,
+          43.26675590894428
+        ],
+        "balancesSellToken": [
+          "887639.904502846121206768"
+        ],
+        "balancesBuyToken": [
+          "24245.716896438195080378"
+        ],
+        "block": 11094805,
+        "index": 0
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 600.0,
+      "limitXRate": [
+        [
+          16.247479427187425,
+          "WETH"
+        ],
+        [
+          600.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.928805030274475,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          600.0,
+          16.270422798988573
+        ],
+        "balancesSellToken": [
+          "889231.514502846121141232"
+        ],
+        "balancesBuyToken": [
+          "24202.450140529250797932"
+        ],
+        "block": 11094810,
+        "index": 27
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 250.00000000000003,
+      "limitXRate": [
+        [
+          6.735844920645624,
+          "WETH"
+        ],
+        [
+          250.00000000000003,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.11486872771379,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          250.00000000000003,
+          6.74258076556627
+        ],
+        "balancesSellToken": [
+          "891831.514502846121141232"
+        ],
+        "balancesBuyToken": [
+          "24132.1027244475137186"
+        ],
+        "block": 11094820,
+        "index": 10
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 34.250000000003425,
+      "limitXRate": [
+        [
+          1258.8168264058966,
+          "LINK"
+        ],
+        [
+          34.250000000003425,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.75377595345316,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          34.250000000003425,
+          1261.073069327649
+        ],
+        "balancesSellToken": [
+          "24123.471559113183090697"
+        ],
+        "balancesBuyToken": [
+          "892151.564159710159609951"
+        ],
+        "block": 11094824,
+        "index": 51
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 5.0,
+      "limitXRate": [
+        [
+          180.19541432743875,
+          "LINK"
+        ],
+        [
+          5.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.03908286548775,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          5.0,
+          183.79452426603336
+        ],
+        "balancesSellToken": [
+          "24158.037407825376207314"
+        ],
+        "balancesBuyToken": [
+          "890878.878290023869378002"
+        ],
+        "block": 11094829,
+        "index": 28
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.55,
+      "limitXRate": [
+        [
+          20.114167555321504,
+          "LINK"
+        ],
+        [
+          0.55,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.57121373694819,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.55,
+          20.214062493142766
+        ],
+        "balancesSellToken": [
+          "24162.263144947034425886"
+        ],
+        "balancesBuyToken": [
+          "890724.13890560366098484"
+        ],
+        "block": 11094864,
+        "index": 91
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 98.75138375898351,
+      "limitXRate": [
+        [
+          2.6572866962687294,
+          "WETH"
+        ],
+        [
+          98.75138375898351,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.162487547033145,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          98.75138375898351,
+          2.670573129750073
+        ],
+        "balancesSellToken": [
+          "890703.924843110518217518"
+        ],
+        "balancesBuyToken": [
+          "24162.813144947034425886"
+        ],
+        "block": 11094867,
+        "index": 98
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 4.0,
+      "limitXRate": [
+        [
+          0.1093598610065977,
+          "WETH"
+        ],
+        [
+          4.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.57649125723266,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.10881399688533416,
+          4.0
+        ],
+        "balancesSellToken": [
+          "24160.142571817284353134"
+        ],
+        "balancesBuyToken": [
+          "890802.67622686950171181"
+        ],
+        "block": 11094872,
+        "index": 140
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 0.15000000000000002,
+      "limitXRate": [
+        [
+          5.4865543752175565,
+          "LINK"
+        ],
+        [
+          0.15000000000000002,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.577029168117036,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.15000000000000002,
+          5.513937553587997
+        ],
+        "balancesSellToken": [
+          "24160.251385814169687292"
+        ],
+        "balancesBuyToken": [
+          "890798.67622686950171181"
+        ],
+        "block": 11094873,
+        "index": 91
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 97.03952694037781,
+      "limitXRate": [
+        [
+          2.5722576741623535,
+          "WETH"
+        ],
+        [
+          97.03952694037781,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 37.72543004346498,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          97.03952694037781,
+          2.6237589530843564
+        ],
+        "balancesSellToken": [
+          "890793.1622893159137149"
+        ],
+        "balancesBuyToken": [
+          "24160.401385814169687292"
+        ],
+        "block": 11094876,
+        "index": 144
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 1.0001,
+      "limitXRate": [
+        [
+          36.47389904310412,
+          "LINK"
+        ],
+        [
+          1.0001,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.47025201790233,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.0001,
+          36.65626853831964
+        ],
+        "balancesSellToken": [
+          "24195.193338893487714157"
+        ],
+        "balancesBuyToken": [
+          "889521.93478887300920265"
+        ],
+        "block": 11094912,
+        "index": 2
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 20.0,
+      "limitXRate": [
+        [
+          0.41720019367535766,
+          "WETH"
+        ],
+        [
+          20.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 47.938616288282226,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          20.0,
+          0.5424050214951117
+        ],
+        "balancesSellToken": [
+          "889485.278520334689567369"
+        ],
+        "balancesBuyToken": [
+          "24196.193438893487714157"
+        ],
+        "block": 11094914,
+        "index": 81
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 35.0,
+      "limitXRate": [
+        [
+          0.959865261314867,
+          "WETH"
+        ],
+        [
+          35.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.463451080681274,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.9549463738827219,
+          35.0
+        ],
+        "balancesSellToken": [
+          "24195.662812467036659057"
+        ],
+        "balancesBuyToken": [
+          "889505.247575869884371494"
+        ],
+        "block": 11094918,
+        "index": 176
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxBuyAmount": 1.0,
+      "limitXRate": [
+        [
+          37.97840986854679,
+          "LINK"
+        ],
+        [
+          1.0,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 37.97840986854679,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          36.872242590822125,
+          1.0
+        ],
+        "balancesSellToken": [
+          "889470.247575869884371494"
+        ],
+        "balancesBuyToken": [
+          "24196.617758840919380799"
+        ],
+        "block": 11094925,
+        "index": 3
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxSellAmount": 2.8000000000000003,
+      "limitXRate": [
+        [
+          102.09030109254003,
+          "LINK"
+        ],
+        [
+          2.8000000000000003,
+          "WETH"
+        ]
+      ],
+      "limitXRateCanonical": 36.460821818764295,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          2.8000000000000003,
+          102.65239701867377
+        ],
+        "balancesSellToken": [
+          "24190.626623394397016385"
+        ],
+        "balancesBuyToken": [
+          "889637.617390277323413998"
+        ],
+        "block": 11094961,
+        "index": 169
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 10.0,
+      "limitXRate": [
+        [
+          0.280983817676893,
+          "WETH"
+        ],
+        [
+          10.0,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 35.58923813719099,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          0.2727998229872748,
+          10.0
+        ],
+        "balancesSellToken": [
+          "24193.426623394397016385"
+        ],
+        "balancesBuyToken": [
+          "889534.9649932586496639"
+        ],
+        "block": 11094972,
+        "index": 125
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 1002.7459361395236,
+      "limitXRate": [
+        [
+          1e-18,
+          "WETH"
+        ],
+        [
+          1002.7459361395236,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 1.0027459361395235e+21,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "WETH"
+        ],
+        "amounts": [
+          1002.7459361395236,
+          27.171694477286582
+        ],
+        "balancesSellToken": [
+          "889347.054753377578363905"
+        ],
+        "balancesBuyToken": [
+          "24198.578350816224570785"
+        ],
+        "block": 11094986,
+        "index": 137
+      }
+    },
+    {
+      "sellToken": "WETH",
+      "buyToken": "LINK",
+      "maxBuyAmount": 50.00000000000001,
+      "limitXRate": [
+        [
+          1.36837949138352,
+          "WETH"
+        ],
+        [
+          50.00000000000001,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.53957130667515,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "WETH",
+          "LINK"
+        ],
+        "amounts": [
+          1.361571633217433,
+          50.00000000000001
+        ],
+        "balancesSellToken": [
+          "24171.406656338937989162"
+        ],
+        "balancesBuyToken": [
+          "890349.800689517101772463"
+        ],
+        "block": 11094996,
+        "index": 181
+      }
+    },
+    {
+      "sellToken": "LINK",
+      "buyToken": "WETH",
+      "maxSellAmount": 11.168872324776075,
+      "limitXRate": [
+        [
+          0.30307429259722823,
+          "WETH"
+        ],
+        [
+          11.168872324776075,
+          "LINK"
+        ]
+      ],
+      "limitXRateCanonical": 36.85192904044485,
+      "fillOrKill": true,
+      "uniswap": {
+        "path": [
+          "LINK",
+          "USDC",
+          "WETH"
+        ],
+        "amounts": [
+          11.168872324776075,
+          112.536824,
+          0.30457868190707527
+        ],
+        "balancesSellToken": [
+          "26070.740267",
+          "292644692.973055"
+        ],
+        "balancesBuyToken": [
+          "2568.528928612509935221",
+          "794420.622245080370681748"
+        ],
+        "block": 11094998,
+        "index": 105
+      }
+    }
+  ]
+}
