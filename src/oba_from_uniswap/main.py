@@ -86,9 +86,7 @@ def get_token_info(swaps):
 def get_pool_ids(swaps):
     pool_ids = {}
     for swap in tqdm(swaps, desc='Querying pair IDs from thegraph'):
-        for i in range(len(swap['path']) - 1):
-            token1 = swap['path'][i]
-            token2 = swap['path'][i + 1]
+        for token1, token2 in zip(swap['path'], swap['path'][1:]):
             if (token1, token2) in pool_ids.keys():
                 continue
             if (token2, token1) in pool_ids.keys():
@@ -121,8 +119,8 @@ def get_amm_balances(block_number, token0, token1, pool_ids):
 
 def get_path_amm_balances(block_number, path, pool_ids):
     return [
-        get_amm_balances(block_number, path[i], path[i+1], pool_ids)
-        for i in range(len(path) - 1)
+        get_amm_balances(block_number, token1, token2, pool_ids)
+        for token1, token2 in zip(path, path[1:])
     ]
 
 
