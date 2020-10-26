@@ -15,12 +15,13 @@ p(counter_order_in_next_k_blocks, order_in_this_block) = \
 Under this assumption,
 
 p(counter_order_in_next_k_blocks | order_in_this_block) = \
-    = p(counter_order_in_next_k_blocks, order_in_this_block) / p(order_in_this_block)
+    = p(counter_order_in_next_k_blocks, order_in_this_block) / \
+        p(order_in_this_block)
     = p(counter_order_in_next_k_blocks) = p(order_in_next_k_blocks)
 """
 
 from .download_swaps import get_swaps
-from .utils import find_order_in_next_k_blocks
+from .utils import find_order_in_next_k_blocks, generate_focus_pairs
 from .read_csv import read_swaps_from_csv
 
 # Parameters
@@ -43,12 +44,7 @@ else:
 sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
 
 # generates all possible pairs
-focus_pairs = [
-    [o['sellToken'], o['buyToken']]
-    for j in range(1, len(sorted_blocks) - 1)
-    for o in swaps_by_block.get(sorted_blocks[j], [])
-]
-focus_pairs = list({(tuple(t)) for t in focus_pairs})
+focus_pairs = generate_focus_pairs(sorted_blocks, swaps_by_block)
 
 # For each focus pair, it calculate the probability
 results = dict()

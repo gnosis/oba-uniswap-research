@@ -1,3 +1,12 @@
+def generate_focus_pairs(sorted_blocks, swaps_by_block):
+    focus_pairs = [
+        [o['sellToken'], o['buyToken']]
+        for block in sorted_blocks[1:-1]
+        for o in swaps_by_block.get(block, [])
+    ]
+    return list({(tuple(t)) for t in focus_pairs})
+
+
 def find_order_in_block(
     block, focus_pair,
     swaps_by_block
@@ -19,6 +28,7 @@ def find_order_in_next_k_blocks(
             return True
     return False
 
+
 def plot_match_survivor(results, filename=None):
     """If filename is not None then creates file on disk."""
     import matplotlib.pyplot as plt
@@ -35,4 +45,4 @@ def plot_match_survivor(results, filename=None):
     plt.ylabel('Nr pairs with probability of match >= x')
     if filename is not None:
         plt.savefig(filename)
-    plt.show()    
+    plt.show()
