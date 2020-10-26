@@ -42,6 +42,7 @@ focus_pairs = [
     for j in range(1, len(sorted_blocks) - 1)
     for o in swaps_by_block.get(sorted_blocks[j], [])
 ]
+
 focus_pairs = list({tuple(t) for t in focus_pairs})
 
 # For each focus pair, it calculate the probability
@@ -95,4 +96,6 @@ for threshold in thresholds:
             pairs_meeting_threshold += 1
     print(threshold, ":", pairs_meeting_threshold)
 
-plot_match_survivor(results)
+print(results)
+#plot_match_survivor(results)
+

@@ -18,6 +18,7 @@ def read_swaps_from_csv(filename, read_swaps_splitted=False):
 
             path = ast.literal_eval(path)
             path = ['0x' + address for address in path]
+            block_number = int(block_number)
             entry = orders[block_number] if block_number in \
                 orders else list()
             if read_swaps_splitted:
