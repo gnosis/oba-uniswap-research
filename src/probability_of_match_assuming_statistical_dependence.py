@@ -14,7 +14,7 @@ p(counter_order_in_next_k_blocks, order_in_this_block) != \
 """
 
 from .download_swaps import get_swaps
-from .utils import find_order_in_block, find_order_in_next_k_blocks
+from .utils import find_order_in_block, find_order_in_next_k_blocks, plot_match_survivor
 from .read_csv import read_swaps_from_csv
 
 # Parameters
@@ -94,3 +94,5 @@ for threshold in thresholds:
         if value > threshold:
             pairs_meeting_threshold += 1
     print(threshold, ":", pairs_meeting_threshold)
+
+plot_match_survivor(results)
