@@ -3,14 +3,14 @@ import pickle
 import os
 
 
-def get_swaps(use_cache):
-    if os.path.exists("./uniswap_swaps.pickled") and use_cache:
-        with open("uniswap_swaps.pickled", "br") as f:
+def get_swaps(use_cache, filename):
+    if os.path.exists(filename) and use_cache:
+        with open(filename, "br") as f:
             swaps_by_block = pickle.load(f)
     else:
         swaps_by_block = get_uniswap_swaps()
         print("uniswap swap data downloaded")
-        with open("uniswap_swaps.pickled", "bw+") as f:
+        with open(filename, "bw+") as f:
             pickle.dump(swaps_by_block, f)
 
     return swaps_by_block

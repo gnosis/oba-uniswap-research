@@ -1,109 +1,96 @@
+"""
+The following program calculates the probability of finding a match - a
+counter order - for a random order. 
+
+Formally, it computes,
+p(counter_order_in_next_k_blocks | order_in_this_block)
+
+The calculation makes the assumption that the appearance of an order and
+a counter order is NOT independent.
+
+That is,
+p(counter_order_in_next_k_blocks, order_in_this_block) != \
+    p(counter_order_in_next_k_blocks) * p(order_in_this_block)
+"""
+
 from .download_swaps import get_swaps
+from .utils import find_order_in_block, find_order_in_next_k_blocks, plot_match_survivor, generate_focus_pairs
+from .read_csv import read_swaps_from_csv
 
-
-# Donwloading data from TheGraph takes a bit. When developing/debugging, enabling this
-# caches the results on disk.
+# Parameters
+use_dune_data = True
+consider_swaps_as_splitted_swaps = True
 use_cache = True
-focus_pair = {'WETH', 'DAI', 'USDC', 'USDT'}
-#focus_pair={'WETH', 'DAI', 'DAI' , 'DAI'}
-#focus_pair={'WETH', 'WBTC'}
-#focus_pair={'SUSHI', 'WETH'}
+waiting_time = 10
+threshold_for_showing_probability = 0.5
+
+print("Probability of match after waiting", waiting_time, "blocks")
+
+# Loads the data according to the set parameters
+if use_dune_data:
+    swaps_by_block = read_swaps_from_csv(
+        'data/swaps_data_from_router.csv', consider_swaps_as_splitted_swaps)
+else:
+    swaps_by_block = get_swaps(use_cache, "data/uniswap_swaps.pickled")
+
+# sorts blocks
+sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
+
+# generates all possible pairs
+focus_pairs = generate_focus_pairs(sorted_blocks, swaps_by_block)
 
 
-swaps_by_block = get_swaps(use_cache)
+# For each focus pair, it calculate the probability
+results = dict()
+for focus_pair in focus_pairs:
+    nr_of_times_an_order_can_be_found = 0
+    nr_of_times_a_counter_order_can_be_found_if_order_is_found = 0
+    for start_block_index in range(len(sorted_blocks) - waiting_time):
+        if not find_order_in_block(
+            sorted_blocks[start_block_index], focus_pair, swaps_by_block
+        ):
+            continue
+        nr_of_times_an_order_can_be_found += 1
 
-# print(swaps_by_block)
-#print({frozenset([o['sellToken'], o['buyToken']]) for b in swaps_by_block.values() for o in b})
-prob_opposite_offer = dict()
-prob_match = dict()
-expected_volume = dict()
-expected_nr_trades = dict()
+        nr_of_times_a_counter_order_can_be_found_if_order_is_found += \
+            find_order_in_next_k_blocks(
+                start_block_index,
+                waiting_time,
+                tuple(reversed(focus_pair)),
+                swaps_by_block,
+                sorted_blocks
+            )
 
-for k in range(20):
-    sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
-    nr_blocks_with_at_least_one_direct_trade = 0
-    nr_blocks_with_at_least_one_opposite_offer = 0
-    avg_volume = 0
-    nr_direct_trades = 0
-    for i in range(len(sorted_blocks) - k):
-        block_i = sorted_blocks[i]
-        sell_tokens_i = {o['sellToken']
-                         for o in swaps_by_block.get(block_i, [])}
-        buy_tokens_i = {o['buyToken'] for o in swaps_by_block.get(block_i, [])}
-        sell_tokens_j = {
-            o['sellToken']
-            for j in range(block_i, block_i + k + 1)
-            for o in swaps_by_block.get(j, [])
-        }
-        buy_tokens_j = {
-            o['buyToken']
-            for j in range(block_i, block_i + k + 1)
-            for o in swaps_by_block.get(j, [])
-        }
+    prob_opposite_offer = nr_of_times_a_counter_order_can_be_found_if_order_is_found / \
+        nr_of_times_an_order_can_be_found if nr_of_times_an_order_can_be_found > 0 else 0
+    results["-".join(focus_pair)] = prob_opposite_offer
 
-        if focus_pair is not None:
-            t_1 = tuple(focus_pair)
-            t_2 = tuple(reversed(t_1))
-            found = False
-            singleTradeFound = False
-            if t_1[0] in buy_tokens_j and \
-                (t_1[1] in sell_tokens_j or
-                 (len(t_1) >= 3 and t_1[2] in sell_tokens_j) or
-                 (len(t_1) >= 4 and t_1[3] in sell_tokens_j)
-                 ):
-                nr_blocks_with_at_least_one_opposite_offer += 1
-            for t in [t_1, t_2]:
-                if t[0] in sell_tokens_i and t[0] in buy_tokens_j and \
-                        t[1] in buy_tokens_i and t[1] in sell_tokens_j:
-                    sell_tokens_i = buy_tokens_j = {t[0]}
-                    buy_tokens_i = sell_tokens_j = {t[1]}
-                    found = True
-                    break
-            if not found:
-                sell_tokens_i = sell_tokens_j = buy_tokens_i = buy_tokens_j = set()
+# prints the pairs meeting the threshold: threshold_for_showing_probability
 
-        common_tokens = (sell_tokens_i & buy_tokens_j) | (
-            sell_tokens_j & buy_tokens_i)
-        if len(common_tokens) > 0:
-            nr_blocks_with_at_least_one_direct_trade += 1
-            for t in common_tokens:
-                vols_selling_t_i = [
-                    float(o['volume'])
-                    for o in swaps_by_block.get(block_i, [])
-                    if o['sellToken'] == t
-                ]
-                vols_selling_t_j = [
-                    float(o['volume'])
-                    for j in range(block_i, block_i + k + 1)
-                    for o in swaps_by_block.get(j, [])
-                ]
-                avg_volume += sum(vols_selling_t_i) + sum(vols_selling_t_j)
-                nr_direct_trades += len(vols_selling_t_i) + \
-                    len(vols_selling_t_j)
-    if nr_direct_trades > 0:
-        avg_volume /= nr_direct_trades
-    else:
-        avg_volume = 0
-    prob_opposite_offer[k] = nr_blocks_with_at_least_one_opposite_offer / \
-        (len(sorted_blocks) - k)
-    prob_match[k] = nr_blocks_with_at_least_one_direct_trade / \
-        (len(sorted_blocks) - k)
-    expected_volume[k] = avg_volume
-    expected_nr_trades[k] = nr_direct_trades / \
-        nr_blocks_with_at_least_one_direct_trade
+pairs_meeting_threshold = 0
+for (key, value) in results.items():
+    if value > threshold_for_showing_probability:
+        print(key)
+        print(value)
+        pairs_meeting_threshold += 1
 
-print("Probability of opposite offer")
-for k, v in prob_opposite_offer.items():
-    print(v)
+print(pairs_meeting_threshold / len(focus_pairs),
+      " pairs of all pairs meet the threshold of a",
+      threshold_for_showing_probability, " chance to find a match")
 
-print("Probability of trade")
-for k, v in prob_match.items():
-    print(k, v)
 
-print("Expected volume | trade exists")
-for k, v in expected_volume.items():
-    print(k, v)
+# prints the number of pairs with likelihoods above certain thresholds
 
-print("Expected nr trades | trade exists")
-for k, v in expected_nr_trades.items():
-    print(k, v)
+print("An overview of the number of pairs matchable with different thresholds")
+thresholds = [0.2, 0.3, 0.4, 0.5, 0.6]
+
+for threshold in thresholds:
+    pairs_meeting_threshold = 0
+    for (key, value) in results.items():
+        if value > threshold:
+            pairs_meeting_threshold += 1
+    print(threshold, ":", pairs_meeting_threshold)
+
+print(results)
+#plot_match_survivor(results)
+
