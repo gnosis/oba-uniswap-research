@@ -14,7 +14,7 @@ p(counter_order_in_next_k_blocks, order_in_this_block) != \
 """
 
 from .download_swaps import get_swaps
-from .utils import find_order_in_block, find_order_in_next_k_blocks, plot_match_survivor
+from .utils import find_order_in_block, find_order_in_next_k_blocks, plot_match_survivor, generate_focus_pairs
 from .read_csv import read_swaps_from_csv
 
 # Parameters
@@ -37,13 +37,8 @@ else:
 sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
 
 # generates all possible pairs
-focus_pairs = [
-    [o['sellToken'], o['buyToken']]
-    for j in range(1, len(sorted_blocks) - 1)
-    for o in swaps_by_block.get(sorted_blocks[j], [])
-]
+focus_pairs = generate_focus_pairs(sorted_blocks, swaps_by_block)
 
-focus_pairs = list({tuple(t) for t in focus_pairs})
 
 # For each focus pair, it calculate the probability
 results = dict()
@@ -56,7 +51,7 @@ for focus_pair in focus_pairs:
         ):
             continue
         nr_of_times_an_order_can_be_found += 1
-        
+
         nr_of_times_a_counter_order_can_be_found_if_order_is_found += \
             find_order_in_next_k_blocks(
                 start_block_index,

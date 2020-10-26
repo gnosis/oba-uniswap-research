@@ -22,10 +22,9 @@ def read_swaps_from_csv(filename, read_swaps_splitted=False):
             entry = orders[block_number] if block_number in \
                 orders else list()
             if read_swaps_splitted:
-                for i in range(0, len(path)-1):
+                for sell_token, buy_token in zip(path, path[1:]):
                     entry.append(
-                        {"sellToken": path[i],
-                         'buyToken': path[i+1]})
+                        {"sellToken": sell_token, "buyToken": buy_token})
             else:
                 entry.append(
                     {"sellToken": path[0],
