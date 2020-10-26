@@ -10,7 +10,7 @@ class GraphQLError:
     pass
 
 class GraphQLClient:
-    page_size = 1000
+    page_size = 500
 
     def __init__(self, url):
         self.endpoint = HTTPEndpoint(self.url)
@@ -45,8 +45,12 @@ class UniswapClient(GraphQLClient):
         token.decimals()
 
         data = self.endpoint(op)
-        if 'errors' in data.keys():
-            raise GraphQLError()
+        while True:
+            data = self.endpoint(op)
+            if 'errors' not in data.keys():
+                break
+            print("Error getting data. Retrying in 2 secs.")
+            sleep(2)
 
         query = op + data
         return query.token if hasattr(query, 'token') else None
@@ -156,36 +160,3 @@ class UniswapClient(GraphQLClient):
     def get_swaps(self, transactions_filter=dict()):
         """Get swap transactions."""
         return self.paginated(partial(self.get_swaps_page, transactions_filter))
-
-    def get_mints_page(self, transactions_filter, skip):
-        op = Operation(schema.Query)
-        transactions = op.transactions(
-            where=transactions_filter,
-            skip=skip,
-            first=self.page_size
-        )
-        transactions.block_number()
-        transactions.mints().log_index()
-        transactions.mints().pair().token0().symbol()
-        transactions.mints().pair().token1().symbol()
-        transactions.mints().amount0()
-        transactions.mints().amount1()
-        transactions.mints().amount_usd()
-        transactions.mints().liquidity()
-
-        while True:
-            data = self.endpoint(op)
-            if 'errors' not in data.keys():
-                break
-            print("Error getting data. Retrying in 2 secs.")
-            sleep(2)
-
-        query = op + data
-
-        if hasattr(query, 'transactions'):
-            return query.transactions
-        return []
-
-    def get_mints(self, transactions_filter=dict()):
-        """Get mint transactions (add liquidity)."""
-        return self.paginated(partial(self.get_mints_page, transactions_filter))
