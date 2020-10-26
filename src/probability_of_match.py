@@ -1,5 +1,26 @@
+"""
+The following program calculates the probability of finding a match - a
+counter order - for a random order. 
+
+Formally, it computes,
+p(counter_order_in_next_k_blocks | order_in_this_block)
+
+The calculation makes the assumption that the appearance of an order and
+a counter order is independent.
+
+That is,
+p(counter_order_in_next_k_blocks, order_in_this_block) = \
+    p(counter_order_in_next_k_blocks) * p(order_in_this_block)
+
+Under this assumption,
+
+p(counter_order_in_next_k_blocks | order_in_this_block) = \
+    = p(counter_order_in_next_k_blocks, order_in_this_block) / p(order_in_this_block)
+    = p(counter_order_in_next_k_blocks) = p(order_in_next_k_blocks)
+"""
+
 from .download_swaps import get_swaps
-from .utils import is_there_a_opposite_match_in_next_k_blocks
+from .utils import find_order_in_next_k_blocks
 from .read_csv import read_swaps_from_csv
 
 # Parameters
@@ -10,12 +31,6 @@ waiting_time = 10
 threshold_for_showing_probability = 0.5
 
 print("Probability of match after waiting", waiting_time, "blocks")
-# Description
-# The following program calculates the probability of finding a match - a
-# counter order - for a random order.
-# The calculation makes the assumption that the appearance of a counter order
-# is independent of placing the random order.
-
 
 # Loads the data according to the set parameters
 if use_dune_data:
@@ -38,16 +53,18 @@ focus_pairs = list({(tuple(t)) for t in focus_pairs})
 # For each focus pair, it calculate the probability
 results = dict()
 for focus_pair in focus_pairs:
-    nr_of_times_a_match_can_be_found = 0
-    for i in range(len(sorted_blocks) - waiting_time):
-        if is_there_a_opposite_match_in_next_k_blocks(i,
-                                                      waiting_time,
-                                                      focus_pair,
-                                                      swaps_by_block,
-                                                      sorted_blocks):
-            nr_of_times_a_match_can_be_found += 1
+    nr_of_times_an_order_can_be_found = 0
+    for block_index in range(len(sorted_blocks) - waiting_time):
+        if find_order_in_next_k_blocks(
+            block_index,
+            waiting_time,
+            focus_pair,
+            swaps_by_block,
+            sorted_blocks
+        ):
+            nr_of_times_an_order_can_be_found += 1
 
-    prob_opposite_offer = nr_of_times_a_match_can_be_found / \
+    prob_opposite_offer = nr_of_times_an_order_can_be_found / \
         (len(sorted_blocks) - waiting_time)
     results["-".join(focus_pair)] = prob_opposite_offer
 
