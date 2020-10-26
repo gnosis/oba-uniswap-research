@@ -1,3 +1,6 @@
+This repo contains a set of scripts for collecting uniswap data and exploratory
+research on OBA ideas.
+
 ## Create and activate virtual env:
 ```bash
 virtualenv --python /usr/bin/python3 venv
@@ -31,6 +34,11 @@ In order to adjust the dataset for the calculation, modify the following paramet
 ```bash
 end_block // this is the last ethereum block to be considered
 investigation_period // this is the investigation period in secs
+```
+
+## Creating OBA instances from uniswap trades
+```bash
+python -m src.oba_from_uniswap.main
 ```
 
 ## If uniswap theGraph API changes, then run:
