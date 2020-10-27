@@ -19,7 +19,7 @@ from .read_csv import read_swaps_from_csv
 
 # Parameters
 use_dune_data = True
-consider_swaps_as_splitted_swaps = False
+consider_swaps_as_splitted_swaps = True
 use_cache = True
 waiting_time = 4
 threshold_for_showing_probability = 0.5
@@ -51,6 +51,8 @@ focus_pairs = generate_focus_pairs(sorted_blocks, swaps_by_block)
 
 # For each focus pair, it calculate the probability
 results = dict()
+nr_of_orders_in_total = 0
+nr_of_orders_matchable = 0
 for focus_pair in focus_pairs:
     nr_of_times_an_order_can_be_found = 0
     nr_of_times_a_counter_order_can_be_found_if_order_is_found = 0
@@ -60,15 +62,17 @@ for focus_pair in focus_pairs:
         ):
             continue
         nr_of_times_an_order_can_be_found += 1
-
-        nr_of_times_a_counter_order_can_be_found_if_order_is_found += \
-            find_order_in_next_k_blocks(
-                start_block_index,
-                waiting_time,
-                tuple(reversed(focus_pair)),
-                swaps_by_block,
-                sorted_blocks
-            )
+        nr_of_orders_in_total += 1
+        found = find_order_in_next_k_blocks(
+            start_block_index,
+            waiting_time,
+            tuple(reversed(focus_pair)),
+            swaps_by_block,
+            sorted_blocks
+        )
+        if found:
+            nr_of_times_a_counter_order_can_be_found_if_order_is_found += 1
+            nr_of_orders_matchable += 1
     prob_opposite_offer = nr_of_times_a_counter_order_can_be_found_if_order_is_found / \
         nr_of_times_an_order_can_be_found \
         if nr_of_times_an_order_can_be_found > \
@@ -100,4 +104,7 @@ for threshold in thresholds:
         if value > threshold:
             pairs_meeting_threshold += 1
     print(threshold, ":", pairs_meeting_threshold)
+
+print("From ", nr_of_orders_in_total, "checked orders, for ",
+      nr_of_orders_matchable, " the algorithm was able to find a match")
 # plot_match_survivor(results)
