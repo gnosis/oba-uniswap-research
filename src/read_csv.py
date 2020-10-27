@@ -18,15 +18,19 @@ def read_swaps_from_csv(filename, read_swaps_splitted=False):
 
             path = ast.literal_eval(path)
             path = ['0x' + address for address in path]
+            block_number = int(block_number)
             entry = orders[block_number] if block_number in \
                 orders else list()
             if read_swaps_splitted:
                 for sell_token, buy_token in zip(path, path[1:]):
                     entry.append(
-                        {"sellToken": sell_token, "buyToken": buy_token})
+                        {"sellToken": sell_token,
+                         "buyToken": buy_token,
+                         "address": address})
             else:
                 entry.append(
                     {"sellToken": path[0],
-                     'buyToken': path[-1]})
+                     'buyToken': path[-1],
+                     'address': address})
             orders[block_number] = entry
         return orders
