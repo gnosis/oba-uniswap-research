@@ -1,3 +1,38 @@
+
+def sort_out_arbitrageur_swaps(swaps_by_block,
+                               max_amount_swaps_retail_traders=50):
+    # Arbitrageur traders are identified as frequent traders
+    # frequent traders are identified as traders with more than
+    # max_amount_swaps_retail_traders swaps
+    print("Before sorting out arbitrageurs, the data contains ",
+          count_swaps(swaps_by_block), " swaps")
+    owners = {o['address']
+              for k in swaps_by_block.keys()
+              for o in swaps_by_block.get(k, [])}
+    for owner in owners:
+        count = 0
+        for block_index in swaps_by_block.keys():
+            for swaps in swaps_by_block.get(block_index):
+                if swaps['address'] == owner:
+                    count += 1
+        if count > max_amount_swaps_retail_traders:
+            for block_index in swaps_by_block.keys():
+                swaps_by_block[block_index] = [swaps for swaps in
+                                               swaps_by_block.get(block_index)
+                                               if swaps['address'] != owner]
+
+    print("After sorting out arbitrageurs, the data contains ",
+          count_swaps(swaps_by_block), " swaps")
+    return swaps_by_block
+
+
+def count_swaps(swaps_by_block):
+    data_points = 0
+    for block_index in swaps_by_block.keys():
+        data_points += len(swaps_by_block.get(block_index))
+    return data_points
+
+
 def generate_focus_pairs(sorted_blocks, swaps_by_block):
     focus_pairs = [
         [o['sellToken'], o['buyToken']]
