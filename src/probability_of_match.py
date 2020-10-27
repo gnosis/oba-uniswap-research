@@ -44,7 +44,7 @@ for block in range(min(swaps_by_block.keys()), max(swaps_by_block.keys())):
     if block not in swaps_by_block.keys():
         swaps_by_block[block] = []
 
-# sorting out arbitrageurs
+# filtering out arbitrageurs
 swaps_by_block = filter_out_arbitrageur_swaps(swaps_by_block)
 
 # sorts blocks

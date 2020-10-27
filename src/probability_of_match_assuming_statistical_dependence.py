@@ -34,7 +34,7 @@ else:
     swaps_by_block = get_swaps(use_cache, "data/uniswap_swaps.pickled")
 
 
-# sorting out arbitrageurs
+# filtering out arbitrageurs
 swaps_by_block = filter_out_arbitrageur_swaps(swaps_by_block)
 
 # sorts blocks
@@ -96,5 +96,4 @@ for threshold in thresholds:
     print(threshold, ":", pairs_meeting_threshold)
 
 print(results)
-#plot_match_survivor(results)
-
+# plot_match_survivor(results)
