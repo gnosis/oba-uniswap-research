@@ -21,7 +21,7 @@ p(counter_order_in_next_k_blocks | order_in_this_block) = \
 """
 
 from .download_swaps import get_swaps
-from .utils import find_order_in_next_k_blocks, generate_focus_pairs, plot_match_survivor
+from .utils import find_order_in_next_k_blocks, generate_focus_pairs, filter_out_arbitrageur_swaps, plot_match_survivor
 from .read_csv import read_swaps_from_csv
 
 # Parameters
@@ -43,6 +43,9 @@ else:
 for block in range(min(swaps_by_block.keys()), max(swaps_by_block.keys())):
     if block not in swaps_by_block.keys():
         swaps_by_block[block] = []
+
+# sorting out arbitrageurs
+swaps_by_block = filter_out_arbitrageur_swaps(swaps_by_block)
 
 # sorts blocks
 sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
