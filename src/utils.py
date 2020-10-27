@@ -1,6 +1,6 @@
 
 def filter_out_arbitrageur_swaps(swaps_by_block,
-                               max_amount_swaps_retail_traders=50):
+                                 max_amount_swaps_retail_traders=50):
     # Arbitrageur traders are identified as frequent traders
     # frequent traders are identified as traders with more than
     # max_amount_swaps_retail_traders swaps
@@ -59,7 +59,8 @@ def find_order_in_next_k_blocks(
 ):
     assert focus_pair is not None
     for block_index in range(start_block_index, start_block_index + k):
-        if find_order_in_block(sorted_blocks[block_index], focus_pair, swaps_by_block):
+        if find_order_in_block(sorted_blocks[block_index],
+                               focus_pair, swaps_by_block):
             return True
     return False
 

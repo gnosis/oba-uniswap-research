@@ -12,6 +12,15 @@ virtualenv --python /usr/bin/python3 venv
 pip install -r requirements.txt
 ```
 
+## Create Data:
+To work with the Dune data:
+```
+cd data/dune_download
+cat $(ls | grep "swaps")| ./filter_out_headers.sh > merged.csv
+```
+The data from thegraph does not be prepared, though the first download might take some time.
+
+
 ## Usage:
 
 In order to run the calculations, run:

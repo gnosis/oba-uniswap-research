@@ -19,9 +19,9 @@ from .read_csv import read_swaps_from_csv
 
 # Parameters
 use_dune_data = True
-consider_swaps_as_splitted_swaps = True
+consider_swaps_as_splitted_swaps = False
 use_cache = True
-waiting_time = 10
+waiting_time = 4
 threshold_for_showing_probability = 0.5
 
 print("Probability of match after waiting", waiting_time, "blocks")
@@ -29,12 +29,12 @@ print("Probability of match after waiting", waiting_time, "blocks")
 # Loads the data according to the set parameters
 if use_dune_data:
     swaps_by_block = read_swaps_from_csv(
-        'data/swaps_data_from_router.csv', consider_swaps_as_splitted_swaps)
+        'data/dune_download/merged.csv', consider_swaps_as_splitted_swaps)
 else:
     swaps_by_block = get_swaps(use_cache, "data/uniswap_swaps.pickled")
 
 
-# sorting out arbitrageurs
+# filtering out arbitrageurs
 swaps_by_block = filter_out_arbitrageur_swaps(swaps_by_block)
 
 # sorts blocks
@@ -96,5 +96,4 @@ for threshold in thresholds:
     print(threshold, ":", pairs_meeting_threshold)
 
 print(results)
-#plot_match_survivor(results)
-
+# plot_match_survivor(results)
