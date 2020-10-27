@@ -4,4 +4,4 @@
 # cd data/dune_download
 # cat $(ls | grep "swaps")| ./filter_out_headers.sh > merged.csv
 
-gawk '($0 !~ /^block_number/)'
+gawk '($0 !~ /^block_number/ || c!=1) {print; c=1}'
