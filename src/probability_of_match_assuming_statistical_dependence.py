@@ -40,6 +40,11 @@ swaps_by_block = filter_out_arbitrageur_swaps(swaps_by_block)
 # sorts blocks
 sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
 
+# Sets a threshold for the minimum amount of appearances of a swap pair
+# Assuming a swap happens on average less frequently than in each 20ths block
+# the pair should not be relevant for our exchange
+threshold_for_min_nr_of_appearances_to_be_considered = len(sorted_blocks)/20
+
 # generates all possible pairs
 focus_pairs = generate_focus_pairs(sorted_blocks, swaps_by_block)
 
@@ -64,9 +69,10 @@ for focus_pair in focus_pairs:
                 swaps_by_block,
                 sorted_blocks
             )
-
     prob_opposite_offer = nr_of_times_a_counter_order_can_be_found_if_order_is_found / \
-        nr_of_times_an_order_can_be_found if nr_of_times_an_order_can_be_found > 0 else 0
+        nr_of_times_an_order_can_be_found \
+        if nr_of_times_an_order_can_be_found > \
+        threshold_for_min_nr_of_appearances_to_be_considered else 0
     results["-".join(focus_pair)] = prob_opposite_offer
 
 # prints the pairs meeting the threshold: threshold_for_showing_probability
@@ -94,6 +100,4 @@ for threshold in thresholds:
         if value > threshold:
             pairs_meeting_threshold += 1
     print(threshold, ":", pairs_meeting_threshold)
-
-print(results)
 # plot_match_survivor(results)
