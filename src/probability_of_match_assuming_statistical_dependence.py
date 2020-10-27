@@ -14,7 +14,7 @@ p(counter_order_in_next_k_blocks, order_in_this_block) != \
 """
 
 from .download_swaps import get_swaps
-from .utils import find_order_in_block, find_order_in_next_k_blocks, sort_out_arbitrageur_swaps, plot_match_survivor, generate_focus_pairs
+from .utils import find_order_in_block, find_order_in_next_k_blocks, filter_out_arbitrageur_swaps, plot_match_survivor, generate_focus_pairs
 from .read_csv import read_swaps_from_csv
 
 # Parameters
@@ -35,7 +35,7 @@ else:
 
 
 # sorting out arbitrageurs
-swaps_by_block = sort_out_arbitrageur_swaps(swaps_by_block)
+swaps_by_block = filter_out_arbitrageur_swaps(swaps_by_block)
 
 # sorts blocks
 sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)

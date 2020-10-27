@@ -1,10 +1,10 @@
 
-def sort_out_arbitrageur_swaps(swaps_by_block,
+def filter_out_arbitrageur_swaps(swaps_by_block,
                                max_amount_swaps_retail_traders=50):
     # Arbitrageur traders are identified as frequent traders
     # frequent traders are identified as traders with more than
     # max_amount_swaps_retail_traders swaps
-    print("Before sorting out arbitrageurs, the data contains ",
+    print("Before filtering out arbitrageurs, the data contains ",
           count_swaps(swaps_by_block), " swaps")
     owners = {o['address']
               for k in swaps_by_block.keys()
@@ -21,7 +21,7 @@ def sort_out_arbitrageur_swaps(swaps_by_block,
                                                swaps_by_block.get(block_index)
                                                if swaps['address'] != owner]
 
-    print("After sorting out arbitrageurs, the data contains ",
+    print("After filtering out arbitrageurs, the data contains ",
           count_swaps(swaps_by_block), " swaps")
     return swaps_by_block
 
