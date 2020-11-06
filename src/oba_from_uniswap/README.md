@@ -2,7 +2,7 @@ Set of scripts for creating OBA instances from several data files, namely:
 
 ### Uniswap swap files
 
-[CSV files](data/oba_from_uniswap/swaps_data_from_router_11092424-11146424.csv)
+[CSV files](data/oba_from_uniswap/swaps_data_from_router_sample.csv)
 containing the swap transactions sent to the uniswap router contract.
 
 This file can be obtained from the blockchain via DuneAnalytics, using
@@ -10,7 +10,7 @@ This file can be obtained from the blockchain via DuneAnalytics, using
 
 ### SCP files
 
-[CSV files](data/oba_from_uniswap/scp-crawled_11092424-11144990.csv) containing SCP liquidity 
+[CSV files](data/oba_from_uniswap/scp-crawled_sample.csv) containing SCP liquidity 
 provision orders.
 
 This file can be obtained from a docker container running on kubernetes:
