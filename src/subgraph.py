@@ -4,6 +4,7 @@ from .uniswap_graphql_schema import uniswap_graphql_schema as schema
 
 from functools import partial
 from time import sleep
+from urllib.error import URLError
 
 
 class GraphQLError:
@@ -79,12 +80,16 @@ class UniswapClient(GraphQLClient):
         pair.reserve_usd()
 
         while True:
-            data = self.endpoint(op)
-            if 'errors' not in data.keys():
+            try:
+                data = self.endpoint(op)
+            except URLError:
+                data = {}
+            if 'errors' not in data.keys() and \
+               'data' in data.keys() and \
+                'pair' in data['data'].keys():
                 break
             print("Error getting data. Retrying in 2 secs.")
             sleep(2)
-
         query = op + data
         return query.pair if hasattr(query, 'pair') else []
 
