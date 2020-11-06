@@ -57,7 +57,23 @@ def create_batch(orders):
         }
         for id, o in enumerate(orders)
     }
-    return {'orders': orders, 'uniswaps': pools}
+
+    tokens = {o['sellToken'] for o in orders.values()} | \
+        {o['buyToken'] for o in orders.values()} | \
+        {p['token1'] for p in pools.values()} | \
+        {p['token2'] for p in pools.values()}
+    tokens = list(tokens)
+    ref_token = 'WETH' if 'WETH' in tokens else \
+        (tokens[0] if len(tokens) > 0 else None)
+
+    return {
+        'refToken': ref_token,
+        'obaFee': 0.001,
+        'uniswapFee': 0.003,
+        'tokens': tokens,
+        'orders': orders,
+        'uniswaps': pools
+    }
 
 # Groups orders in batches.
 def batch_iterator(orders, batch_duration):
