@@ -46,9 +46,8 @@ investigation_period // this is the investigation period in secs
 ```
 
 ## Creating OBA instances from uniswap trades
-```bash
-python -m src.oba_from_uniswap.main
-```
+
+See [README](oba_from_uniswap/README.md) .
 
 ## If uniswap theGraph API changes, then run:
 ```bash
