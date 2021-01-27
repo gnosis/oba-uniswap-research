@@ -1,6 +1,6 @@
 """
 The following program calculates the probability of finding a match - a
-counter order - for a random order. 
+counter order - for a random order.
 
 Formally, it computes,
 p(counter_order_in_next_k_blocks | order_in_this_block)
@@ -19,10 +19,10 @@ from .read_csv import read_swaps_from_csv
 
 # Parameters
 use_dune_data = True
-consider_swaps_as_splitted_swaps = False
+consider_swaps_as_splitted_swaps = True
 use_cache = True
-waiting_time = 4
-threshold_for_showing_probability = 0.5
+waiting_time = 12
+threshold_for_showing_probability = 0.4
 
 print("Probability of match after waiting", waiting_time, "blocks")
 
@@ -43,7 +43,7 @@ sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
 # Sets a threshold for the minimum amount of appearances of a swap pair
 # Assuming a swap happens on average less frequently than in each 20ths block
 # the pair should not be relevant for our exchange
-threshold_for_min_nr_of_appearances_to_be_considered = len(sorted_blocks)/20
+threshold_for_min_nr_of_appearances_to_be_considered = len(sorted_blocks)/10
 
 # generates all possible pairs
 focus_pairs = generate_focus_pairs(sorted_blocks, swaps_by_block)
@@ -100,4 +100,4 @@ for threshold in thresholds:
         if value > threshold:
             pairs_meeting_threshold += 1
     print(threshold, ":", pairs_meeting_threshold)
-# plot_match_survivor(results)
+plot_match_survivor(results)
