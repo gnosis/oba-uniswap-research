@@ -1,6 +1,6 @@
 """
 The following program calculates the probability of finding a match - a
-counter order - for a random order. 
+counter order - for a random order.
 
 Formally, it computes,
 p(counter_order_in_next_k_blocks | order_in_this_block)
@@ -19,17 +19,18 @@ from .read_csv import read_swaps_from_csv
 
 # Parameters
 use_dune_data = True
-consider_swaps_as_splitted_swaps = False
+consider_swaps_as_splitted_swaps = True
 use_cache = True
 waiting_time = 4
 threshold_for_showing_probability = 0.5
+assume_only_halve_of_trades_from_uniswap_is_migrating = True
 
 print("Probability of match after waiting", waiting_time, "blocks")
 
 # Loads the data according to the set parameters
 if use_dune_data:
     swaps_by_block = read_swaps_from_csv(
-        'data/dune_download/merged.csv', consider_swaps_as_splitted_swaps)
+        'data/dune_download/merged.csv', consider_swaps_as_splitted_swaps, assume_only_halve_of_trades_from_uniswap_is_migrating)
 else:
     swaps_by_block = get_swaps(use_cache, "data/uniswap_swaps.pickled")
 

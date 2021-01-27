@@ -2,16 +2,18 @@ import csv
 import ast
 
 
-def read_swaps_from_csv(filename, read_swaps_splitted=False):
+def read_swaps_from_csv(filename, read_swaps_splitted=False, assume_only_halve_of_trades_from_uniswap_is_migrating=False):
     with open(filename, newline='') as f:
         reader = csv.reader(f)
         data = list(reader)
         orders = dict()
         first = True
-        for row in data:
+        for cnt, row in enumerate(data):
             # Skip header.
             if first:
                 first = False
+                continue
+            if assume_only_halve_of_trades_from_uniswap_is_migrating and cnt % 2 == 0:
                 continue
             (block_number, index, gas_price, sell_amount,
              buy_amount, path, address, output_amounts) = row
