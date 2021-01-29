@@ -30,14 +30,14 @@ consider_swaps_as_splitted_swaps = True
 use_cache = True
 waiting_time = 4
 threshold_for_showing_probability = 0.5
-assume_only_halve_of_trades_from_uniswap_is_migrating = True
+percentage_of_migration_from_uniswap = 50
 
 print("Probability of match after waiting", waiting_time, "blocks")
 
 # Loads the data according to the set parameters
 if use_dune_data:
     swaps_by_block = read_swaps_from_csv(
-        'data/dune_download/merged.csv', consider_swaps_as_splitted_swaps, assume_only_halve_of_trades_from_uniswap_is_migrating)
+        'data/dune_download/merged.csv', consider_swaps_as_splitted_swaps, percentage_of_migration_from_uniswap)
 else:
     swaps_by_block = get_swaps(use_cache, "data/uniswap_swaps.pickled")
 
