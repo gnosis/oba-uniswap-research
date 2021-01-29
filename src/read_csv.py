@@ -1,21 +1,17 @@
 import csv
 import ast
+from random import sample
 
 
-def read_swaps_from_csv(filename, read_swaps_splitted=False):
+def read_swaps_from_csv(filename, read_swaps_splitted=False, data_usage_percentage=50):
     with open(filename, newline='') as f:
         reader = csv.reader(f)
         data = list(reader)
         orders = dict()
-        first = True
-        for row in data:
-            # Skip header.
-            if first:
-                first = False
-                continue
+        data = sample(data[1:], len(data) * data_usage_percentage // 100)
+        for cnt, row in enumerate(data):
             (block_number, index, gas_price, sell_amount,
              buy_amount, path, address, output_amounts) = row
-
             path = ast.literal_eval(path)
             path = ['0x' + address for address in path]
             block_number = int(block_number)
