@@ -48,7 +48,9 @@ def find_order_in_block(
 ):
     for o in swaps_by_block.get(block, []):
         if focus_pair[0] == o['buyToken'] and \
-           focus_pair[1] == o['sellToken']:
+           (focus_pair[1] == o['sellToken'] or
+            (len(focus_pair) >= 3 and focus_pair[2] == o['sellToken']) or
+                (len(focus_pair) >= 4 and focus_pair[3] == o['sellToken'])):
             return True
     return False
 
