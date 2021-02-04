@@ -19,7 +19,7 @@ def read_swaps_from_csv(filename, read_swaps_splitted=False, data_usage_percenta
             entry = orders[block_number] if block_number in \
                 orders else list()
             if read_swaps_splitted:
-                for count, (sell_token, buy_token) in enumerate(zip(path, path[1:])):
+                for count, (sell_token, buy_token) in enumerate(zip(path[:-1], path[1:])):
                     entry.append(
                         {"sellToken": sell_token,
                          "buyToken": buy_token,
