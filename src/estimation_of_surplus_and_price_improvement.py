@@ -15,7 +15,7 @@ from .read_csv import read_swaps_from_csv
 use_dune_data = True
 consider_swaps_as_splitted_swaps = True
 use_cache = True
-waiting_time = 8
+waiting_time = 4
 threshold_for_showing_probability = 0.1
 eth_price = 1300
 
@@ -36,7 +36,7 @@ for migration_percentage in migration_percentages:
     # Loads the data according to the set parameters
     if use_dune_data:
         swaps_by_block = read_swaps_from_csv(
-            'data/dune_download/swaps_data_from_router_11740000-11741000.csv', consider_swaps_as_splitted_swaps, migration_percentage)
+            'data/dune_download/swaps_data_from_router_11790000-11791000.csv', consider_swaps_as_splitted_swaps, migration_percentage)
     else:
         swaps_by_block = get_swaps(use_cache, "data/uniswap_swaps.pickled")
 
