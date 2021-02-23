@@ -1,12 +1,12 @@
 """
-The following program calculates the amount of weth that can be matched in GP 
-protocol under certain assumptions. 
+The following program calculates the amount of weth that can be matched in GP
+protocol under certain assumptions.
 The code separates the uniswap orders into batches and then checks for each batch
-how much volume is traded in WETH->Stablecoin and Stablecoin->WETH. 
-The matched volume will then be min(vol(WETH->Stablecoin), vol(Stablecoin->WETH)). 
+how much volume is traded in WETH->Stablecoin and Stablecoin->WETH.
+The matched volume will then be min(vol(WETH->Stablecoin), vol(Stablecoin->WETH)).
 Stablecoins can be USDC, DAI, USDT.
 """
-
+import matplotlib.pyplot as plt
 from .download_swaps import get_swaps
 from .utils import find_order_in_next_k_blocks, generate_focus_pairs, filter_out_arbitrageur_swaps, plot_match_survivor
 from .read_csv import read_swaps_from_csv
@@ -17,7 +17,7 @@ consider_swaps_as_splitted_swaps = True
 use_cache = True
 waiting_time = 4
 threshold_for_showing_probability = 0.1
-eth_price = 1300
+eth_price = 1573
 
 # focus pair is a trade in direction WETH->USDC or WETH->DAI or WETH->USDT
 focus_pairs = [('0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',  # WETH
@@ -45,53 +45,60 @@ for migration_percentage in migration_percentages:
             swaps_by_block[block] = []
 
     # filtering out arbitrageurs
-    # swaps_by_block = filter_out_arbitrageur_swaps(swaps_by_block)
+    swaps_by_block = filter_out_arbitrageur_swaps(swaps_by_block)
     # sorts blocks
     sorted_blocks = sorted(swaps_by_block.keys(), reverse=True)
-
+    counts = []
     # For each focus pair, it calculate the probability
     for focus_pair in focus_pairs:
-        directly_matchable_volume_on_focus_pair = 0  # Volume measued in weth
-        non_matchable_volume_on_focus_pair = 0  # Volume measued in weth
+        surplus_usd = 0  # surplus measued in usd
+        non_matchable_volume = 0  # Volume measued in usd
+        matched_volume = 0  # Volume measued in usd
         for batch_interval in range((len(sorted_blocks))//waiting_time):
-            sum_volume_direction_focus_pair_in_batch = 0  # Volume measued in weth
-            sum_volume_direction_invers_focus_pair_in_batch = 0  # Volume measured in weth
-            for block_index in range(batch_interval * waiting_time, batch_interval * waiting_time + waiting_time):
+            amount_stable_weth = 0  # Volume measued in weth
+            amount_weth_stable = 0  # Volume measured in weth
+            cnt = 0
+            for block_index in range(batch_interval * waiting_time, (batch_interval+1) * waiting_time):
                 for o in swaps_by_block.get(sorted_blocks[block_index], []):
                     if focus_pair[0] == o['buyToken'] and \
-                        (focus_pair[1] == o['sellToken'] or
-                            (len(focus_pair) >= 3 and focus_pair[2] == o['sellToken']) or
-                         (len(focus_pair) >= 4 and focus_pair[3] == o['sellToken'])):
+                            (focus_pair[1] == o['sellToken'] or
+                             (len(focus_pair) >= 3 and focus_pair[2] == o['sellToken']) or
+                             (len(focus_pair) >= 4 and focus_pair[3] == o['sellToken'])):
                         # getting the amount of weth bought
-                        sum_volume_direction_focus_pair_in_batch += o['buyAmount']
+                        cnt += 1
+                        amount_stable_weth += o['buyAmount'] // 10**18
 
                     if focus_pair[0] == o['sellToken'] and \
-                        (focus_pair[1] == o['buyToken'] or
-                            (len(focus_pair) >= 3 and focus_pair[2] == o['buyToken']) or
-                         (len(focus_pair) >= 4 and focus_pair[3] == o['buyToken'])):
+                            (focus_pair[1] == o['buyToken'] or
+                             (len(focus_pair) >= 3 and focus_pair[2] == o['buyToken']) or
+                             (len(focus_pair) >= 4 and focus_pair[3] == o['buyToken'])):
                         # getting the amount of weth sold
-                        sum_volume_direction_invers_focus_pair_in_batch += o['sellAmount']
+                        cnt += 1
+                        amount_weth_stable += o['sellAmount'] // 10**18
 
-            directly_matchable_volume_on_focus_pair_in_batch = min(
-                sum_volume_direction_focus_pair_in_batch, sum_volume_direction_invers_focus_pair_in_batch)*2
-            non_matchable_volume_on_focus_pair_in_batch = abs(
-                sum_volume_direction_focus_pair_in_batch-sum_volume_direction_invers_focus_pair_in_batch)
-            # print(batch_interval)
-            # if(directly_matchable_volume_on_focus_pair_in_batch > 0):
-            #     print(directly_matchable_volume_on_focus_pair_in_batch /
-            #           (directly_matchable_volume_on_focus_pair_in_batch+non_matchable_volume_on_focus_pair_in_batch))
-            directly_matchable_volume_on_focus_pair += directly_matchable_volume_on_focus_pair_in_batch
-            non_matchable_volume_on_focus_pair += non_matchable_volume_on_focus_pair_in_batch
-
-    # print("Matchable weth in", len(sorted_blocks), " blocks:",
-    #       directly_matchable_volume_on_focus_pair // 10**18)
-    # print("Non-matchable weth in ", len(sorted_blocks), " blocks:",
-    #       non_matchable_volume_on_focus_pair // 10**18)
-    # if (directly_matchable_volume_on_focus_pair+non_matchable_volume_on_focus_pair > 0):
-    #     print("Percentable of matchable weth in ", len(sorted_blocks), " blocks", directly_matchable_volume_on_focus_pair /
-    #           (directly_matchable_volume_on_focus_pair+non_matchable_volume_on_focus_pair))
+            surplus_usd_per_batch = min(
+                amount_stable_weth, amount_weth_stable) * 2 * 0.003 * eth_price
+            non_matchable_volume_usd_per_batch = abs(
+                amount_stable_weth-amount_weth_stable) * eth_price
+            counts.append(non_matchable_volume_usd_per_batch)
+            surplus_usd += surplus_usd_per_batch
+            matched_volume += min(
+                amount_stable_weth, amount_weth_stable) * 2 * eth_price
+            non_matchable_volume += non_matchable_volume_usd_per_batch
+    print("Matchable volume in", len(sorted_blocks), " blocks:",
+          matched_volume, "[USD]")
+    print("Non-matchable volume in ", len(sorted_blocks), " blocks:",
+          non_matchable_volume, "[USD]")
+    if (surplus_usd+non_matchable_volume > 0):
+        print("Percentable of matchable volume in ", len(sorted_blocks), " blocks", matched_volume /
+              (matched_volume+non_matchable_volume))
     investigated_time_period_in_sec = len(sorted_blocks) * 15
     print("Total surplus in USD for 30 days would be",
-          directly_matchable_volume_on_focus_pair // 10**18 * 0.003 * 24*60*60 / investigated_time_period_in_sec * 30*eth_price, "plus saved slippage")
+          surplus_usd * 24 * 60 * 60 * 30 / investigated_time_period_in_sec, " plus saved slippage")
     print("That would imply an on-average price improvement of",
-          0.3 * directly_matchable_volume_on_focus_pair / (directly_matchable_volume_on_focus_pair+non_matchable_volume_on_focus_pair), "[%]")
+          surplus_usd / (matched_volume+non_matchable_volume) * 100, "[%]")
+# print(counts)
+# counts = [float(c) for c in counts if c > 0]
+# plt.hist(counts, bins=100)
+# plt.show()
+# print(sum(counts)/len(counts))
