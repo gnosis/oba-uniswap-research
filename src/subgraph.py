@@ -10,6 +10,9 @@ from urllib.error import URLError
 class GraphQLError:
     pass
 
+class UnrecoverableError(Exception):
+    pass
+
 class GraphQLClient:
     page_size = 500
 
@@ -21,12 +24,23 @@ class GraphQLClient:
         cur_page_size = self.page_size
         cur_skip = 0
         while cur_page_size == self.page_size:
-            cur_page = query(skip=cur_skip)
+            cur_page = query(skip=cur_skip, first=self.page_size)
             cur_page_size = len(cur_page)
             cur_skip += cur_page_size
             for i in cur_page:
                 yield i
-            sleep(1)
+
+    # Apparently this is now the preferred way to do pagination
+    def paginated_on_id(self, query):
+        """Abstracts the fact that results are paginated."""
+        cur_page_size = self.page_size
+        last_id = None
+        while cur_page_size == self.page_size:
+            cur_page = query(first=self.page_size, last_id=last_id)
+            cur_page_size = len(cur_page)
+            for i in cur_page:
+                yield i
+            last_id = cur_page[-1].id
 
 
 class UniswapClient(GraphQLClient):
@@ -41,7 +55,6 @@ class UniswapClient(GraphQLClient):
             id=id,
             **kwargs
         )
-        token.id()
         token.symbol()
         token.decimals()
 
@@ -86,19 +99,95 @@ class UniswapClient(GraphQLClient):
                 data = {}
             if 'errors' not in data.keys() and \
                'data' in data.keys() and \
-                'pair' in data['data'].keys():
+                'pair' in data['data'].keys() and \
+                'reserve0' in data['data']['pair'].keys() and \
+                'reserve1' in data['data']['pair'].keys():
                 break
             print("Error getting data. Retrying in 2 secs.")
             sleep(2)
         query = op + data
         return query.pair if hasattr(query, 'pair') else []
 
-    def get_pairs_page(self, pairs_filter, skip, **kwargs):
+    def get_pair_reserves(self, id, **kwargs):
         op = Operation(schema.Query)
+        pair = op.pair(
+            id=id,
+            **kwargs
+        )
+        pair.reserve0()
+        pair.reserve1()
+
+        while True:
+            try:
+                data = self.endpoint(op)
+            except URLError:
+                data = {}
+            if 'errors' not in data.keys() and \
+               'data' in data.keys() and \
+                'pair' in data['data'].keys():
+                if data['data']['pair'] is None:
+                    raise UnrecoverableError()
+                break
+            print("Error getting data. Retrying in 2 secs.")
+            sleep(2)
+        query = op + data
+        return query.pair if hasattr(query, 'pair') else []
+
+    def get_token_day_price(self, token_id, date, **kwargs):
+        op = Operation(schema.Query)
+
+        token_day_data = op.token_day_datas(
+            where={'date': date, 'token': token_id},
+            **kwargs
+        )
+        token_day_data.price_usd()
+
+        while True:
+            try:
+                data = self.endpoint(op)
+            except URLError:
+                data = {}
+            if 'errors' not in data.keys():
+                break
+            print("Error getting data. Retrying in 2 secs.")
+            sleep(2)
+        query = op + data
+        if len(query.token_day_datas) != 1:
+            raise UnrecoverableError()
+        return query.token_day_datas[0].price_usd
+
+    def get_token_block_price(self, token_id, **kwargs):
+        op = Operation(schema.Query)
+
+        token_data = op.token(
+            id=token_id,
+            **kwargs
+        )
+        token_data.derived_eth()
+
+        while True:
+            try:
+                data = self.endpoint(op)
+            except URLError:
+                data = {}
+            if 'errors' not in data.keys() and \
+               'data' in data.keys() and \
+                'token' in data['data'].keys():
+                if data['data']['token'] is None:
+                    raise UnrecoverableError()
+                break
+            print("Error getting data. Retrying in 2 secs.")
+            sleep(2)
+        query = op + data
+        return query.token.derived_eth if hasattr(query, 'token') else []
+
+    def get_pairs_page(self, pairs_filter, last_id, first, **kwargs):
+        op = Operation(schema.Query)
+        if last_id is not None:
+            pairs_filter.update({"id_gt": last_id})
         pairs = op.pairs(
             where=pairs_filter,
-            skip=skip,
-            first=self.page_size,
+            first=first,
             **kwargs
         )
         pairs.id()
@@ -123,6 +212,7 @@ class UniswapClient(GraphQLClient):
             if 'errors' not in data.keys():
                 break
             print("Error getting data. Retrying in 2 secs.")
+            print(data['errors'])
             sleep(2)
 
         query = op + data
@@ -130,14 +220,39 @@ class UniswapClient(GraphQLClient):
 
     def get_pairs(self, pairs_filter=dict(), **kwargs):
         """Get pairs."""
-        return self.paginated(partial(self.get_pairs_page, pairs_filter, **kwargs))
+        return self.paginated_on_id(partial(self.get_pairs_page, pairs_filter, **kwargs))
 
-    def get_swaps_page(self, transactions_filter, skip):
+    def get_pair_ids(self, token1, token2, **kwargs):
+        """Get pairs and token ids."""
+        op = Operation(schema.Query)
+        filter = {
+            'token0_in': [token1, token2],
+            'token1_in': [token1, token2]
+        }
+        pairs = op.pairs(
+            where=filter,
+            first=1
+        )
+        pairs.id()
+        pairs.token0().id()
+        pairs.token1().id()
+
+        while True:
+            data = self.endpoint(op)
+            if 'errors' not in data.keys():
+                break
+            print("Error getting data. Retrying in 2 secs.")
+            sleep(2)
+
+        query = op + data
+        return query.pairs[0] if hasattr(query, 'pairs') else None
+
+    def get_swaps_page(self, transactions_filter, skip, first):
         op = Operation(schema.Query)
         transactions = op.transactions(
             where=transactions_filter,
             skip=skip,
-            first=self.page_size
+            first=first
         )
         transactions.block_number()
         transactions.swaps().log_index()

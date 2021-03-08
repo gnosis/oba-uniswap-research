@@ -108,6 +108,11 @@ class User_orderBy(sgqlc.types.Enum):
     __choices__ = ('id', 'liquidityPositions', 'usdSwapped')
 
 
+class _SubgraphErrorPolicy_(sgqlc.types.Enum):
+    __schema__ = uniswap_graphql_schema
+    __choices__ = ('allow', 'deny')
+
+
 
 ########################################################################
 # Input Objects
@@ -1624,7 +1629,7 @@ class PairHourData(sgqlc.types.Type):
 
 class Query(sgqlc.types.Type):
     __schema__ = uniswap_graphql_schema
-    __field_names__ = ('uniswap_factory', 'uniswap_factories', 'token', 'tokens', 'pair', 'pairs', 'user', 'users', 'liquidity_position', 'liquidity_positions', 'liquidity_position_snapshot', 'liquidity_position_snapshots', 'transaction', 'transactions', 'mint', 'mints', 'burn', 'burns', 'swap', 'swaps', 'bundle', 'bundles', 'uniswap_day_data', 'uniswap_day_datas', 'pair_hour_data', 'pair_hour_datas', 'pair_day_data', 'pair_day_datas', 'token_day_data', 'token_day_datas')
+    __field_names__ = ('uniswap_factory', 'uniswap_factories', 'token', 'tokens', 'pair', 'pairs', 'user', 'users', 'liquidity_position', 'liquidity_positions', 'liquidity_position_snapshot', 'liquidity_position_snapshots', 'transaction', 'transactions', 'mint', 'mints', 'burn', 'burns', 'swap', 'swaps', 'bundle', 'bundles', 'uniswap_day_data', 'uniswap_day_datas', 'pair_hour_data', 'pair_hour_datas', 'pair_day_data', 'pair_day_datas', 'token_day_data', 'token_day_datas', '_meta')
     uniswap_factory = sgqlc.types.Field('UniswapFactory', graphql_name='uniswapFactory', args=sgqlc.types.ArgDict((
         ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
         ('block', sgqlc.types.Arg(Block_height, graphql_name='block', default=None)),
@@ -1832,6 +1837,10 @@ class Query(sgqlc.types.Type):
         ('order_by', sgqlc.types.Arg(TokenDayData_orderBy, graphql_name='orderBy', default=None)),
         ('order_direction', sgqlc.types.Arg(OrderDirection, graphql_name='orderDirection', default=None)),
         ('where', sgqlc.types.Arg(TokenDayData_filter, graphql_name='where', default=None)),
+        ('block', sgqlc.types.Arg(Block_height, graphql_name='block', default=None)),
+))
+    )
+    _meta = sgqlc.types.Field('_Meta_', graphql_name='_meta', args=sgqlc.types.ArgDict((
         ('block', sgqlc.types.Arg(Block_height, graphql_name='block', default=None)),
 ))
     )
@@ -1839,7 +1848,7 @@ class Query(sgqlc.types.Type):
 
 class Subscription(sgqlc.types.Type):
     __schema__ = uniswap_graphql_schema
-    __field_names__ = ('uniswap_factory', 'uniswap_factories', 'token', 'tokens', 'pair', 'pairs', 'user', 'users', 'liquidity_position', 'liquidity_positions', 'liquidity_position_snapshot', 'liquidity_position_snapshots', 'transaction', 'transactions', 'mint', 'mints', 'burn', 'burns', 'swap', 'swaps', 'bundle', 'bundles', 'uniswap_day_data', 'uniswap_day_datas', 'pair_hour_data', 'pair_hour_datas', 'pair_day_data', 'pair_day_datas', 'token_day_data', 'token_day_datas')
+    __field_names__ = ('uniswap_factory', 'uniswap_factories', 'token', 'tokens', 'pair', 'pairs', 'user', 'users', 'liquidity_position', 'liquidity_positions', 'liquidity_position_snapshot', 'liquidity_position_snapshots', 'transaction', 'transactions', 'mint', 'mints', 'burn', 'burns', 'swap', 'swaps', 'bundle', 'bundles', 'uniswap_day_data', 'uniswap_day_datas', 'pair_hour_data', 'pair_hour_datas', 'pair_day_data', 'pair_day_datas', 'token_day_data', 'token_day_datas', '_meta')
     uniswap_factory = sgqlc.types.Field('UniswapFactory', graphql_name='uniswapFactory', args=sgqlc.types.ArgDict((
         ('id', sgqlc.types.Arg(sgqlc.types.non_null(ID), graphql_name='id', default=None)),
         ('block', sgqlc.types.Arg(Block_height, graphql_name='block', default=None)),
@@ -2047,6 +2056,10 @@ class Subscription(sgqlc.types.Type):
         ('order_by', sgqlc.types.Arg(TokenDayData_orderBy, graphql_name='orderBy', default=None)),
         ('order_direction', sgqlc.types.Arg(OrderDirection, graphql_name='orderDirection', default=None)),
         ('where', sgqlc.types.Arg(TokenDayData_filter, graphql_name='where', default=None)),
+        ('block', sgqlc.types.Arg(Block_height, graphql_name='block', default=None)),
+))
+    )
+    _meta = sgqlc.types.Field('_Meta_', graphql_name='_meta', args=sgqlc.types.ArgDict((
         ('block', sgqlc.types.Arg(Block_height, graphql_name='block', default=None)),
 ))
     )
@@ -2208,6 +2221,21 @@ class User(sgqlc.types.Type):
 ))
     )
     usd_swapped = sgqlc.types.Field(sgqlc.types.non_null(BigDecimal), graphql_name='usdSwapped')
+
+
+class _Block_(sgqlc.types.Type):
+    __schema__ = uniswap_graphql_schema
+    __field_names__ = ('hash', 'number')
+    hash = sgqlc.types.Field(Bytes, graphql_name='hash')
+    number = sgqlc.types.Field(sgqlc.types.non_null(Int), graphql_name='number')
+
+
+class _Meta_(sgqlc.types.Type):
+    __schema__ = uniswap_graphql_schema
+    __field_names__ = ('block', 'deployment', 'has_indexing_errors')
+    block = sgqlc.types.Field(sgqlc.types.non_null(_Block_), graphql_name='block')
+    deployment = sgqlc.types.Field(sgqlc.types.non_null(String), graphql_name='deployment')
+    has_indexing_errors = sgqlc.types.Field(sgqlc.types.non_null(Boolean), graphql_name='hasIndexingErrors')
 
 
 
