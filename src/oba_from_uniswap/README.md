@@ -35,7 +35,7 @@ python -m src.oba_from_uniswap.create_oba swaps_data_from_router.csv tokens.json
 This will create a single json file with all the uniswap swaps, and information about the state of the uniswap 
 pools at the time of each swap.
 
-# Merge SCP orders in the raw OBA instance file.
+# (Optional) Merge SCP orders in the raw OBA instance file.
 
 ```bash
 python -m src.oba_from_uniswap.add_scp_orders oba_raw.json scp-crawled.csv oba_raw_with_scp.json
