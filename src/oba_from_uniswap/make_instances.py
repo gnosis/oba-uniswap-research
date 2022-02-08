@@ -88,9 +88,11 @@ def create_batch(orders, limit_xrate_relax_frac):
             else:
                 r['maxSellAmount'] = o['uniswap']['amounts'][0]
             assert r['maxBuyAmount'] > 0
-            if r['maxSellAmount'] < o['uniswap']['amounts'][0]:
-                print(o)
             assert r['maxSellAmount'] >= o['uniswap']['amounts'][0]
+
+        r['execSellAmount'] = o['uniswap']['amounts'][0]
+        r['execBuyAmount'] = o['uniswap']['amounts'][-1]        
+
         assert r['maxSellAmount'] > 0        
         return r
 
@@ -257,7 +259,9 @@ def convert_to_gpv2_instance(batch, default_fee, exclude_market_makers=False):
             'sell_amount': str(sell_amount),
             'buy_amount': str(buy_amount),
             'is_sell_order': o['isSellOrder'],
-            'allow_partial_fill': not o['fillOrKill']
+            'allow_partial_fill': not o['fillOrKill'],
+            'exec_sell_amount': int(o['execSellAmount'] * 10**18),
+            'exec_buy_amount': int(o['execBuyAmount'] * 10**18)
         }
 
     uniswaps = {}

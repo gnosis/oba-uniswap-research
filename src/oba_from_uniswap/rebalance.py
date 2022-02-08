@@ -164,8 +164,6 @@ def compute_buffers_constant(df_sol, init_buffers, prices_in_eth):
         nonlocal buffers
         nonlocal prev_block
         cur_block = batch_df.iloc[0].block
-        if cur_block == 11841643:
-            print(cur_block)
         if prev_block is not None:
             adjust_buffer_vol_from_prices(buffers, prices_in_eth[prev_block], prices_in_eth[cur_block])
         prev_block = cur_block

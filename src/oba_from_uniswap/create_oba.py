@@ -49,8 +49,10 @@ def load_swaps(filename):
             (block_number, index, sell_amount,
             buy_amount, path, output_amounts, block_time, address) = row
 
+            path = path.replace("{", "[").replace("}", "]")
             path = ast.literal_eval(path)
-            path = ['0x' + address for address in path]
+            path = ['0x' + address[2:] for address in path]
+            output_amounts = output_amounts.replace("{", "[").replace("}", "]")
             output_amounts = ast.literal_eval(output_amounts.replace('L',''))
             output_amounts = list(map(int, output_amounts))
             if path[0]==path[-1]:   # this occasionally happens for some reason
@@ -289,7 +291,8 @@ def add_amm_balances_to_swaps_through_dune(swaps, pool_ids, token_info):
         r.append(swap)
     return r
 
-add_amm_balances_to_swaps = add_amm_balances_to_swaps_through_dune
+#add_amm_balances_to_swaps = add_amm_balances_to_swaps_through_dune
+add_amm_balances_to_swaps = add_amm_balances_to_swaps_through_thegraph
 
 # See above comment regarding the decorator.
 @disk_cache.memoize()
@@ -445,8 +448,8 @@ def swap_to_order(swap, token_info):
     order['buyToken'] = amm_path[-1]
     order['sellTokenDailyPriceUSD'] = swap['from_token_day_price_usd']
     order['buyTokenDailyPriceUSD'] = swap['to_token_day_price_usd']
-    order['sellTokenPriceETH'] = swap['from_token_price_eth']
-    order['buyTokenPriceETH'] = swap['to_token_price_eth']
+    #order['sellTokenPriceETH'] = swap['from_token_price_eth']
+    #order['buyTokenPriceETH'] = swap['to_token_price_eth']
 
     if swap['sell_amount'] == -1:
         order['maxSellAmount'] = amm_amounts[0]
@@ -515,23 +518,26 @@ def process(csv_filename, max_nr_tokens, output_filename):
     token_info = get_token_infos(swaps)  # this gets info also for intermediate tokens
     #pool_ids = get_all_pool_ids()
     pool_ids = frozendict(get_pools_ids(swaps))
-    swaps = add_amm_balances_to_swaps(swaps, pool_ids, token_info)
+    swaps = add_amm_balances_to_swaps(swaps, pool_ids) #, token_info)
     swaps = add_daily_token_prices_to_swaps(swaps)
-    swaps = filter_tokens_with_no_value(swaps)
-    spot_prices = get_spot_prices_in_eth_from_dune(swaps, pool_ids, token_info)
-    swaps = add_block_token_prices_to_swaps_from_spot_prices(swaps, spot_prices)
+    #swaps = filter_tokens_with_no_value(swaps)
+    
+    
+    #spot_prices = get_spot_prices_in_eth_from_dune(swaps, pool_ids, token_info)
+    #swaps = add_block_token_prices_to_swaps_from_spot_prices(swaps, spot_prices)
     orders = [swap_to_order(swap, token_info) for swap in swaps]
 
-    first_block = list(spot_prices.keys())[0]
-    last_block = list(spot_prices.keys())[-1]
-    spot_prices_every_15m = {
-        b: {token_info[t]['symbol']: v for t, v in spot_prices[b].items()} 
-        for b in range(first_block, last_block + 1, 60)
-    }
+    #first_block = list(spot_prices.keys())[0]
+    #last_block = list(spot_prices.keys())[-1]
+    #spot_prices_every_15m = {
+    #    b: {token_info[t]['symbol']: v for t, v in spot_prices[b].items()} 
+    #    for b in range(first_block, last_block + 1, 60)
+    #}
+
     with open(output_filename, 'w+') as f:
         json.dump({
             'orders': orders,
-            'spot_prices': spot_prices_every_15m
+            #'spot_prices': spot_prices_every_15m
         }, f, indent=2)
 
 
