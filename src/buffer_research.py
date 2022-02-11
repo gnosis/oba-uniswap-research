@@ -107,7 +107,7 @@ if __name__ == '__main__':
     # Model parameters
     initial_buffer_value_in_usd = 10_800_000
     trade_activity_threshold_for_buffers_to_be_funded = 0.001
-    fetch_data_from_dune = True
+    fetch_data_from_dune = False
 
     if fetch_data_from_dune:
         dune_connection = DuneAnalytics.new_from_environment()
