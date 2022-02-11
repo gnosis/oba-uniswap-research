@@ -81,7 +81,7 @@ def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pai
     return buffers, rebalanced_vol, nr_of_internal_trades, nr_of_external_trades
 
 
-def adjust_buffer_vol_from_prices(buffers, prices_at_previous_update, current_prices):
+def adjust_buffer_values_with_prices(buffers, prices_at_previous_update, current_prices):
     for t in buffers.keys():
         buffers[t] = buffers[t] / \
             prices_at_previous_update[t] * current_prices[t]
@@ -100,7 +100,7 @@ def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_t
         nonlocal prev_block
         cur_block = batch_df.iloc[0].block_number
         if prev_block is not None and cur_block in prices:
-            adjust_buffer_vol_from_prices(
+            adjust_buffer_values_with_prices(
                 buffers, prices[prev_block], prices[cur_block])
             prev_block = cur_block
         nr_of_additional_internal_trades_from_batching = count_number_of_saved_trades_due_to_cow(
@@ -115,6 +115,7 @@ def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_t
         rebalanced_vol_across_time.append(rebalanced_vol)
         buffers_across_time.append(updated_buffers.copy())
         buffers.update(updated_buffers)
+
     df_sol.groupby("block_number").apply(update_buffers)
     df = pd.DataFrame.from_records(buffers_across_time)
     df["rebalanced_vol"] = rebalanced_vol_across_time
@@ -156,6 +157,8 @@ if __name__ == '__main__':
     df = df[df['usd_amount'].notna()]
     # print(df)
 
+    # preparations for writing simulation results into csv file
+    result_file = 'result.csv'
     header = ['Investment [USD]', 'AllowListed Tokens for Buffers',
               'Ratio internal trade numbers', 'Avg. estimated gas saving of internal trade vs normal AMM trade', 'Gas saving compared to normal AMM trade', 'Potential gas saving (smart contract v2) compared to normal AMM trade']
     gas_cost_avg_amm_trade = 200000
@@ -163,7 +166,7 @@ if __name__ == '__main__':
     gas_cost_internal_trade = 130000
     gas_cost_over_head_cowswap_in_potential_v2 = 50000
     gas_cost_internal_trade_in_potential_v2 = 105000
-    with open('result.csv', 'w', encoding='UTF8') as f:
+    with open(result_file, 'w', encoding='UTF8') as f:
         writer = csv.writer(f)
         writer.writerow(header)
 
@@ -175,9 +178,10 @@ if __name__ == '__main__':
             tokens = set.union({t for t in df['token_a_address']}, {
                 t for t in df['token_b_address']})
 
-            value_counts = df['token_b_address'].value_counts(normalize=True)
-            buffer_allow_listed_tokens = list({t for t in tokens if (t in value_counts
-                                                                     and value_counts[t] > trade_activity_threshold_for_buffers_to_be_funded)})
+            normalized_token_appearance_counts = df['token_b_address'].value_counts(
+                normalize=True)
+            buffer_allow_listed_tokens = list({t for t in tokens if (t in normalized_token_appearance_counts
+                                                                     and normalized_token_appearance_counts[t] > trade_activity_threshold_for_buffers_to_be_funded)})
             buffers = {t: t in buffer_allow_listed_tokens and initial_buffer_value_in_usd /
                        len(buffer_allow_listed_tokens) or 0 for t in tokens}
 
@@ -197,6 +201,11 @@ if __name__ == '__main__':
                 df, buffers, token_prices, buffer_allow_listed_tokens)
             ratio_internal_trades = result_df['nr_of_internal_trades'].sum(
             )/(result_df['nr_of_internal_trades'].sum()+result_df['nr_of_external_trades'].sum())
+
+            # result array corresponds to the header defined above
+            result_array = [initial_buffer_value_in_usd, len(
+                buffer_allow_listed_tokens), ratio_internal_trades, gas_cost_internal_trade/gas_cost_avg_amm_trade, (gas_cost_internal_trade*ratio_internal_trades + (gas_cost_over_head_cowswap+gas_cost_avg_amm_trade)*(1-ratio_internal_trades))/gas_cost_avg_amm_trade, (gas_cost_internal_trade_in_potential_v2*ratio_internal_trades + (gas_cost_over_head_cowswap_in_potential_v2+gas_cost_avg_amm_trade)*(1-ratio_internal_trades))/gas_cost_avg_amm_trade]
+
             if verbose_logging:
                 print(
                     "-------------------------------Result--------------------------------")
@@ -206,9 +215,9 @@ if __name__ == '__main__':
                       (result_df['nr_of_internal_trades'].sum()+result_df['nr_of_external_trades'].sum()))
                 print(
                     "-------------------------------Compressed result--------------------------------")
-            data = [initial_buffer_value_in_usd, len(
-                buffer_allow_listed_tokens), ratio_internal_trades, gas_cost_internal_trade/gas_cost_avg_amm_trade, (gas_cost_internal_trade*ratio_internal_trades + (gas_cost_over_head_cowswap+gas_cost_avg_amm_trade)*(1-ratio_internal_trades))/gas_cost_avg_amm_trade, (gas_cost_internal_trade_in_potential_v2*ratio_internal_trades + (gas_cost_over_head_cowswap_in_potential_v2+gas_cost_avg_amm_trade)*(1-ratio_internal_trades))/gas_cost_avg_amm_trade]
-            print(data)
-            with open('result.csv', 'a', encoding='UTF8') as f:
+                print(header)
+                print(result_array)
+
+            with open(result_file, 'a', encoding='UTF8') as f:
                 writer = csv.writer(f)
-                writer.writerow(data)
+                writer.writerow(result_array)
