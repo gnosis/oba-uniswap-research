@@ -2,5 +2,5 @@ Select token_a_symbol, token_b_symbol,token_a_amount_raw, token_b_amount_raw,usd
 from 
 dex.trades d
 inner join ethereum."transactions" t on d.tx_hash = t.hash
-where category = 'Aggregator' and d.block_time > '2022-02-01 00:00' and d.block_time < '2022-02-05 00:00'
+where category = 'Aggregator' and d.block_time > '2022-02-01 00:00' and d.block_time < '2022-02-06 00:00'
 and project = 'Gnosis Protocol'

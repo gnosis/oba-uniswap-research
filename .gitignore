@@ -27,6 +27,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+Cowswap_trades_simulations_result_feb_01_feb_05.csv
+results.csv
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
