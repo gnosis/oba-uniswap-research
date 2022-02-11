@@ -1,9 +1,7 @@
 from src.oba_from_uniswap.common import get_block_data_file, get_prices_at_blocks
 import pickle
 
-from numpy import integer
 from src.dune_api.dune_analytics import DuneAnalytics
-from networkx import DiGraph, network_simplex
 import pandas as pd
 from math import log
 
@@ -101,7 +99,6 @@ def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_t
     df["rebalanced_vol"] = rebalanced_vol_across_time
     df["nr_of_internal_trades"] = nr_of_internal_trades
     df["nr_of_external_trades"] = nr_of_external_trades
-
     return df
 
 
@@ -110,7 +107,7 @@ if __name__ == '__main__':
     # Model parameters
     initial_buffer_value_in_usd = 10_800_000
     trade_activity_threshold_for_buffers_to_be_funded = 0.001
-    fetch_data_from_dune = False
+    fetch_data_from_dune = True
 
     if fetch_data_from_dune:
         dune_connection = DuneAnalytics.new_from_environment()
