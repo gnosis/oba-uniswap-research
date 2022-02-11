@@ -3,8 +3,6 @@ import pickle
 
 from numpy import integer
 from src.dune_api.dune_analytics import DuneAnalytics
-from data.dune_download.dex_ag_trades_example import dune_data
-from data.dune_download.tokens_and_prices import token_prices_in_usd
 from networkx import DiGraph, network_simplex
 import pandas as pd
 from math import log
