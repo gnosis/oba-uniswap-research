@@ -79,7 +79,7 @@ def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pai
     return buffers, sum_rebalance_vol, nr_of_internal_trades, nr_of_external_trades, sum_matched_vol
 
 
-def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_tokens):
+def compute_buffer_evolution(df_sol, init_buffers, buffer_allow_listed_tokens):
     buffers_across_time = []
     external_vol_across_time = []
     internally_matched_vol_across_time = []
@@ -126,19 +126,9 @@ if __name__ == '__main__':
         )
         with open("data/dune_trading_data_download.txt", "bw+") as f:
             pickle.dump(dune_data, f, protocol=pickle.HIGHEST_PROTOCOL)
-        token_prices_in_usd = dune_connection.fetch(
-            query_filepath="./src/dune_api/queries/tokens_and_prices.sql",
-            network='mainnet',
-            name="tokens and prices",
-        )
-        with open("data/dune_price_data_download.txt", "bw+") as f:
-            pickle.dump(token_prices_in_usd, f,
-                        protocol=pickle.HIGHEST_PROTOCOL)
     else:
         with open("data/dune_trading_data_download.txt", "rb") as f:
             dune_data = pickle.load(f)
-        with open("data/dune_price_data_download.txt", "rb") as f:
-            token_prices_in_usd = pickle.load(f)
 
     df = pd.DataFrame.from_records(dune_data)
     # We are sorting out all trades that don't have prices. This number of trades is neglegible for the overall analysis
@@ -171,7 +161,6 @@ if __name__ == '__main__':
     for initial_buffer_value_in_usd in [1_000_000, 10_000_000, 50_000_000]:
         for trade_activity_threshold_for_buffers_to_be_funded in [0.01, 0.001, 0.0005, 0]:
 
-            token_prices = token_prices_in_usd
             tokens = set.union({t for t in df['token_a_address']}, {
                 t for t in df['token_b_address']})
 
@@ -193,7 +182,7 @@ if __name__ == '__main__':
                       "[USD] and in each token there is a buffer of:", initial_buffer_value_in_usd/len(buffer_allow_listed_tokens), "[USD]")
 
             result_df = compute_buffer_evolution(
-                df, buffers, token_prices, buffer_allow_listed_tokens)
+                df, buffers, buffer_allow_listed_tokens)
             ratio_internal_trades = round(result_df['nr_of_internal_trades'].sum(
             )/(result_df['nr_of_internal_trades'].sum()+result_df['nr_of_external_trades'].sum()), 4)
 
