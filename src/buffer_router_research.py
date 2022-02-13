@@ -43,8 +43,9 @@ def apply_trades_on_buffer_and_account_trade_statistic(row, buffers, buffer_allo
 
 def adjust_buffer_values_with_prices(buffers, prices_at_previous_update, current_prices):
     for t in buffers.keys():
-        buffers[t] = buffers[t] / \
-            prices_at_previous_update[t] * current_prices[t]
+        if t in prices_at_previous_update and t in current_prices:
+            buffers[t] = buffers[t] / \
+                prices_at_previous_update[t] * current_prices[t]
 
 
 def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_tokens):
@@ -52,7 +53,17 @@ def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_t
     external_vol_across_time = []
     internally_matched_vol_across_time = []
     buffers = init_buffers
-    prev_block = None
+    blocks_with_prices = [x['block_number'] for x in prices]
+    prices_per_block = {}
+    for p in prices:
+        block_nr = p['block_number']
+        if block_nr in prices_per_block.keys():
+            prices_per_block[block_nr] = {**prices_per_block[block_nr], **{
+                p['token']: p['usd_price']}}
+        else:
+            prices_per_block[block_nr] = {p['token']: p['usd_price']}
+    prev_block = min(blocks_with_prices)
+
     nr_of_external_trades = []
     nr_of_internal_trades = []
 
@@ -61,9 +72,9 @@ def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_t
         nonlocal prev_block
 
         cur_block = row['block_number']
-        if prev_block is not None and cur_block != prev_block and cur_block in prices:
+        if cur_block != prev_block and cur_block in blocks_with_prices:
             adjust_buffer_values_with_prices(
-                buffers, prices[prev_block], prices[cur_block])
+                buffers, prices_per_block[prev_block], prices_per_block[cur_block])
             prev_block = cur_block
         updated_buffers, external_vol, nr_of_internal_trades_in_batch, nr_of_rebalances_in_batch, matched_vol = apply_trades_on_buffer_and_account_trade_statistic(
             row, buffers, buffer_allow_listed_tokens)
@@ -83,6 +94,8 @@ def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_t
     df["external_vol_across_time"] = external_vol_across_time
     df["nr_of_internal_trades"] = nr_of_internal_trades
     df["nr_of_external_trades"] = nr_of_external_trades
+    print("buffer sum output ", sum(buffers.values()))
+
     return df
 
 
@@ -154,7 +167,7 @@ if __name__ == '__main__':
             buffer_allow_listed_tokens = list({t for t in tokens if (t in normalized_token_appearance_counts
                                                                      and normalized_token_appearance_counts[t] > trade_activity_threshold_for_buffers_to_be_funded)})
             buffers = {t: t in buffer_allow_listed_tokens and initial_buffer_value_in_usd /
-                       len(buffer_allow_listed_tokens) or 0 for t in tokens}
+                       len(buffer_allow_listed_tokens) or 0 for t in tokens if t in buffer_allow_listed_tokens}
 
             if verbose_logging:
                 print(
