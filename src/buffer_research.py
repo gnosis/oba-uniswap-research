@@ -79,29 +79,16 @@ def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pai
     return buffers, sum_rebalance_vol, nr_of_internal_trades, nr_of_external_trades, sum_matched_vol
 
 
-def adjust_buffer_values_with_prices(buffers, prices_at_previous_update, current_prices):
-    for t in buffers.keys():
-        buffers[t] = buffers[t] / \
-            prices_at_previous_update[t] * current_prices[t]
-
-
 def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_tokens):
     buffers_across_time = []
     external_vol_across_time = []
     internally_matched_vol_across_time = []
     buffers = init_buffers
-    prev_block = None
     nr_of_external_trades = []
     nr_of_internal_trades = []
 
     def update_buffers(batch_df):
         nonlocal buffers
-        nonlocal prev_block
-        cur_block = batch_df.iloc[0].block_number
-        if prev_block is not None and cur_block in prices:
-            adjust_buffer_values_with_prices(
-                buffers, prices[prev_block], prices[cur_block])
-            prev_block = cur_block
         nr_of_additional_internal_trades_from_batching = count_number_of_saved_trades_due_to_cow(
             batch_df.copy())
         sent_volume_per_pair = batch_df.groupby(
@@ -127,7 +114,7 @@ def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_t
 
 if __name__ == '__main__':
 
-    fetch_data_from_dune = True
+    fetch_data_from_dune = False
     verbose_logging = False
 
     if fetch_data_from_dune:
