@@ -16,7 +16,6 @@ test_trades_same_direction = [{'block_number': 14123254, 'project': 'Paraswap',
 class TestApplyTradesOnBufferTest(unittest.TestCase):
     def test_apply_batch_trades_if_no_token_is_in_allow_list(self):
         initial_buffer_value_in_usd = 10
-        trade_activity_threshold_for_buffers_to_be_funded = 0.01
         df = pd.DataFrame.from_records(test_trades)
 
         tokens = set.union({t for t in df['token_a_address']}, {
@@ -27,17 +26,15 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
                    len(buffer_allow_listed_tokens) or 0 for t in tokens}
         sent_volume_per_pair = df.groupby(
             ["token_a_address", "token_b_address"]).usd_amount.sum().to_dict()
-        actual_updated_buffers, rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch = apply_batch_trades_on_buffer_and_account_trade_statistic(
+        actual_updated_buffers, actual_rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch, actual_internal_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
             sent_volume_per_pair, buffers, buffer_allow_listed_tokens)
-        expected_nr_of_internal_trades_in_batch = 0
-        expected_nr_of_rebalances_in_batch = 2
 
+        self.assertEqual(actual_internal_vol, 0)
+        self.assertEqual(actual_rebalanced_vol, df['usd_amount'].sum())
         self.assertEqual(buffers,
                          actual_updated_buffers)
-        self.assertEqual(actual_nr_of_internal_trades_in_batch,
-                         expected_nr_of_internal_trades_in_batch)
-        self.assertEqual(actual_nr_of_rebalances_in_batch,
-                         expected_nr_of_rebalances_in_batch)
+        self.assertEqual(actual_nr_of_internal_trades_in_batch, 0)
+        self.assertEqual(actual_nr_of_rebalances_in_batch, 2)
 
     def test_apply_batch_trades_if_one_token_is_in_allow_list(self):
         initial_buffer_value_in_usd = 10000
@@ -55,21 +52,19 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
 
         sent_volume_per_pair = df.groupby(
             ["token_a_address", "token_b_address"]).usd_amount.sum().to_dict()
-        actual_updated_buffers, rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch = apply_batch_trades_on_buffer_and_account_trade_statistic(
+        actual_updated_buffers, actual_rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch, actual_internal_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
             sent_volume_per_pair, buffers, buffer_allow_listed_tokens)
 
-        expected_nr_of_internal_trades_in_batch = 1
-        expected_nr_of_rebalances_in_batch = 1
         expected_updated_buffers = initial_buffers
-        expected_updated_buffers['\\x2b591e99afe9f32eaa6214f7b7629768c40eeb39'] -= 3395.78951154391
-        expected_updated_buffers['\\xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'] += 3395.78951154391
+        expected_updated_buffers['\\x2b591e99afe9f32eaa6214f7b7629768c40eeb39'] -= df['usd_amount'][0]
+        expected_updated_buffers['\\xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'] += df['usd_amount'][0]
 
+        self.assertEqual(actual_internal_vol, df['usd_amount'][0])
+        self.assertEqual(actual_rebalanced_vol, df['usd_amount'][1])
         self.assertEqual(actual_updated_buffers,
                          expected_updated_buffers)
-        self.assertEqual(actual_nr_of_internal_trades_in_batch,
-                         expected_nr_of_internal_trades_in_batch)
-        self.assertEqual(expected_nr_of_internal_trades_in_batch,
-                         expected_nr_of_rebalances_in_batch)
+        self.assertEqual(actual_nr_of_internal_trades_in_batch, 1)
+        self.assertEqual(actual_nr_of_rebalances_in_batch, 1)
 
     def test_apply_batch_trades_if_cow_left_overs_are_settled_internally(self):
 
@@ -89,7 +84,7 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
 
         sent_volume_per_pair = df.groupby(
             ["token_a_address", "token_b_address"]).usd_amount.sum().to_dict()
-        actual_updated_buffers, rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch = apply_batch_trades_on_buffer_and_account_trade_statistic(
+        actual_updated_buffers, actual_rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch, actual_internal_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
             sent_volume_per_pair, buffers, buffer_allow_listed_tokens)
 
         expected_nr_of_internal_trades_in_batch = 1
@@ -98,6 +93,8 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
         expected_updated_buffers['\\x2b591e99afe9f32eaa6214f7b7629768c40eeb39'] -= 3395.78951154391 - 2919.291934
         expected_updated_buffers['\\xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'] += 3395.78951154391 - 2919.291934
 
+        self.assertEqual(actual_internal_vol, df['usd_amount'].sum())
+        self.assertEqual(actual_rebalanced_vol, 0)
         self.assertEqual(actual_updated_buffers,
                          expected_updated_buffers)
         self.assertEqual(actual_nr_of_internal_trades_in_batch,
@@ -121,13 +118,16 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
 
         sent_volume_per_pair = df.groupby(
             ["token_a_address", "token_b_address"]).usd_amount.sum().to_dict()
-        actual_updated_buffers, rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch = apply_batch_trades_on_buffer_and_account_trade_statistic(
+        actual_updated_buffers, actual_rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch, actual_internal_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
             sent_volume_per_pair, buffers, buffer_allow_listed_tokens)
 
         expected_nr_of_internal_trades_in_batch = 0
         expected_nr_of_rebalances_in_batch = 1
         expected_updated_buffers = initial_buffers
 
+        self.assertEqual(actual_internal_vol, 2*df['usd_amount'].min())
+        self.assertEqual(actual_rebalanced_vol,
+                         df['usd_amount'].max()-df['usd_amount'].min())
         self.assertEqual(actual_updated_buffers,
                          expected_updated_buffers)
         self.assertEqual(actual_nr_of_internal_trades_in_batch,
@@ -150,73 +150,32 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
 
         sent_volume_per_pair = df.groupby(
             ["token_a_address", "token_b_address"]).usd_amount.sum().to_dict()
-        actual_updated_buffers, rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch = apply_batch_trades_on_buffer_and_account_trade_statistic(
+        actual_updated_buffers, actual_rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch, actual_internal_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
             sent_volume_per_pair, buffers, buffer_allow_listed_tokens)
 
-        expected_nr_of_internal_trades_in_batch = 0
-        expected_nr_of_rebalances_in_batch = 1
-        expected_updated_buffers = initial_buffers
-
-        self.assertEqual(actual_updated_buffers,
-                         expected_updated_buffers)
-        self.assertEqual(actual_nr_of_internal_trades_in_batch,
-                         expected_nr_of_internal_trades_in_batch)
-        self.assertEqual(actual_nr_of_rebalances_in_batch,
-                         expected_nr_of_rebalances_in_batch)
+        self.assertEqual(actual_internal_vol, 0)
+        self.assertEqual(actual_rebalanced_vol, df['usd_amount'].sum())
+        self.assertEqual(actual_updated_buffers, initial_buffers)
+        self.assertEqual(actual_nr_of_internal_trades_in_batch, 0)
+        self.assertEqual(actual_nr_of_rebalances_in_batch, 1)
 
     def test_count_number_of_saved_trades_uni_directional_cow(self):
-
-        initial_buffer_value_in_usd = 1000
         df = pd.DataFrame.from_records(test_trades_same_direction)
-
-        tokens = set.union({t for t in df['token_a_address']}, {
-            t for t in df['token_b_address']})
-
-        buffer_allow_listed_tokens = list({})
-        buffers = {t: t in buffer_allow_listed_tokens and initial_buffer_value_in_usd /
-                   len(buffer_allow_listed_tokens) or 0 for t in tokens}
-        initial_buffers = buffers.copy()
-
         saved_trades = count_number_of_saved_trades_due_to_cow(df)
 
-        self.assertEqual(saved_trades,
-                         1)
+        self.assertEqual(saved_trades, 1)
 
     def test_count_number_of_saved_trades_bi_directional_cow(self):
-
-        initial_buffer_value_in_usd = 1000
         df = pd.DataFrame.from_records(test_trades_opposite_direction)
-
-        tokens = set.union({t for t in df['token_a_address']}, {
-            t for t in df['token_b_address']})
-
-        buffer_allow_listed_tokens = list({})
-        buffers = {t: t in buffer_allow_listed_tokens and initial_buffer_value_in_usd /
-                   len(buffer_allow_listed_tokens) or 0 for t in tokens}
-        initial_buffers = buffers.copy()
-
         saved_trades = count_number_of_saved_trades_due_to_cow(df)
 
-        self.assertEqual(saved_trades,
-                         1)
+        self.assertEqual(saved_trades, 1)
 
     def test_count_number_of_saved_trades_from_2_and_1_trade(self):
         # two trades in one direction, one trade in opposite
         test_trades_opposite_direction.append(
             test_trades_opposite_direction[1])
-
-        initial_buffer_value_in_usd = 1000
         df = pd.DataFrame.from_records(test_trades_opposite_direction)
-
-        tokens = set.union({t for t in df['token_a_address']}, {
-            t for t in df['token_b_address']})
-
-        buffer_allow_listed_tokens = list({})
-        buffers = {t: t in buffer_allow_listed_tokens and initial_buffer_value_in_usd /
-                   len(buffer_allow_listed_tokens) or 0 for t in tokens}
-        initial_buffers = buffers.copy()
-
         saved_trades = count_number_of_saved_trades_due_to_cow(df)
 
-        self.assertEqual(saved_trades,
-                         2)
+        self.assertEqual(saved_trades, 2)

@@ -34,12 +34,10 @@ def count_number_of_saved_trades_due_to_cow(df):
 
 
 def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pair, buffers, buffer_allow_listed_tokens):
-    global total_matched_vol
-    global total_unmatched_vol
-    global total_rebalanced_vol
     nr_of_external_trades = 0
     nr_of_internal_trades = 0
-    rebalanced_vol = 0
+    sum_rebalance_vol = 0
+    sum_matched_vol = 0
     previous_buffer_usd_value = sum(buffers.values())
 
     pair_visited = {}
@@ -62,23 +60,23 @@ def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pai
             sent_vol_from_to, sent_vol_to_from = sent_vol_to_from, sent_vol_from_to
         # calculate the matched amounts
         unmatched_vol = sent_vol_from_to - sent_vol_to_from
-        total_matched_vol += min(sent_vol_from_to, sent_vol_to_from)
-        total_unmatched_vol += unmatched_vol
         # only use buffers, if both tokens are in the allowlist and buffer is sufficient to cover the trade
         if not f in buffer_allow_listed_tokens or not t in buffer_allow_listed_tokens or buffers[t] < unmatched_vol:
-            rebalanced_vol += unmatched_vol
+            sum_matched_vol += 2*min(sent_vol_from_to, sent_vol_to_from)
+            sum_rebalance_vol += unmatched_vol
             nr_of_external_trades += 1
         else:
             buffers[f] += unmatched_vol
             buffers[t] -= unmatched_vol
+            sum_matched_vol += unmatched_vol + 2 * \
+                min(sent_vol_from_to, sent_vol_to_from)
             nr_of_internal_trades += 1
 
     # simple sanity checks
     assert abs(previous_buffer_usd_value -
                sum(buffers.values())) <= 1
     assert all(v >= 0 for v in buffers.values())
-    total_rebalanced_vol += rebalanced_vol
-    return buffers, rebalanced_vol, nr_of_internal_trades, nr_of_external_trades
+    return buffers, sum_rebalance_vol, nr_of_internal_trades, nr_of_external_trades, sum_matched_vol
 
 
 def adjust_buffer_values_with_prices(buffers, prices_at_previous_update, current_prices):
@@ -89,7 +87,8 @@ def adjust_buffer_values_with_prices(buffers, prices_at_previous_update, current
 
 def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_tokens):
     buffers_across_time = []
-    rebalanced_vol_across_time = []
+    external_vol_across_time = []
+    internally_matched_vol_across_time = []
     buffers = init_buffers
     prev_block = None
     nr_of_external_trades = []
@@ -107,18 +106,20 @@ def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_t
             batch_df.copy())
         sent_volume_per_pair = batch_df.groupby(
             ["token_a_address", "token_b_address"]).usd_amount.sum().to_dict()
-        updated_buffers, rebalanced_vol, nr_of_internal_trades_in_batch, nr_of_rebalances_in_batch = apply_batch_trades_on_buffer_and_account_trade_statistic(
+        updated_buffers, external_vol, nr_of_internal_trades_in_batch, nr_of_rebalances_in_batch, matched_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
             sent_volume_per_pair, buffers, buffer_allow_listed_tokens)
         nr_of_external_trades.append(nr_of_rebalances_in_batch)
         nr_of_internal_trades.append(
             nr_of_internal_trades_in_batch+nr_of_additional_internal_trades_from_batching)
-        rebalanced_vol_across_time.append(rebalanced_vol)
+        external_vol_across_time.append(external_vol)
+        internally_matched_vol_across_time.append(matched_vol)
         buffers_across_time.append(updated_buffers.copy())
         buffers.update(updated_buffers)
 
     df_sol.groupby("block_number").apply(update_buffers)
     df = pd.DataFrame.from_records(buffers_across_time)
-    df["rebalanced_vol"] = rebalanced_vol_across_time
+    df['internally_matched_vol_across_time'] = internally_matched_vol_across_time
+    df["external_vol_across_time"] = external_vol_across_time
     df["nr_of_internal_trades"] = nr_of_internal_trades
     df["nr_of_external_trades"] = nr_of_external_trades
     return df
@@ -126,7 +127,7 @@ def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_t
 
 if __name__ == '__main__':
 
-    fetch_data_from_dune = False
+    fetch_data_from_dune = True
     verbose_logging = False
 
     if fetch_data_from_dune:
@@ -155,20 +156,29 @@ if __name__ == '__main__':
     df = pd.DataFrame.from_records(dune_data)
     # We are sorting out all trades that don't have prices. This number of trades is neglegible for the overall analysis
     df = df[df['usd_amount'].notna()]
-    # print(df)
+    # scaling factor to scale revenue for 1 year
+    revenue_scaling_factor = 360*24*60*60 / \
+        ((df['block_number'].max() - df['block_number'].min()) * 13.5)
 
     # preparations for writing simulation results into csv file
     result_file = 'result.csv'
-    header = ['Investment [USD]', 'AllowListed Tokens for Buffers',
-              'Ratio internal trade numbers', 'Avg. estimated gas saving of internal trade vs normal AMM trade', 'Gas saving compared to normal AMM trade', 'Potential gas saving (smart contract v2) compared to normal AMM trade']
-    gas_cost_avg_amm_trade = 200000
-    gas_cost_over_head_cowswap = 90000
-    gas_cost_internal_trade = 130000
-    gas_cost_over_head_cowswap_in_potential_v2 = 50000
-    gas_cost_internal_trade_in_potential_v2 = 105000
+    header = ['Buffer Investment [USD]',
+              'AllowListed Buffer-Tokens',
+              'Ratio Internal Trades',
+              'Ratio Internally Matched Vol',
+              'Fee Revenue [USD/Year]',
+              'Gas Saving vs Normal Trade',
+              'Gas Saving(in v2) vs Normal Trade',
+              ]
     with open(result_file, 'w', encoding='UTF8') as f:
         writer = csv.writer(f)
         writer.writerow(header)
+    # gas costs rough estimations
+    gas_cost_avg_amm_trade = 200000
+    gas_cost_over_head_cowswap = 90000
+    gas_cost_internal_trade = 130000
+    gas_cost_over_head_cowswap_in_potential_v2 = 55000
+    gas_cost_internal_trade_in_potential_v2 = 105000
 
     # Starting simulation with different model parameters
     for initial_buffer_value_in_usd in [1_000_000, 10_000_000, 50_000_000]:
@@ -187,34 +197,50 @@ if __name__ == '__main__':
 
             if verbose_logging:
                 print(
-                    "--------------------------Experiment setup----------------------------")
+                    "\n\n--------------------------Experiment setup----------------------------")
                 print("There will be ", len(
                     tokens), " tokens traded in the dex-aggregator trading data set")
                 print("Buffer is only allowed in ", len(
                     buffer_allow_listed_tokens), "tokens")
                 print("Total buffer investment", initial_buffer_value_in_usd,
                       "[USD] and in each token there is a buffer of:", initial_buffer_value_in_usd/len(buffer_allow_listed_tokens), "[USD]")
-                print(
-                    "---------------------------------------------------------------------")
 
             result_df = compute_buffer_evolution(
                 df, buffers, token_prices, buffer_allow_listed_tokens)
-            ratio_internal_trades = result_df['nr_of_internal_trades'].sum(
-            )/(result_df['nr_of_internal_trades'].sum()+result_df['nr_of_external_trades'].sum())
+            ratio_internal_trades = round(result_df['nr_of_internal_trades'].sum(
+            )/(result_df['nr_of_internal_trades'].sum()+result_df['nr_of_external_trades'].sum()), 4)
 
             # result array corresponds to the header defined above
-            result_array = [initial_buffer_value_in_usd, len(
-                buffer_allow_listed_tokens), ratio_internal_trades, gas_cost_internal_trade/gas_cost_avg_amm_trade, (gas_cost_internal_trade*ratio_internal_trades + (gas_cost_over_head_cowswap+gas_cost_avg_amm_trade)*(1-ratio_internal_trades))/gas_cost_avg_amm_trade, (gas_cost_internal_trade_in_potential_v2*ratio_internal_trades + (gas_cost_over_head_cowswap_in_potential_v2+gas_cost_avg_amm_trade)*(1-ratio_internal_trades))/gas_cost_avg_amm_trade]
+            internally_traded_volume = round(result_df['internally_matched_vol_across_time'].sum(
+            ))
+            externally_traded_volume = round(result_df['external_vol_across_time'].sum(
+            ))
+            result_array = [initial_buffer_value_in_usd,
+                            len(buffer_allow_listed_tokens),
+                            ratio_internal_trades,
+                            round(internally_traded_volume /
+                                  (externally_traded_volume + internally_traded_volume), 2),
+                            round(revenue_scaling_factor *
+                                  internally_traded_volume*0.0005, 2),
+                            round((gas_cost_internal_trade*ratio_internal_trades + (gas_cost_over_head_cowswap +
+                                                                                    gas_cost_avg_amm_trade)*(1-ratio_internal_trades))/gas_cost_avg_amm_trade, 4),
+                            (gas_cost_internal_trade_in_potential_v2*ratio_internal_trades + (gas_cost_over_head_cowswap_in_potential_v2 +
+                                                                                              gas_cost_avg_amm_trade)*(1-ratio_internal_trades))/gas_cost_avg_amm_trade, ]
 
             if verbose_logging:
                 print(
-                    "-------------------------------Result--------------------------------")
+                    "\n-------------------------------Result--------------------------------")
                 print("Ratio of internal trades in comparison to total trades",
                       ratio_internal_trades)
                 print("Total number of internal and external trades considered",
                       (result_df['nr_of_internal_trades'].sum()+result_df['nr_of_external_trades'].sum()))
+
+                print("Total internally traded volume",
+                      internally_traded_volume, "and total fees from avoid amm ", internally_traded_volume*0.0005)
+                print("Percentage of internally matched volume",
+                      internally_traded_volume / (externally_traded_volume + internally_traded_volume))
                 print(
-                    "-------------------------------Compressed result--------------------------------")
+                    "\n-------------------------------Compressed result--------------------------------")
                 print(header)
                 print(result_array)
 
