@@ -59,17 +59,24 @@ def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pai
             f, t = t, f
             sent_vol_from_to, sent_vol_to_from = sent_vol_to_from, sent_vol_from_to
         # calculate the matched amounts
-        unmatched_vol = sent_vol_from_to - sent_vol_to_from
+        unmatched_cow_vol = sent_vol_from_to - sent_vol_to_from
+        matched_cow_vol = 2*min(sent_vol_from_to,
+                                sent_vol_to_from)
         # only use buffers, if both tokens are in the allowlist and buffer is sufficient to cover the trade
-        if not f in buffer_allow_listed_tokens or not t in buffer_allow_listed_tokens or buffers[t] < unmatched_vol:
-            sum_matched_vol += 2*min(sent_vol_from_to, sent_vol_to_from)
-            sum_rebalance_vol += unmatched_vol
+        if f not in buffer_allow_listed_tokens or t not in buffer_allow_listed_tokens:
+            sum_matched_vol += matched_cow_vol
+            sum_rebalance_vol += unmatched_cow_vol
+            nr_of_external_trades += 1
+        elif buffers[t] < unmatched_cow_vol:
+            sum_matched_vol += matched_cow_vol + buffers[t]
+            sum_rebalance_vol += unmatched_cow_vol - buffers[t]
+            buffers[f] += buffers[t]
+            buffers[t] = 0
             nr_of_external_trades += 1
         else:
-            buffers[f] += unmatched_vol
-            buffers[t] -= unmatched_vol
-            sum_matched_vol += unmatched_vol + 2 * \
-                min(sent_vol_from_to, sent_vol_to_from)
+            buffers[f] += unmatched_cow_vol
+            buffers[t] -= unmatched_cow_vol
+            sum_matched_vol += unmatched_cow_vol + matched_cow_vol
             nr_of_internal_trades += 1
 
     # simple sanity checks
@@ -158,7 +165,7 @@ if __name__ == '__main__':
     gas_cost_internal_trade_in_potential_v2 = 105000
 
     # Starting simulation with different model parameters
-    for initial_buffer_value_in_usd in [1_000_000, 10_000_000, 50_000_000]:
+    for initial_buffer_value_in_usd in [2_000_000, 10_000_000, 50_000_000]:
         for trade_activity_threshold_for_buffers_to_be_funded in [0.01, 0.001, 0.0005, 0]:
 
             tokens = set.union({t for t in df['token_a_address']}, {

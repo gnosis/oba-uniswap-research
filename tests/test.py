@@ -22,8 +22,7 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
             t for t in df['token_b_address']})
 
         buffer_allow_listed_tokens = list({})
-        buffers = {t: t in buffer_allow_listed_tokens and initial_buffer_value_in_usd /
-                   len(buffer_allow_listed_tokens) or 0 for t in tokens}
+        buffers = {t: 0 for t in tokens}
         sent_volume_per_pair = df.groupby(
             ["token_a_address", "token_b_address"]).usd_amount.sum().to_dict()
         actual_updated_buffers, actual_rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch, actual_internal_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
@@ -110,10 +109,8 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
         tokens = set.union({t for t in df['token_a_address']}, {
             t for t in df['token_b_address']})
 
-        value_counts = df['token_b_address'].value_counts(normalize=True)
         buffer_allow_listed_tokens = list({})
-        buffers = {t: t in buffer_allow_listed_tokens and initial_buffer_value_in_usd /
-                   len(buffer_allow_listed_tokens) or 0 for t in tokens}
+        buffers = {t: 0 for t in tokens}
         initial_buffers = buffers.copy()
 
         sent_volume_per_pair = df.groupby(
@@ -134,6 +131,38 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
                          expected_nr_of_internal_trades_in_batch)
         self.assertEqual(actual_nr_of_rebalances_in_batch,
                          expected_nr_of_rebalances_in_batch)
+
+    def test_apply_batch_trades_if_cow_left_overs_are_partically_settled_externally(self):
+
+        initial_buffer_value_in_usd = 100
+        df = pd.DataFrame.from_records(test_trades_opposite_direction)
+        tokens = set.union({t for t in df['token_a_address']}, {
+            t for t in df['token_b_address']})
+
+        buffers = {t: initial_buffer_value_in_usd /
+                   len(tokens) or 0 for t in tokens}
+        initial_buffers = buffers.copy()
+
+        sent_volume_per_pair = df.groupby(
+            ["token_a_address", "token_b_address"]).usd_amount.sum().to_dict()
+        actual_updated_buffers, actual_rebalanced_vol, actual_nr_of_internal_trades_in_batch, actual_nr_of_rebalances_in_batch, actual_internal_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
+            sent_volume_per_pair, buffers, tokens)
+
+        vol_in_buffers = min(df['usd_amount'].max() -
+                             df['usd_amount'].min(), initial_buffer_value_in_usd/2)
+        expected_updated_buffers = initial_buffers
+        expected_updated_buffers[df['token_b_address'][0]] -= vol_in_buffers
+        expected_updated_buffers[df['token_a_address'][0]] += vol_in_buffers
+        self.assertEqual(actual_internal_vol, 2 *
+                         df['usd_amount'].min() + vol_in_buffers)
+        self.assertEqual(actual_rebalanced_vol, df['usd_amount'].max(
+        )-df['usd_amount'].min()-vol_in_buffers)
+        self.assertEqual(actual_updated_buffers,
+                         expected_updated_buffers)
+        self.assertEqual(actual_nr_of_internal_trades_in_batch,
+                         0)
+        self.assertEqual(actual_nr_of_rebalances_in_batch,
+                         1)
 
     def test_apply_batch_trades_uni_directional_cow(self):
 
