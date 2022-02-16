@@ -17,7 +17,7 @@ total_unmatched_vol = 0
 total_rebalanced_vol = 0
 
 
-def count_number_of_saved_trades_due_to_cow(df):
+def count_number_of_saved_trades_due_to_opp_cow_or_unidirectional_cows(df):
     number_of_trades_per_pair = df.groupby(
         ["token_a_address", "token_b_address"]).size()
     number_of_saved_trades_per_pair = dict()
@@ -95,13 +95,14 @@ def compute_buffer_evolution(df_sol, init_buffers, buffer_allow_listed_tokens):
 
     def update_buffers(batch_df):
         nonlocal buffers
-        nr_of_additional_internal_trades_from_batching = count_number_of_saved_trades_due_to_cow(
+        nr_of_additional_internal_trades_from_batching = count_number_of_saved_trades_due_to_opp_cow_or_unidirectional_cows(
             batch_df.copy())
         sent_volume_per_pair = batch_df.groupby(
             ["token_a_address", "token_b_address"]).usd_amount.sum().to_dict()
         updated_buffers, external_vol, nr_of_internal_trades_in_batch, nr_of_external_trades_in_batch, matched_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
             sent_volume_per_pair, buffers, buffer_allow_listed_tokens)
-        nr_of_external_trades_across_time.append(nr_of_external_trades_in_batch)
+        nr_of_external_trades_across_time.append(
+            nr_of_external_trades_in_batch)
         nr_of_internal_trades_across_time.append(
             nr_of_internal_trades_in_batch+nr_of_additional_internal_trades_from_batching)
         external_vol_across_time.append(external_vol)
@@ -120,7 +121,7 @@ def compute_buffer_evolution(df_sol, init_buffers, buffer_allow_listed_tokens):
 
 if __name__ == '__main__':
 
-    fetch_data_from_dune = False
+    fetch_data_from_dune = True
     verbose_logging = False
 
     if fetch_data_from_dune:
@@ -129,6 +130,7 @@ if __name__ == '__main__':
             query_filepath="./src/dune_api/queries/dex_ag_trades_within_one_day.sql",
             network='mainnet',
             name="dex ag trades",
+            parameters=[]
         )
         with open("data/dune_trading_data_download.txt", "bw+") as f:
             pickle.dump(dune_data, f, protocol=pickle.HIGHEST_PROTOCOL)
@@ -174,23 +176,26 @@ if __name__ == '__main__':
                 normalize=True)
             buffer_allow_listed_tokens = list({
                 t for t in tokens
-                if t in normalized_token_appearance_counts and 
+                if t in normalized_token_appearance_counts and
                 normalized_token_appearance_counts[t] > trade_activity_threshold_for_buffers_to_be_funded
             })
             buffers = {t: initial_buffer_value_in_usd /
                        len(buffer_allow_listed_tokens) if t in buffer_allow_listed_tokens else 0 for t in tokens}
             if len(buffer_allow_listed_tokens) > 0:
-                initial_buffer_value_per_token_in_usd = initial_buffer_value_in_usd/len(buffer_allow_listed_tokens)
+                initial_buffer_value_per_token_in_usd = initial_buffer_value_in_usd / \
+                    len(buffer_allow_listed_tokens)
             else:
                 initial_buffer_value_per_token_in_usd = 0
 
             if verbose_logging:
                 print(
                     "\n\n--------------------------Experiment setup----------------------------")
-                print(f"There will be {len(tokens)} tokens traded in the dex-aggregator trading data set")
-                print(f"Buffer is only allowed in {len(buffer_allow_listed_tokens)} tokens")
+                print(
+                    f"There will be {len(tokens)} tokens traded in the dex-aggregator trading data set")
+                print(
+                    f"Buffer is only allowed in {len(buffer_allow_listed_tokens)} tokens")
                 print(f"Total buffer investment {initial_buffer_value_in_usd} [USD] and in each "
-                    f"token there is a buffer of: {initial_buffer_value_per_token_in_usd} [USD]")
+                      f"token there is a buffer of: {initial_buffer_value_per_token_in_usd} [USD]")
 
             result_df = compute_buffer_evolution(
                 df, buffers, buffer_allow_listed_tokens)

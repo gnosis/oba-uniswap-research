@@ -1,11 +1,11 @@
-from requests import Session
-from typing import Optional
-import time
-import os
-# Code mostly copied from: https: // github.com/itzmestar/duneanalytics
+# Code mostly copied from: https://github.com/itzmestar/duneanalytics
 
 """This provides the DuneAnalytics class implementation"""
+import os
+import time
+from typing import Optional
 
+from requests import Session
 
 # --------- Constants --------- #
 
@@ -112,6 +112,7 @@ class DuneAnalytics:
             query: str,
             query_name: str,
             network: str,
+            parameters: 'list[dict]'
     ):
         """
         Initiates a new query
@@ -138,7 +139,7 @@ class DuneAnalytics:
                     "is_archived": False,
                     "is_temp": False,
                     "tags": [],
-                    "parameters": [],
+                    "parameters": parameters,
                     "visualizations": {
                         "data": [],
                         "on_conflict": {
@@ -233,9 +234,10 @@ class DuneAnalytics:
             self,
             query_filepath: str,
             network: str,
+            parameters: 'list[dict[str, str]]' = None,
             ping_frequency: int = 5,
             max_retries: int = 2,
-    ):
+    ) -> 'list[dict]':
         """
         Pushes new query to dune and executes, awaiting query completion
         """
@@ -243,6 +245,7 @@ class DuneAnalytics:
             query=self.open_query(query_filepath),
             network=network,
             query_name="Auto Generated Query",
+            parameters=parameters or []
         )
         for _ in range(0, max_retries):
             try:
@@ -255,7 +258,7 @@ class DuneAnalytics:
                 self.login_and_fetch_auth()
         raise Exception(f"Maximum retries ({max_retries}) exceeded")
 
-    def execute_and_await_results(self, sleep_time):
+    def execute_and_await_results(self, sleep_time) -> 'list[dict]':
         """
         Executes query by ID and awaits completion.
         Since queries take some time to complete we include a sleep parameter
@@ -284,7 +287,8 @@ class DuneAnalytics:
             query_filepath: str,
             network: str,
             name: str,
-    ):
+            parameters: Optional['list[dict[str, str]]'],
+    ) -> 'list[dict]':
         """
         :param query_filepath: path to sql file to execute
         :param network: 'mainnet' or 'gchain'
@@ -296,9 +300,10 @@ class DuneAnalytics:
         return self.query_initiate_execute_await(
             query_filepath,
             network,
+            parameters
         )
 
 
-def parse_dune_response(data: dict):
+def parse_dune_response(data: dict) -> 'list[dict]':
     """Parses user data and execution date from query result."""
     return [rec['data'] for rec in data["data"]["get_result_by_result_id"]]
