@@ -29,14 +29,13 @@ def count_number_of_saved_trades_due_to_cow(df):
             number_of_saved_trades_per_pair[t, f] += count
         else:
             number_of_saved_trades_per_pair[t, f] = count - 1
-    return sum(
-        number_of_saved_trades_per_pair.values())
+    return sum(number_of_saved_trades_per_pair.values())
 
 
 def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pair, buffers, buffer_allow_listed_tokens):
     nr_of_external_trades = 0
     nr_of_internal_trades = 0
-    sum_rebalance_vol = 0
+    sum_unmatched_vol = 0
     sum_matched_vol = 0
     previous_buffer_usd_value = sum(buffers.values())
 
@@ -65,11 +64,11 @@ def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pai
         # only use buffers, if both tokens are in the allowlist and buffer is sufficient to cover the trade
         if f not in buffer_allow_listed_tokens or t not in buffer_allow_listed_tokens:
             sum_matched_vol += matched_cow_vol
-            sum_rebalance_vol += unmatched_cow_vol
+            sum_unmatched_vol += unmatched_cow_vol
             nr_of_external_trades += 1
         elif buffers[t] < unmatched_cow_vol:
             sum_matched_vol += matched_cow_vol + buffers[t]
-            sum_rebalance_vol += unmatched_cow_vol - buffers[t]
+            sum_unmatched_vol += unmatched_cow_vol - buffers[t]
             buffers[f] += buffers[t]
             buffers[t] = 0
             nr_of_external_trades += 1
@@ -83,7 +82,7 @@ def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pai
     assert abs(previous_buffer_usd_value -
                sum(buffers.values())) <= 1
     assert all(v >= 0 for v in buffers.values())
-    return buffers, sum_rebalance_vol, nr_of_internal_trades, nr_of_external_trades, sum_matched_vol
+    return buffers, sum_unmatched_vol, nr_of_internal_trades, nr_of_external_trades, sum_matched_vol
 
 
 def compute_buffer_evolution(df_sol, init_buffers, buffer_allow_listed_tokens):
@@ -91,8 +90,8 @@ def compute_buffer_evolution(df_sol, init_buffers, buffer_allow_listed_tokens):
     external_vol_across_time = []
     internally_matched_vol_across_time = []
     buffers = init_buffers
-    nr_of_external_trades = []
-    nr_of_internal_trades = []
+    nr_of_external_trades_across_time = []
+    nr_of_internal_trades_across_time = []
 
     def update_buffers(batch_df):
         nonlocal buffers
@@ -100,10 +99,10 @@ def compute_buffer_evolution(df_sol, init_buffers, buffer_allow_listed_tokens):
             batch_df.copy())
         sent_volume_per_pair = batch_df.groupby(
             ["token_a_address", "token_b_address"]).usd_amount.sum().to_dict()
-        updated_buffers, external_vol, nr_of_internal_trades_in_batch, nr_of_rebalances_in_batch, matched_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
+        updated_buffers, external_vol, nr_of_internal_trades_in_batch, nr_of_external_trades_in_batch, matched_vol = apply_batch_trades_on_buffer_and_account_trade_statistic(
             sent_volume_per_pair, buffers, buffer_allow_listed_tokens)
-        nr_of_external_trades.append(nr_of_rebalances_in_batch)
-        nr_of_internal_trades.append(
+        nr_of_external_trades_across_time.append(nr_of_external_trades_in_batch)
+        nr_of_internal_trades_across_time.append(
             nr_of_internal_trades_in_batch+nr_of_additional_internal_trades_from_batching)
         external_vol_across_time.append(external_vol)
         internally_matched_vol_across_time.append(matched_vol)
@@ -114,8 +113,8 @@ def compute_buffer_evolution(df_sol, init_buffers, buffer_allow_listed_tokens):
     df = pd.DataFrame.from_records(buffers_across_time)
     df['internally_matched_vol_across_time'] = internally_matched_vol_across_time
     df["external_vol_across_time"] = external_vol_across_time
-    df["nr_of_internal_trades"] = nr_of_internal_trades
-    df["nr_of_external_trades"] = nr_of_external_trades
+    df["nr_of_internal_trades"] = nr_of_internal_trades_across_time
+    df["nr_of_external_trades"] = nr_of_external_trades_across_time
     return df
 
 
@@ -141,7 +140,7 @@ if __name__ == '__main__':
     # We are sorting out all trades that don't have prices. This number of trades is neglegible for the overall analysis
     df = df[df['usd_amount'].notna()]
     # scaling factor to scale revenue for 1 year
-    revenue_scaling_factor = 360*24*60*60 / \
+    revenue_scaling_factor = 365*24*60*60 / \
         ((df['block_number'].max() - df['block_number'].min()) * 13.5)
 
     # preparations for writing simulation results into csv file
@@ -171,22 +170,27 @@ if __name__ == '__main__':
             tokens = set.union({t for t in df['token_a_address']}, {
                 t for t in df['token_b_address']})
 
-            normalized_token_appearance_counts = df['token_b_address'].value_counts(
+            normalized_token_appearance_counts = pd.Series(list(tokens)).value_counts(
                 normalize=True)
-            buffer_allow_listed_tokens = list({t for t in tokens if (t in normalized_token_appearance_counts
-                                                                     and normalized_token_appearance_counts[t] > trade_activity_threshold_for_buffers_to_be_funded)})
-            buffers = {t: t in buffer_allow_listed_tokens and initial_buffer_value_in_usd /
-                       len(buffer_allow_listed_tokens) or 0 for t in tokens}
+            buffer_allow_listed_tokens = list({
+                t for t in tokens
+                if t in normalized_token_appearance_counts and 
+                normalized_token_appearance_counts[t] > trade_activity_threshold_for_buffers_to_be_funded
+            })
+            buffers = {t: initial_buffer_value_in_usd /
+                       len(buffer_allow_listed_tokens) if t in buffer_allow_listed_tokens else 0 for t in tokens}
+            if len(buffer_allow_listed_tokens) > 0:
+                initial_buffer_value_per_token_in_usd = initial_buffer_value_in_usd/len(buffer_allow_listed_tokens)
+            else:
+                initial_buffer_value_per_token_in_usd = 0
 
             if verbose_logging:
                 print(
                     "\n\n--------------------------Experiment setup----------------------------")
-                print("There will be ", len(
-                    tokens), " tokens traded in the dex-aggregator trading data set")
-                print("Buffer is only allowed in ", len(
-                    buffer_allow_listed_tokens), "tokens")
-                print("Total buffer investment", initial_buffer_value_in_usd,
-                      "[USD] and in each token there is a buffer of:", initial_buffer_value_in_usd/len(buffer_allow_listed_tokens), "[USD]")
+                print(f"There will be {len(tokens)} tokens traded in the dex-aggregator trading data set")
+                print(f"Buffer is only allowed in {len(buffer_allow_listed_tokens)} tokens")
+                print(f"Total buffer investment {initial_buffer_value_in_usd} [USD] and in each "
+                    f"token there is a buffer of: {initial_buffer_value_per_token_in_usd} [USD]")
 
             result_df = compute_buffer_evolution(
                 df, buffers, buffer_allow_listed_tokens)
