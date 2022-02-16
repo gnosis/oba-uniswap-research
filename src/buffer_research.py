@@ -170,7 +170,7 @@ if __name__ == '__main__':
             tokens = set.union({t for t in df['token_a_address']}, {
                 t for t in df['token_b_address']})
 
-            normalized_token_appearance_counts = pd.Series(tokens).value_counts(
+            normalized_token_appearance_counts = pd.Series(list(tokens)).value_counts(
                 normalize=True)
             buffer_allow_listed_tokens = list({
                 t for t in tokens
@@ -179,7 +179,10 @@ if __name__ == '__main__':
             })
             buffers = {t: initial_buffer_value_in_usd /
                        len(buffer_allow_listed_tokens) if t in buffer_allow_listed_tokens else 0 for t in tokens}
-            initial_buffer_value_per_token_in_usd = initial_buffer_value_in_usd/len(buffer_allow_listed_tokens)
+            if len(buffer_allow_listed_tokens) > 0:
+                initial_buffer_value_per_token_in_usd = initial_buffer_value_in_usd/len(buffer_allow_listed_tokens)
+            else:
+                initial_buffer_value_per_token_in_usd = 0
 
             if verbose_logging:
                 print(
