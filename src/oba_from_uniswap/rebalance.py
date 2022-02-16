@@ -1,6 +1,6 @@
 from networkx import DiGraph, network_simplex
 import pandas as pd
-from common import get_dfs, get_block_data_file, get_prices_at_blocks
+from .common import get_dfs, get_block_data_file, get_prices_at_blocks
 from math import log
 
 EPS = 1e-5
