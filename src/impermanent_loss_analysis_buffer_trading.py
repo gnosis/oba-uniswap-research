@@ -80,7 +80,7 @@ def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pai
             sum_matched_vol += unmatched_cow_vol + matched_cow_vol
 
     # simple sanity checks
-    assert all(v >= 0 for v in buffers.values())
+    assert all(v >= -0.1 for v in buffers.values())
     return buffers
 
 
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     with open(result_file, '+w', encoding='UTF8') as f:
         writer = csv.writer(f)
         writer.writerow(header)
-    numdays = 30
+    numdays = 90
     base = datetime.datetime.today()
     initial_buffer = {}
     buffer_allow_listed_tokens = {}
