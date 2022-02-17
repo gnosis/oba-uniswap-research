@@ -1,12 +1,10 @@
 import datetime
-import pickle
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-from src.dune_api.dune_analytics_with_params import DuneAnalytics
+from src.dune_api.dune_analytics import DuneAnalytics
 import pandas as pd
-from math import log
 import csv
 
 
@@ -14,26 +12,6 @@ pd.set_option('display.max_rows', 50)
 pd.set_option("display.min_rows", 49)
 
 TOL = 1e-7
-
-total_matched_vol = 0
-total_unmatched_vol = 0
-total_rebalanced_vol = 0
-
-
-def count_number_of_saved_trades_due_to_cow(df):
-    number_of_trades_per_pair = df.groupby(
-        ["token_a_address", "token_b_address"]).size()
-    number_of_saved_trades_per_pair = dict()
-    for tf, count in number_of_trades_per_pair.items():
-        t, f = tf
-        if t < f:
-            t, f = f, t
-        if (t, f) in number_of_saved_trades_per_pair:
-            number_of_saved_trades_per_pair[t, f] += count
-        else:
-            number_of_saved_trades_per_pair[t, f] = count - 1
-    return sum(
-        number_of_saved_trades_per_pair.values())
 
 
 def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pair, buffers, buffer_allow_listed_tokens):
@@ -70,6 +48,7 @@ def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pai
                                 sent_tokens_to_from)
 
         # only use buffers, if both tokens are in the allowlist and buffer is sufficient to cover the trade
+        # can be optimized later to use also for partial matches against the buffer
         if f not in buffer_allow_listed_tokens or t not in buffer_allow_listed_tokens or buffers[t] < unmatched_cow_vol:
             sum_matched_vol += matched_cow_vol
             sum_rebalance_vol += unmatched_cow_vol
@@ -105,7 +84,7 @@ def compute_buffer_evolution(df_sol, init_buffers, buffer_allow_listed_tokens):
 if __name__ == '__main__':
 
     initial_buffer_value_in_usd = 10_000_000
-    trade_activity_threshold_for_buffers_to_be_funded = 0.01
+    trade_activity_threshold_for_buffers_to_be_funded = 0.001
 
     # preparations for writing simulation results into csv file
     result_file = 'result_impermantent_loss_simulation.csv'
@@ -117,7 +96,7 @@ if __name__ == '__main__':
     with open(result_file, '+w', encoding='UTF8') as f:
         writer = csv.writer(f)
         writer.writerow(header)
-    numdays = 90
+    numdays = 5
     base = datetime.datetime.today()
     initial_buffer = {}
     buffer_allow_listed_tokens = {}
@@ -127,7 +106,7 @@ if __name__ == '__main__':
         print(date_time)
         dune_connection = DuneAnalytics.new_from_environment()
         dune_trading_data = dune_connection.fetch(
-            query_filepath="./src/dune_api/queries/dex_ag_trades_within_days.sql",
+            query_filepath="./src/dune_api/queries/dex_ag_trades_within_time_frame.sql",
             network='mainnet',
             name="dex ag trades",
             parameters=[
@@ -157,7 +136,7 @@ if __name__ == '__main__':
                 {
                     "key": "end_time",
                     "type": "text",
-                    "value": f'\'{(date_time+datetime.timedelta(minutes=30)).strftime("%Y-%m-%d %H:%M")}\'',
+                    "value": f'\'{(date_time+datetime.timedelta(minutes=50)).strftime("%Y-%m-%d %H:%M")}\'',
                 }
             ]
         )
@@ -165,6 +144,7 @@ if __name__ == '__main__':
                                for o in token_prices_in_usd}
 
         if not bool(initial_buffer):
+            # procedure to be run only once during initialization
             tokens = set.union({t for t in df['token_a_address'] if t in token_prices_in_usd}, {
                 t for t in df['token_b_address'] if t in token_prices_in_usd})
 
@@ -173,12 +153,12 @@ if __name__ == '__main__':
             approximated_prices_by_previous_prices = token_prices_in_usd
             buffer_allow_listed_tokens = list({t for t in tokens if (t in normalized_token_appearance_counts
                                                                      and normalized_token_appearance_counts[t] > trade_activity_threshold_for_buffers_to_be_funded)})
-            initial_buffer = {t: t in buffer_allow_listed_tokens and (initial_buffer_value_in_usd /
-                              len(buffer_allow_listed_tokens) * pow(10, 18) / token_prices_in_usd[t][0]) or 0 for t in tokens if t in token_prices_in_usd}
+            initial_buffer = {t:  (initial_buffer_value_in_usd /
+                              len(buffer_allow_listed_tokens) * pow(10, 18) / token_prices_in_usd[t][0]) if t in buffer_allow_listed_tokens else 0 for t in tokens if t in token_prices_in_usd}
             buffers = initial_buffer.copy()
 
         approximated_prices_by_previous_prices = {
-            t: t in token_prices_in_usd and token_prices_in_usd[t] or approximated_prices_by_previous_prices[t] for t in tokens}
+            t:  token_prices_in_usd[t] if t in token_prices_in_usd else approximated_prices_by_previous_prices[t] for t in tokens}
         df = df[df['token_b_address'].isin(tokens)]
         df = df[df['token_a_address'].isin(tokens)]
         result_df = compute_buffer_evolution(
