@@ -7,16 +7,6 @@ from math import log
 import csv
 
 
-pd.set_option('display.max_rows', 50)
-pd.set_option("display.min_rows", 49)
-
-TOL = 1e-7
-
-total_matched_vol = 0
-total_unmatched_vol = 0
-total_rebalanced_vol = 0
-
-
 def count_number_of_saved_trades_due_to_opp_cow_or_unidirectional_cows(df):
     number_of_trades_per_pair = df.groupby(
         ["token_a_address", "token_b_address"]).size()
@@ -127,7 +117,7 @@ if __name__ == '__main__':
     if fetch_data_from_dune:
         dune_connection = DuneAnalytics.new_from_environment()
         dune_data = dune_connection.fetch(
-            query_filepath="./src/dune_api/queries/dex_ag_trades_within_one_day.sql",
+            query_filepath="./src/dune_api/queries/dex_ag_trades.sql",
             network='mainnet',
             name="dex ag trades",
             parameters=[]
@@ -172,7 +162,7 @@ if __name__ == '__main__':
             tokens = set.union({t for t in df['token_a_address']}, {
                 t for t in df['token_b_address']})
 
-            normalized_token_appearance_counts = pd.Series(list(tokens)).value_counts(
+            normalized_token_appearance_counts = df['token_b_address'].value_counts(
                 normalize=True)
             buffer_allow_listed_tokens = list({
                 t for t in tokens

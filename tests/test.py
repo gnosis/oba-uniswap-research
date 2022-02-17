@@ -1,7 +1,7 @@
 
 import unittest
 import pandas as pd
-from src.buffer_research import apply_batch_trades_on_buffer_and_account_trade_statistic, count_number_of_saved_trades_due_to_cow
+from src.buffer_research import apply_batch_trades_on_buffer_and_account_trade_statistic, count_number_of_saved_trades_due_to_opp_cow_or_unidirectional_cows
 
 test_trades = [{'block_number': 14123254, 'project': 'Paraswap',
                 'token_a_address': '\\xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'token_a_amount_raw': 1268800000000000000, 'token_a_symbol': 'ETH', 'token_b_address': '\\x2b591e99afe9f32eaa6214f7b7629768c40eeb39', 'token_b_amount_raw': 1878565823884, 'token_b_symbol': 'HEX', 'usd_amount': 3395.78951154391}, {'block_number': 14123256, 'project': '0x API', 'token_a_address': '\\xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'token_a_amount_raw': 113993750000000000, 'token_a_symbol': 'ETH', 'token_b_address': '\\x9e32b13ce7f2e80a01932b42553652e053d6ed8e', 'token_b_amount_raw': 2564494508536733779, 'token_b_symbol': 'Metis', 'usd_amount': 319.291934}]
@@ -15,7 +15,6 @@ test_trades_same_direction = [{'block_number': 14123254, 'project': 'Paraswap',
 
 class TestApplyTradesOnBufferTest(unittest.TestCase):
     def test_apply_batch_trades_if_no_token_is_in_allow_list(self):
-        initial_buffer_value_in_usd = 10
         df = pd.DataFrame.from_records(test_trades)
 
         tokens = set.union({t for t in df['token_a_address']}, {
@@ -190,13 +189,15 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
 
     def test_count_number_of_saved_trades_uni_directional_cow(self):
         df = pd.DataFrame.from_records(test_trades_same_direction)
-        saved_trades = count_number_of_saved_trades_due_to_cow(df)
+        saved_trades = count_number_of_saved_trades_due_to_opp_cow_or_unidirectional_cows(
+            df)
 
         self.assertEqual(saved_trades, 1)
 
     def test_count_number_of_saved_trades_bi_directional_cow(self):
         df = pd.DataFrame.from_records(test_trades_opposite_direction)
-        saved_trades = count_number_of_saved_trades_due_to_cow(df)
+        saved_trades = count_number_of_saved_trades_due_to_opp_cow_or_unidirectional_cows(
+            df)
 
         self.assertEqual(saved_trades, 1)
 
@@ -205,6 +206,7 @@ class TestApplyTradesOnBufferTest(unittest.TestCase):
         test_trades_opposite_direction.append(
             test_trades_opposite_direction[1])
         df = pd.DataFrame.from_records(test_trades_opposite_direction)
-        saved_trades = count_number_of_saved_trades_due_to_cow(df)
+        saved_trades = count_number_of_saved_trades_due_to_opp_cow_or_unidirectional_cows(
+            df)
 
         self.assertEqual(saved_trades, 2)
