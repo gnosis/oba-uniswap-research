@@ -178,11 +178,14 @@ if __name__ == '__main__':
         with open(result_file, 'a', encoding='UTF8') as f:
             writer = csv.writer(f)
             writer.writerow(result_array)
+
+    # initial starting values:
     dates = [(datetime.datetime.today() -
               datetime.timedelta(days=numdays+1)).strftime("%Y-%m-%d")]
     hodl = [initial_buffer_value_in_usd]
     buffer_value = [initial_buffer_value_in_usd]
     ratio = [1]
+    # reading stored values
     with open(result_file, 'r', encoding='UTF8') as f:
         reader = csv.reader(f)
         headers = next(reader)
@@ -191,6 +194,7 @@ if __name__ == '__main__':
             hodl.append(float(row[1]))
             buffer_value.append(float(row[2]))
             ratio.append(float(row[3]))
+    # plotting
     x_axis = dates
     fig, ax1 = plt.subplots()
     ax2 = ax1.twinx()
