@@ -12,6 +12,14 @@ virtualenv --python /usr/bin/python3 venv
 pip install -r requirements.txt
 ```
 
+## Buffer Research:
+
+Create a .env with the example from .env.example
+Then run:
+```
+source .env
+python3 -m src.buffer_research
+```
 ## Create Data:
 To work with the Dune data:
 ```
