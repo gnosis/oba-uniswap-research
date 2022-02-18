@@ -20,6 +20,14 @@ Then run:
 source .env
 python3 -m src.buffer_research
 ```
+
+In order to estimate the revenue from internal buffer trades, its better to run this analysis:
+
+```
+source .env
+python3 -m src.impermanent_loss_analysis_buffer_trading
+```
+
 ## Create Data:
 To work with the Dune data:
 ```
