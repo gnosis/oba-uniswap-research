@@ -1,3 +1,4 @@
+from itertools import groupby
 import pickle
 
 from src.dune_api.dune_analytics import DuneAnalytics
@@ -5,13 +6,15 @@ import pandas as pd
 from math import log
 import csv
 
-# This function counts the saved interactions against AMM of the same type in a batch due to cow or unidirectional cows:
-# I.e., if there are two interactions against uniV3 in the same token pair, then 1 is saved via batching
-# but if there is one interaction against univ2 and one against univ3 in the same token pair, we don't
-# save any amm interaction, as both pools might be needed to reduce slippage.
-
 
 def count_number_of_amm_interactions_due_to_opp_cow_or_unidirectional_cows(df):
+    # This function counts the saved interactions against AMM of the same type in a batch due to cow or unidirectional cows:
+    # I.e., if there are two interactions against uniV3 in the same token pair, then 1 is saved via batching
+    # but if there is one interaction against univ2 and one against univ3 in the same token pair, we don't
+    # save any amm interaction, as both pools might be needed to reduce slippage.
+    # this pessimistic counting method was chosen in order to not produce too good results for Dex-Agg trades
+    # that touch many liquidity sources in order to archive the best price.
+
     number_of_trades_per_pair = df.groupby(
         ["token_a_address", "token_b_address", "project", "version"]).size()
     number_of_saved_trades_per_pair = dict()
@@ -29,8 +32,9 @@ def count_number_of_amm_interactions_due_to_opp_cow_or_unidirectional_cows(df):
 
 
 def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pair, buffers, buffer_allow_listed_tokens):
-    nr_of_external_trades = 0
-    nr_of_internal_trades = 0
+
+    nr_of_external_amm_interactions = 0
+    nr_of_internal_buffer_trades = 0
     sum_unmatched_vol = 0
     sum_matched_vol = 0
     previous_buffer_usd_value = sum(buffers.values())
@@ -61,24 +65,30 @@ def apply_batch_trades_on_buffer_and_account_trade_statistic(sent_volume_per_pai
         if f not in buffer_allow_listed_tokens or t not in buffer_allow_listed_tokens:
             sum_matched_vol += matched_cow_vol
             sum_unmatched_vol += unmatched_cow_vol
-            nr_of_external_trades += 1
+            # It's hard to know how many external AMM interactions are needed to settle the amounts.
+            # We will run our analysis under the assumption that only 1.2 is needed. Though the number could be increased
+            # to 1.x, in order to be even more pessimistic and on the save side.
+            nr_of_external_amm_interactions += 1.2
         elif buffers[t] < unmatched_cow_vol:
             sum_matched_vol += matched_cow_vol + buffers[t]
             sum_unmatched_vol += unmatched_cow_vol - buffers[t]
             buffers[f] += buffers[t]
             buffers[t] = 0
-            nr_of_external_trades += 1
+            # It's hard to know how many external AMM interactions are needed to settle the amounts.
+            # We will run our analysis under the assumption that only 1 is needed. Though the number could be increased
+            # to 1.x, in order to be even more pessimistic and on the save side.
+            nr_of_external_amm_interactions += 1.2
         else:
             buffers[f] += unmatched_cow_vol
             buffers[t] -= unmatched_cow_vol
             sum_matched_vol += unmatched_cow_vol + matched_cow_vol
-            nr_of_internal_trades += 1
+            nr_of_internal_buffer_trades += 1
 
     # simple sanity checks
     assert abs(previous_buffer_usd_value -
                sum(buffers.values())) <= 1
     assert all(v >= 0 for v in buffers.values())
-    return buffers, sum_unmatched_vol, nr_of_internal_trades, nr_of_external_trades, sum_matched_vol
+    return buffers, sum_unmatched_vol, nr_of_internal_buffer_trades, nr_of_external_amm_interactions, sum_matched_vol
 
 
 def compute_buffer_evolution(df_sol, init_buffers, buffer_allow_listed_tokens):
@@ -117,13 +127,11 @@ def compute_buffer_evolution(df_sol, init_buffers, buffer_allow_listed_tokens):
 
 if __name__ == '__main__':
 
-    fetch_data_from_dune = True
-    verbose_logging = False
-
+    fetch_data_from_dune = False
     if fetch_data_from_dune:
         dune_connection = DuneAnalytics.new_from_environment()
         dune_data = dune_connection.fetch(
-            query_filepath="./src/dune_api/queries/dex_ag_path_trades.sql",
+            query_filepath="./src/dune_api/queries/dex_ag_path_trades_1inch_trades_only.sql",
             network='mainnet',
             name="dex ag trades",
             parameters=[]
@@ -145,25 +153,24 @@ if __name__ == '__main__':
     result_file = 'result.csv'
     header = ['Buffer Investment [USD]',
               'AllowListed Buffer-Tokens',
-              'Ratio Internal AMM interactions vs External AMM trade',
+              'Ratio Internal Interactions vs Total # Interactions',
               'Ratio Internally Matched Vol',
               'Fee Revenue [USD/Year]',
-              'Ratio of gas costs vs normal dex agg execution'
-              'Ratio of gas costs vs normal dex agg execution(with optimized smart contract)'
+              'Ratio of gas costs vs normal dex agg gas cost',
+              'Ratio of gas costs vs normal dex agg gas cost(v2)'
               ]
     with open(result_file, 'w', encoding='UTF8') as f:
         writer = csv.writer(f)
         writer.writerow(header)
     # gas costs rough estimations
-    gas_cost_avg_amm_trade = 200000
-    gas_cost_avg_amm_interaction = 75000
-
+    # estimation as univ2 savings is around 90k and univ3 around 125k
+    gas_cost_avg_amm_interaction = 100000
     gas_cost_over_head_cowswap = 90000
-    gas_cost_internal_trade = 130000
     gas_cost_over_head_cowswap_in_potential_v2 = 55000
     gas_cost_internal_trade_in_potential_v2 = 105000
     number_of_distinct_trades = len(df.copy()['tx_hash'].unique())
-    print(number_of_distinct_trades)
+    total_gas_consumption = df.copy()[['tx_hash', 'gas_used']
+                                      ].drop_duplicates()['gas_used'].sum()
 
     # Starting simulation with different model parameters
     for initial_buffer_value_in_usd in [1_300_000, 10_000_000, 50_000_000]:
@@ -180,17 +187,12 @@ if __name__ == '__main__':
                 normalized_token_appearance_counts[t] >= trade_activity_threshold_for_buffers_to_be_funded
             })
             if trade_activity_threshold_for_buffers_to_be_funded == 0:
-                # let's simulate our current situation in the buffers 1.3M distributed over 1500 tokens
+                # let's simulate in this case our current situation: buffer is distributed over 1500 tokens
                 buffers = {t: initial_buffer_value_in_usd /
                            1500 if t in buffer_allow_listed_tokens else 0 for t in tokens}
             else:
                 buffers = {t: initial_buffer_value_in_usd /
                            len(buffer_allow_listed_tokens) if t in buffer_allow_listed_tokens else 0 for t in tokens}
-            if len(buffer_allow_listed_tokens) > 0:
-                initial_buffer_value_per_token_in_usd = initial_buffer_value_in_usd / \
-                    len(buffer_allow_listed_tokens)
-            else:
-                initial_buffer_value_per_token_in_usd = 0
 
             result_df = compute_buffer_evolution(
                 df, buffers, buffer_allow_listed_tokens)
@@ -211,10 +213,10 @@ if __name__ == '__main__':
                                   (externally_traded_volume + internally_traded_volume), 2),
                             round(revenue_scaling_factor *
                                   internally_traded_volume*0.0005, 2),
-                            round((number_of_distinct_trades * (gas_cost_over_head_cowswap + gas_cost_avg_amm_trade) - saved_internal_trades *
-                                  gas_cost_avg_amm_interaction)/(number_of_distinct_trades * gas_cost_avg_amm_trade), 2),
-                            round((number_of_distinct_trades * (gas_cost_over_head_cowswap_in_potential_v2 + gas_cost_avg_amm_trade) - saved_internal_trades *
-                                  gas_cost_avg_amm_interaction)/(number_of_distinct_trades * gas_cost_avg_amm_trade), 2)]
+                            round((number_of_distinct_trades * gas_cost_over_head_cowswap + total_gas_consumption - saved_internal_trades *
+                                  gas_cost_avg_amm_interaction)/total_gas_consumption, 2),
+                            round((number_of_distinct_trades * gas_cost_over_head_cowswap_in_potential_v2 + total_gas_consumption - saved_internal_trades *
+                                  gas_cost_avg_amm_interaction)/total_gas_consumption, 2)]
 
             with open(result_file, 'a', encoding='UTF8') as f:
                 writer = csv.writer(f)
