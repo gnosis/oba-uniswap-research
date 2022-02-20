@@ -23,7 +23,7 @@ def apply_trades_on_buffer_and_account_trade_statistic(row, buffers, buffer_allo
     sum_rebalance_vol = 0
     sum_matched_vol = 0
 
-    t = row['token_a_address']
+    t = row['token_b_address']
     f = row['token_a_address']
     sent_volume_usd = row['usd_amount']
     # only use buffers, if both tokens are in the allowlist and buffer is sufficient to cover the trade
@@ -101,7 +101,7 @@ def compute_buffer_evolution(df_sol, init_buffers, prices, buffer_allow_listed_t
 
 if __name__ == '__main__':
 
-    fetch_data_from_dune = False
+    fetch_data_from_dune = True
     verbose_logging = False
 
     if fetch_data_from_dune:
